@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res" >
+            <file
+                name="ic_launcher"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-hdpi/ic_launcher.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="marker"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-hdpi/marker.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-mdpi/ic_launcher.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="marker"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-mdpi/marker.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xhdpi/ic_launcher.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="marker"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xhdpi/marker.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xxhdpi/ic_launcher.png"
+                qualifiers="xxhdpi"
+                type="drawable" />
+            <file
+                name="marker"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xxhdpi/marker.png"
+                qualifiers="xxhdpi"
+                type="drawable" />
+            <file
+                name="panorama_layout"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/layout/panorama_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="root_layout"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/layout/root_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/menu/main.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="hotspot"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/hotspot.png"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="json_cubic"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/json_cubic.data"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="json_cubic_quito2"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/json_cubic_quito2.data"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="json_cubic_quito3"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/json_cubic_quito3.data"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="json_cylindrical"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/json_cylindrical.data"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="json_cylindrical_quito2"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/json_cylindrical_quito2.data"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="json_cylindrical_quito3"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/json_cylindrical_quito3.data"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="json_spherical"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/json_spherical.data"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="json_spherical2"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/json_spherical2.data"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="json_spherical2_quito2"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/json_spherical2_quito2.data"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="json_spherical2_quito3"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/json_spherical2_quito3.data"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="json_spherical_quito2"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/json_spherical_quito2.data"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="json_spherical_quito3"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/json_spherical_quito3.data"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito1_b"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito1_b.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito1_d"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito1_d.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito1_f"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito1_f.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito1_l"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito1_l.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito1_p"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito1_p.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito1_r"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito1_r.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito1_s"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito1_s.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito1_s2"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito1_s2.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito1_sp"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito1_sp.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito1_u"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito1_u.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito2_b"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito2_b.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito2_d"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito2_d.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito2_f"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito2_f.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito2_l"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito2_l.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito2_p"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito2_p.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito2_r"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito2_r.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito2_s"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito2_s.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito2_s2"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito2_s2.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito2_sp"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito2_sp.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito2_u"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito2_u.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito3_b"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito3_b.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito3_d"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito3_d.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito3_f"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito3_f.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito3_l"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito3_l.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito3_p"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito3_p.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito3_r"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito3_r.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito3_s"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito3_s.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito3_s2"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito3_s2.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito3_sp"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito3_sp.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="quito3_u"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/raw/quito3_u.jpg"
+                qualifiers=""
+                type="raw" />
+            <file
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/values/dimens.xml"
+                qualifiers="" >
+                <dimen name="activity_horizontal_margin" >0dp
+                </dimen>
+                <dimen name="activity_vertical_margin" >0dp
+                </dimen>
+            </file>
+            <file
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/values/strings.xml"
+                qualifiers="" >
+                <string-array name="planets" >
+                    <item>
+dalle
+                    </item>
+                    <item>
+plat
+                    </item>
+                    <item>
+arrete
+                    </item>
+                    <item>
+reta
+                    </item>
+                    <item>
+tout
+                    </item>
+                </string-array>
+
+                <string name="action_settings" >Settings
+                </string>
+                <string name="app_name" >TopoPOC
+                </string>
+                <string name="spinner_prompt" >Select the panorama type
+                </string>
+                <string name="hello_world" >Hello world!
+                </string>
+
+                <string-array name="panorama_types" >
+                    <item>
+Cubic
+                    </item>
+                    <item>
+Spherical2
+                    </item>
+                    <item>
+Spherical
+                    </item>
+                    <item>
+Cylindrical
+                    </item>
+                </string-array>
+            </file>
+            <file
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/values/styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+            </file>
+            <file
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/values-sw720dp-land/dimens.xml"
+                qualifiers="sw720dp-land" >
+                <dimen name="activity_horizontal_margin" >128dp
+                </dimen>
+            </file>
+            <file
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/values-v11/styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light" >
+
+                    <!-- API 11 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/values-v14/styles.xml"
+                qualifiers="v14" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- API 14 theme customizations can go here. -->
+                </style>
+            </file>
+        </source>
+        <source path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/build/res/rs/debug" />
+        <source path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/build/res/generated/debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/debug/res" />
+    </dataSet>
+
+</merger>
