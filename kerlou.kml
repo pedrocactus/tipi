@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document><Folder><name>kerlou</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#kerlou">
+		<SimpleData name="nom">Dispeau</SimpleData>
+		<SimpleData name="niveau">6a</SimpleData>
+		<SimpleData name="num">1</SimpleData>
+		<SimpleData name="highball">oui</SimpleData>
+		<SimpleData name="start">debout</SimpleData>
+		<SimpleData name="style">arrete</SimpleData>
+		<SimpleData name="dangereux">non</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-4.390361832535141,48.658980838843107</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#kerlou">
+		<SimpleData name="nom">Mon gaillard</SimpleData>
+		<SimpleData name="niveau">6c</SimpleData>
+		<SimpleData name="num">5</SimpleData>
+		<SimpleData name="highball">non</SimpleData>
+		<SimpleData name="start">debout</SimpleData>
+		<SimpleData name="style">plats</SimpleData>
+		<SimpleData name="dangereux">oui</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-4.39035903706625,48.659026210387815</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#kerlou">
+		<SimpleData name="nom">Monosodique</SimpleData>
+		<SimpleData name="niveau">7a+</SimpleData>
+		<SimpleData name="num">4</SimpleData>
+		<SimpleData name="highball">non</SimpleData>
+		<SimpleData name="start">debout</SimpleData>
+		<SimpleData name="style">plat</SimpleData>
+		<SimpleData name="dangereux">non</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-4.390354644186564,48.659010910685438</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#kerlou">
+		<SimpleData name="nom">La couleur</SimpleData>
+		<SimpleData name="niveau">6a</SimpleData>
+		<SimpleData name="num">3</SimpleData>
+		<SimpleData name="highball">non</SimpleData>
+		<SimpleData name="start">debout</SimpleData>
+		<SimpleData name="style">dalle</SimpleData>
+		<SimpleData name="dangereux">non</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-4.390354644186564,48.658995610978423</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#kerlou">
+		<SimpleData name="nom">De l'amour</SimpleData>
+		<SimpleData name="niveau">6a</SimpleData>
+		<SimpleData name="num">2</SimpleData>
+		<SimpleData name="highball">non</SimpleData>
+		<SimpleData name="start">debout</SimpleData>
+		<SimpleData name="style">dalle</SimpleData>
+		<SimpleData name="dangereux">non</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-4.390358637713551,48.658990335216309</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#kerlou">
+		<SimpleData name="nom">Le crabe</SimpleData>
+		<SimpleData name="niveau">6a</SimpleData>
+		<SimpleData name="num">7</SimpleData>
+		<SimpleData name="highball">non</SimpleData>
+		<SimpleData name="start">debout</SimpleData>
+		<SimpleData name="style">arrete</SimpleData>
+		<SimpleData name="dangereux">non</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-4.390356640950058,48.659050742659517</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#kerlou">
+		<SimpleData name="nom">Lowe</SimpleData>
+		<SimpleData name="niveau">6c</SimpleData>
+		<SimpleData name="num">6</SimpleData>
+		<SimpleData name="highball">non</SimpleData>
+		<SimpleData name="start">assis</SimpleData>
+		<SimpleData name="style">arrete</SimpleData>
+		<SimpleData name="dangereux">non</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-4.390363030593237,48.659042565236945</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#kerlou">
+		<SimpleData name="nom">Sweet dream</SimpleData>
+		<SimpleData name="niveau">6b</SimpleData>
+		<SimpleData name="num">12</SimpleData>
+		<SimpleData name="highball">non</SimpleData>
+		<SimpleData name="start">debout</SimpleData>
+		<SimpleData name="style">jump</SimpleData>
+		<SimpleData name="dangereux">non</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-4.390398572983422,48.659082397185998</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#kerlou">
+		<SimpleData name="nom">Le savoir</SimpleData>
+		<SimpleData name="niveau">6c</SimpleData>
+		<SimpleData name="num">11</SimpleData>
+		<SimpleData name="highball">non</SimpleData>
+		<SimpleData name="start">debout</SimpleData>
+		<SimpleData name="style">plats</SimpleData>
+		<SimpleData name="dangereux">non</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-4.390399371688819,48.659073692193196</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#kerlou">
+		<SimpleData name="nom">La rose des sables</SimpleData>
+		<SimpleData name="niveau">5</SimpleData>
+		<SimpleData name="num">10</SimpleData>
+		<SimpleData name="highball">non</SimpleData>
+		<SimpleData name="start">debout</SimpleData>
+		<SimpleData name="dangereux">non</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-4.39039298204564,48.659065250986622</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#kerlou">
+		<SimpleData name="nom">La déchirure</SimpleData>
+		<SimpleData name="niveau">6c</SimpleData>
+		<SimpleData name="num">9</SimpleData>
+		<SimpleData name="highball">non</SimpleData>
+		<SimpleData name="start">debout</SimpleData>
+		<SimpleData name="style">dalle jump</SimpleData>
+		<SimpleData name="dangereux">non</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-4.390373413763403,48.659061557958296</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#kerlou">
+		<SimpleData name="nom">Projet</SimpleData>
+		<SimpleData name="niveau">?</SimpleData>
+		<SimpleData name="num">8</SimpleData>
+		<SimpleData name="highball">non</SimpleData>
+		<SimpleData name="start">debout</SimpleData>
+		<SimpleData name="style">reta</SimpleData>
+		<SimpleData name="dangereux">non</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-4.39035903706625,48.659061557958296</coordinates></Point>
+  </Placemark>
+</Folder>
+<Schema name="kerlou" id="kerlou">
+	<SimpleField name="nom" type="string"></SimpleField>
+	<SimpleField name="niveau" type="string"></SimpleField>
+	<SimpleField name="num" type="int"></SimpleField>
+	<SimpleField name="highball" type="string"></SimpleField>
+	<SimpleField name="start" type="string"></SimpleField>
+	<SimpleField name="style" type="string"></SimpleField>
+	<SimpleField name="dangereux" type="string"></SimpleField>
+</Schema>
+</Document></kml>
