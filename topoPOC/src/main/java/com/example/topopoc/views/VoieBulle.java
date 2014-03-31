@@ -1,18 +1,49 @@
 package com.example.topopoc.views;
 
+import android.graphics.drawable.Drawable;
+
 import com.example.topopoc.R;
 
-import org.osmdroid.bonuspack.overlays.MarkerInfoWindow;
+import org.osmdroid.bonuspack.kml.KmlFeature;
+import org.osmdroid.bonuspack.kml.KmlLineString;
+import org.osmdroid.bonuspack.kml.KmlPlacemark;
+import org.osmdroid.bonuspack.kml.KmlPoint;
+import org.osmdroid.bonuspack.kml.KmlPolygon;
+import org.osmdroid.bonuspack.overlays.Marker;
+import org.osmdroid.bonuspack.overlays.Polygon;
+import org.osmdroid.bonuspack.overlays.Polyline;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Overlay;
 
 /**
  * Created by pierrecastex on 24/03/2014.
  */
-public class VoieBulle extends MarkerInfoWindow {
-
-    public VoieBulle(MapView mapView) {
-        super(R.layout.bonuspack_bubble, mapView);
+public class VoieBulle implements KmlFeature.Styler {
+    private Drawable mMarker;
+    public VoieBulle(Drawable marker){
+        mMarker = marker;
     }
 
 
+    @Override
+    public void onFeature(Overlay overlay, KmlFeature kmlFeature) {
+
+    }
+
+    @Override
+    public void onPoint(Marker marker, KmlPlacemark kmlPlacemark, KmlPoint kmlPoint) {
+
+        marker.setSubDescription(kmlPlacemark.mExtendedData.get("niveau") + kmlPlacemark.mExtendedData.get("start") + kmlPlacemark.mExtendedData.get("style"));
+        marker.setTitle(kmlPlacemark.mExtendedData.get("nom"));
+    }
+
+    @Override
+    public void onLineString(Polyline polyline, KmlPlacemark kmlPlacemark, KmlLineString kmlLineString) {
+
+    }
+
+    @Override
+    public void onPolygon(Polygon polygon, KmlPlacemark kmlPlacemark, KmlPolygon kmlPolygon) {
+
+    }
 }

@@ -4,6 +4,16 @@
     <dataSet config="main" >
         <source path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res" >
             <file
+                name="btn_moreinfo"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable/btn_moreinfo.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="bonuspack_bubble"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-hdpi/bonuspack_bubble.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
                 name="ic_launcher"
                 path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-hdpi/ic_launcher.png"
                 qualifiers="hdpi"
@@ -12,6 +22,36 @@
                 name="marker"
                 path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-hdpi/marker.png"
                 qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="moreinfo_arrow"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-hdpi/moreinfo_arrow.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="moreinfo_arrow_pressed"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-hdpi/moreinfo_arrow_pressed.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="bonuspack_bubble"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-ldpi/bonuspack_bubble.9.png"
+                qualifiers="ldpi"
+                type="drawable" />
+            <file
+                name="moreinfo_arrow"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-ldpi/moreinfo_arrow.png"
+                qualifiers="ldpi"
+                type="drawable" />
+            <file
+                name="moreinfo_arrow_pressed"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-ldpi/moreinfo_arrow_pressed.png"
+                qualifiers="ldpi"
+                type="drawable" />
+            <file
+                name="bonuspack_bubble"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-mdpi/bonuspack_bubble.9.png"
+                qualifiers="mdpi"
                 type="drawable" />
             <file
                 name="ic_launcher"
@@ -24,6 +64,21 @@
                 qualifiers="mdpi"
                 type="drawable" />
             <file
+                name="moreinfo_arrow"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-mdpi/moreinfo_arrow.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="moreinfo_arrow_pressed"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-mdpi/moreinfo_arrow_pressed.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="bonuspack_bubble"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xhdpi/bonuspack_bubble.9.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
                 name="ic_launcher"
                 path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xhdpi/ic_launcher.png"
                 qualifiers="xhdpi"
@@ -32,6 +87,21 @@
                 name="marker"
                 path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xhdpi/marker.png"
                 qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="moreinfo_arrow"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xhdpi/moreinfo_arrow.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="moreinfo_arrow_pressed"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xhdpi/moreinfo_arrow_pressed.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="bonuspack_bubble"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xxhdpi/bonuspack_bubble.9.png"
+                qualifiers="xxhdpi"
                 type="drawable" />
             <file
                 name="ic_launcher"
@@ -43,6 +113,21 @@
                 path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xxhdpi/marker.png"
                 qualifiers="xxhdpi"
                 type="drawable" />
+            <file
+                name="moreinfo_arrow"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xxhdpi/moreinfo_arrow.png"
+                qualifiers="xxhdpi"
+                type="drawable" />
+            <file
+                name="moreinfo_arrow_pressed"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xxhdpi/moreinfo_arrow_pressed.png"
+                qualifiers="xxhdpi"
+                type="drawable" />
+            <file
+                name="bonuspack_bubble"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/layout/bonuspack_bubble.xml"
+                qualifiers=""
+                type="layout" />
             <file
                 name="panorama_layout"
                 path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/layout/panorama_layout.xml"

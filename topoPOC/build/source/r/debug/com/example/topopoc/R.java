@@ -19,20 +19,30 @@ public final class R {
         public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int marker=0x7f020001;
+        public static final int bonuspack_bubble=0x7f020000;
+        public static final int btn_moreinfo=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int marker=0x7f020003;
+        public static final int moreinfo_arrow=0x7f020004;
+        public static final int moreinfo_arrow_pressed=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0005;
-        public static final int content_frame=0x7f0a0003;
-        public static final int drawer_layout=0x7f0a0002;
-        public static final int left_drawer=0x7f0a0004;
-        public static final int spinner_panorama_type=0x7f0a0000;
-        public static final int zoom_controls=0x7f0a0001;
+        public static final int action_settings=0x7f0a000a;
+        public static final int bubble_description=0x7f0a0003;
+        public static final int bubble_image=0x7f0a0000;
+        public static final int bubble_moreinfo=0x7f0a0002;
+        public static final int bubble_subdescription=0x7f0a0004;
+        public static final int bubble_title=0x7f0a0001;
+        public static final int content_frame=0x7f0a0008;
+        public static final int drawer_layout=0x7f0a0007;
+        public static final int left_drawer=0x7f0a0009;
+        public static final int spinner_panorama_type=0x7f0a0005;
+        public static final int zoom_controls=0x7f0a0006;
     }
     public static final class layout {
-        public static final int panorama_layout=0x7f030000;
-        public static final int root_layout=0x7f030001;
+        public static final int bonuspack_bubble=0x7f030000;
+        public static final int panorama_layout=0x7f030001;
+        public static final int root_layout=0x7f030002;
     }
     public static final class menu {
         public static final int main=0x7f090000;

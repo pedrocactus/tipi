@@ -12,6 +12,8 @@ import org.osmdroid.DefaultResourceProxyImpl;
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.bonuspack.kml.KmlDocument;
 import org.osmdroid.bonuspack.kml.KmlFeature;
+import org.osmdroid.bonuspack.kml.KmlFolder;
+import org.osmdroid.bonuspack.kml.Style;
 import org.osmdroid.bonuspack.overlays.FolderOverlay;
 import org.osmdroid.tileprovider.MapTileProviderArray;
 import org.osmdroid.tileprovider.modules.IArchiveFile;
@@ -28,6 +30,8 @@ import org.osmdroid.views.overlay.OverlayItem;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
@@ -36,6 +40,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.example.topopoc.views.VoieBulle;
 
 public class MapFragment extends Fragment {
 
@@ -193,14 +199,16 @@ public class MapFragment extends Fragment {
         kmlDocument.parseFile(kerlou);
         kmlSecteurs.parseFile(secteurs);
 
+
+        KmlFolder feature = kmlDocument.mKmlRoot.clone();
+
         Drawable defaultMarker = getResources().getDrawable(R.drawable.marker);
-
-        KmlFeature feature = kmlDocument.kmlRoot.clone();
-
-
+        Bitmap defaultBitmap = ((BitmapDrawable)defaultMarker).getBitmap();
+        Style defaultStyle = new Style(defaultBitmap, 0x901010AA, 3.0f, 0x20AA1010);
 
 
-        ArrayList<KmlFeature> iTems = feature.mItems.get(0).mItems;
+
+        ArrayList<KmlFeature> iTems = ((KmlFolder)feature.mItems.get(0)).mItems;
         int nbItmes = iTems.size();
         Iterator<KmlFeature> iter = iTems.iterator();
         KmlFeature ffeature = null;
@@ -212,16 +220,17 @@ public class MapFragment extends Fragment {
                 iter.remove();
             }
         }
-        FolderOverlay kmlOverlay = (FolderOverlay)feature.buildOverlays(mapView, defaultMarker, kmlDocument, false);
+        KmlFeature.Styler styler = new VoieBulle(defaultMarker);
+        FolderOverlay kmlOverlay = (FolderOverlay)feature.buildOverlay(mapView, defaultStyle,styler, kmlDocument);
 
         mapView.getOverlays().add(kmlOverlay);
 
         mapView.invalidate();
 
 
-        KmlFeature featureSecteur = kmlSecteurs.kmlRoot.clone();
+        KmlFeature featureSecteur = kmlSecteurs.mKmlRoot.clone();
 
-        FolderOverlay kmlOverlaySecteur = (FolderOverlay)featureSecteur.buildOverlays(mapView, null, kmlSecteurs, false);
+        FolderOverlay kmlOverlaySecteur = (FolderOverlay)featureSecteur.buildOverlay(mapView, defaultStyle, styler, kmlSecteurs);
 
         mapView.getOverlays().add(kmlOverlaySecteur);
 
@@ -234,13 +243,15 @@ public class MapFragment extends Fragment {
     public void filerStyle(String style){
 
         mapView.getOverlays().clear();
-        KmlFeature feature = kmlDocument.kmlRoot.clone();
+        KmlFolder feature = kmlDocument.mKmlRoot.clone();
 
         Drawable defaultMarker = getResources().getDrawable(R.drawable.marker);
+        Bitmap defaultBitmap = ((BitmapDrawable)defaultMarker).getBitmap();
+        Style defaultStyle = new Style(defaultBitmap, 0x901010AA, 3.0f, 0x20AA1010);
 
 
 
-        ArrayList<KmlFeature> iTems = feature.mItems.get(0).mItems;
+        ArrayList<KmlFeature> iTems = ((KmlFolder)feature.mItems.get(0)).mItems;
         int nbItmes = iTems.size();
         Iterator<KmlFeature> iter = iTems.iterator();
         KmlFeature ffeature = null;
@@ -253,7 +264,9 @@ public class MapFragment extends Fragment {
                 }
             }
         }
-        FolderOverlay kmlOverlay = (FolderOverlay)feature.buildOverlays(mapView, defaultMarker, kmlDocument, false);
+
+        KmlFeature.Styler styler = new VoieBulle(defaultMarker);
+        FolderOverlay kmlOverlay = (FolderOverlay)feature.buildOverlay(mapView, defaultStyle,styler, kmlDocument);
 
 
         mapView.getOverlays().add(kmlOverlay);
