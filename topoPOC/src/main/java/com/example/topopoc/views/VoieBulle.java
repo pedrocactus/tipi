@@ -20,7 +20,9 @@ import org.osmdroid.views.overlay.Overlay;
  */
 public class VoieBulle implements KmlFeature.Styler {
     private Drawable mMarker;
-    public VoieBulle(Drawable marker){
+    private MapView mapView;
+    public VoieBulle(Drawable marker,MapView map){
+        mapView = map;
         mMarker = marker;
     }
 
@@ -35,6 +37,9 @@ public class VoieBulle implements KmlFeature.Styler {
 
         marker.setSubDescription(kmlPlacemark.mExtendedData.get("niveau") + kmlPlacemark.mExtendedData.get("start") + kmlPlacemark.mExtendedData.get("style"));
         marker.setTitle(kmlPlacemark.mExtendedData.get("nom"));
+        //marker.setRelatedObject();
+
+        marker.setInfoWindow(new VoieInfoWindow(mapView));
     }
 
     @Override

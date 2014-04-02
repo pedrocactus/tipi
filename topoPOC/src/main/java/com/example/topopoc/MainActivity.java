@@ -1,7 +1,10 @@
 package com.example.topopoc;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +18,7 @@ public class MainActivity extends FragmentActivity {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
     MapFragment firstFragment;
+    VoieFragment voieFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +74,30 @@ public class MainActivity extends FragmentActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.content_frame, firstFragment).commit();
 		}
-
+        voieFragment = new VoieFragment("6A");
 	}
+
+    private void showFragment(final Fragment fragment) {
+        if (fragment == null)
+            return;
+
+        // Begin a fragment transaction.
+        final FragmentManager fm = getSupportFragmentManager();
+        final FragmentTransaction ft = fm.beginTransaction();
+        // We can also animate the changing of fragment.
+        ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        // Replace current fragment by the new one.
+        ft.replace(R.id.content_frame, fragment);
+        // Null on the back stack to return on the previous fragment when user
+        // press on back button.
+        ft.addToBackStack(null);
+
+        // Commit changes.
+        ft.commit();
+    }
+
+    public void goToVoieFragment(View v) {
+        showFragment(this.voieFragment);
+    }
+
 }

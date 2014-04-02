@@ -14,6 +14,11 @@
                 qualifiers="hdpi"
                 type="drawable" />
             <file
+                name="fanny6a"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-hdpi/fanny6a.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
                 name="ic_launcher"
                 path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-hdpi/ic_launcher.png"
                 qualifiers="hdpi"
@@ -39,6 +44,11 @@
                 qualifiers="ldpi"
                 type="drawable" />
             <file
+                name="fanny6a"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-ldpi/fanny6a.png"
+                qualifiers="ldpi"
+                type="drawable" />
+            <file
                 name="moreinfo_arrow"
                 path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-ldpi/moreinfo_arrow.png"
                 qualifiers="ldpi"
@@ -51,6 +61,11 @@
             <file
                 name="bonuspack_bubble"
                 path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-mdpi/bonuspack_bubble.9.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="fanny6a"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-mdpi/fanny6a.png"
                 qualifiers="mdpi"
                 type="drawable" />
             <file
@@ -79,6 +94,11 @@
                 qualifiers="xhdpi"
                 type="drawable" />
             <file
+                name="fanny6a"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xhdpi/fanny6a.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
                 name="ic_launcher"
                 path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xhdpi/ic_launcher.png"
                 qualifiers="xhdpi"
@@ -101,6 +121,11 @@
             <file
                 name="bonuspack_bubble"
                 path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xxhdpi/bonuspack_bubble.9.png"
+                qualifiers="xxhdpi"
+                type="drawable" />
+            <file
+                name="fanny6a"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/drawable-xxhdpi/fanny6a.png"
                 qualifiers="xxhdpi"
                 type="drawable" />
             <file
@@ -136,6 +161,11 @@
             <file
                 name="root_layout"
                 path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/layout/root_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="voie_fragment"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/layout/voie_fragment.xml"
                 qualifiers=""
                 type="layout" />
             <file

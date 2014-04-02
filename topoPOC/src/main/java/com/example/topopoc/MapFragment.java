@@ -220,7 +220,7 @@ public class MapFragment extends Fragment {
                 iter.remove();
             }
         }
-        KmlFeature.Styler styler = new VoieBulle(defaultMarker);
+        KmlFeature.Styler styler = new VoieBulle(defaultMarker,mapView);
         FolderOverlay kmlOverlay = (FolderOverlay)feature.buildOverlay(mapView, defaultStyle,styler, kmlDocument);
 
         mapView.getOverlays().add(kmlOverlay);
@@ -265,7 +265,7 @@ public class MapFragment extends Fragment {
             }
         }
 
-        KmlFeature.Styler styler = new VoieBulle(defaultMarker);
+        KmlFeature.Styler styler = new VoieBulle(defaultMarker,mapView);
         FolderOverlay kmlOverlay = (FolderOverlay)feature.buildOverlay(mapView, defaultStyle,styler, kmlDocument);
 
 
