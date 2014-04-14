@@ -1,5 +1,6 @@
 package com.example.topopoc;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.GestureDetector;
@@ -11,10 +12,14 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
 import com.squareup.otto.Subscribe;
 
 /**
@@ -22,7 +27,7 @@ import com.squareup.otto.Subscribe;
  */
 public class VoieFragment extends Fragment implements Animation.AnimationListener {
     public static String TAG = "VoieFragment";
-    private String voie;
+    private int voie;
     private TextView cotation;
     private TextView nom;
     private TextView description;
@@ -42,7 +47,8 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
 
 
-    public VoieFragment(String voie){
+
+    public VoieFragment(int voie){
         this.voie = voie;
     }
 
@@ -54,9 +60,48 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
         View view = inflater.inflate(R.layout.voie_fragment, container, false);
 
         imageView = (ImageView) view.findViewById(R.id.imageViewVoie);
-        imageView.setImageResource(R.drawable.fanny6a);
+        //imageView.setImageResource(R.drawable.fanny6a);
+        final ProgressBar spinner = (ProgressBar) view.findViewById(R.id.loading);
+
+        ImageLoader.getInstance().displayImage(ConstantsTestUIL.IMAGES[voie], imageView, ((VoieSliderFragment) getParentFragment()).options, new SimpleImageLoadingListener() {
+            @Override
+            public void onLoadingStarted(String imageUri, View view) {
+                spinner.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+                String message = null;
+                switch (failReason.getType()) {
+                    case IO_ERROR:
+                        message = "Input/Output error";
+                        break;
+                    case DECODING_ERROR:
+                        message = "Image can't be decoded";
+                        break;
+                    case NETWORK_DENIED:
+                        message = "Downloads are denied";
+                        break;
+                    case OUT_OF_MEMORY:
+                        message = "Out Of Memory error";
+                        break;
+                    case UNKNOWN:
+                        message = "Unknown error";
+                        break;
+                }
+                Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+
+                spinner.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                spinner.setVisibility(View.GONE);
+            }
+        });
+
         cotation = (TextView) view.findViewById(R.id.level);
-        cotation.setText(voie);
+        cotation.setText("6A");
         nom = (TextView) view.findViewById(R.id.nom_voie_textview);
         nom.setText("La déchirure");
         description = (TextView) view.findViewById(R.id.desciption_voie_textview);
@@ -145,7 +190,7 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
         if (VIEWSTATE == InfoPositionState.DOWN.state) {
             VIEWSTATE = InfoPositionState.COTATION.state;
             ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.COTATION);
-            if(this.isHidden()) {
+            if(!this.isVisible()) {
                animMoveUpCotation.setDuration(0);
             }else{
 
@@ -157,7 +202,7 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
             VIEWSTATE = InfoPositionState.NOM.state;
             ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.NOM);
-            if(this.isHidden()) {
+            if(!this.isVisible()) {
                 animMoveUpNom.setDuration(0);
             }else{
 
@@ -169,7 +214,7 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
             VIEWSTATE = InfoPositionState.DESCRITPTION.state;
             ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.DESCRITPTION);
-            if(this.isHidden()) {
+            if(!this.isVisible()) {
                 animMoveUpDescription.setDuration(0);
                 animationFadeIn.setDuration(0);
             }else{
@@ -186,7 +231,7 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
             VIEWSTATE=InfoPositionState.NOM.state;
             ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.NOM);
-            if(this.isHidden()) {
+            if(!this.isVisible()) {
                 animMoveDownDescription.setDuration(0);
                 animationFadeOut.setDuration(0);
             }else{
@@ -201,7 +246,7 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
             VIEWSTATE=InfoPositionState.COTATION.state;
             ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.COTATION);
-            if(this.isHidden()) {
+            if(!this.isVisible()) {
                 animMoveDownNom.setDuration(0);
             }else{
 
@@ -213,7 +258,7 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
             VIEWSTATE=InfoPositionState.DOWN.state;
             ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.DOWN);
-            if(this.isHidden()) {
+            if(!this.isVisible()) {
                 animMoveDownCotation.setDuration(0);
             }else{
 

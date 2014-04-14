@@ -1,5 +1,6 @@
 package com.example.topopoc;
 
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -14,9 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
-import com.squareup.otto.Subscribe;
+
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import java.lang.reflect.Field;
 
@@ -26,7 +31,14 @@ import java.lang.reflect.Field;
 public class VoieSliderFragment extends Fragment {
 
 
+
+
     /****************************FIX FOR NESTED FRAGMENTS, MAYBE WILL BE FIXED IN NEXT RELEASE OF COMPAT LIB ANDROID******************************/
+
+
+
+
+
     private static final Field sChildFragmentManagerField;
 
     static {
@@ -43,6 +55,9 @@ public class VoieSliderFragment extends Fragment {
 
 
 /*************************COMMON VARIABLES***************************************/
+
+
+
     public static String TAG = "VoieSliderFragment";
     private String voie;
 
@@ -66,21 +81,42 @@ public class VoieSliderFragment extends Fragment {
 
     private VoieFragment voieFragment;
 
+
+
+    DisplayImageOptions options;
+
+
+
     public VoieSliderFragment(String voie){
         this.voie = voie;
     }
+
+
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.voie_slider_layout, container, false);
+        ///A corriger flemme de mettre des images
+        options = new DisplayImageOptions.Builder()
+                .showImageForEmptyUri(R.drawable.marker)
+                .showImageOnFail(R.drawable.moreinfo_arrow)
+                .resetViewBeforeLoading(true)
+                .cacheOnDisc(true)
+                .imageScaleType(ImageScaleType.EXACTLY)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .considerExifParams(true)
+                .displayer(new FadeInBitmapDisplayer(300))
+                .build();
         mPager = (ViewPager) view.findViewById(R.id.voie_slider_viewpager);
         mPager.setAdapter(new ScreenSlidePagerAdapter(getChildFragmentManager()));
         //mPagerAdapter = new ScreenSlidePagerAdapter(getChildFragmentManager());
         new SetAdapterTask().execute();
 
-        BusProvider.getInstance().register(this);
         return view;
     }
 
@@ -95,7 +131,7 @@ public class VoieSliderFragment extends Fragment {
 
         @Override
             public Fragment getItem(int position) {
-                voieFragment = new VoieFragment("6A");
+                voieFragment = new VoieFragment(position);
                 return voieFragment;
         }
 
@@ -163,4 +199,5 @@ public class VoieSliderFragment extends Fragment {
     public void onPause() {
         super.onPause();
     }
+
 }
