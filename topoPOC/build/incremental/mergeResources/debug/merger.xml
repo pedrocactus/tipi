@@ -491,6 +491,61 @@ Cylindrical
                     <!-- API 14 theme customizations can go here. -->
                 </style>
             </file>
+            <file
+                name="slide_in_right"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/anim/slide_in_right.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="slide_out_left"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/anim/slide_out_left.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="slide_out_right"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/anim/slide_out_right.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="slide_in_left"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/anim/slide_in_left.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="voie_slider_layout"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/layout/voie_slider_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="move_down_cotation"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/anim/move_down_cotation.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="move_up_cotation"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/anim/move_up_cotation.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="move_down_description"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/anim/move_down_description.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="move_up_description"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/anim/move_up_description.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="move_down_nom"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/anim/move_down_nom.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="move_up_nom"
+                path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/anim/move_up_nom.xml"
+                qualifiers=""
+                type="anim" />
         </source>
         <source path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/build/res/rs/debug" />
         <source path="/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/build/res/generated/debug" />

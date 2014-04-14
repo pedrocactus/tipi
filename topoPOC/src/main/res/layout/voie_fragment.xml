@@ -16,9 +16,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp" />
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:id="@+id/relative_layout_voiefragment"
         android:layout_height="178dp"
         android:layout_alignParentLeft="false"
         android:layout_marginLeft="0dp"
@@ -28,10 +29,51 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="@android:style/TextAppearance.Large"
             android:text="Large Text"
             android:id="@+id/level"
-            android:layout_weight="0.28" />
-    </LinearLayout>
+            android:layout_weight="0.28"
+            android:textColor="#94913c"
+            android:textStyle="bold"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:typeface="sans"
+            android:textSize="40sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:text="La déchirure"
+            android:id="@+id/nom_voie_textview"
+            android:layout_weight="0.28"
+            android:textColor="#94913c"
+            android:textStyle="bold"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
+            android:typeface="sans"
+            android:textSize="40sp"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentStart="false"
+            android:layout_below="@+id/level"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/desciption_voie_textview"
+            android:layout_below="@+id/nom_voie_textview"
+            android:layout_alignParentRight="true"
+            android:textStyle="bold"
+            android:textColor="#94913c"
+            android:textSize="24sp" />
+    </RelativeLayout>
 
 </RelativeLayout>

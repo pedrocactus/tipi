@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/linear_interpolator"
+    android:fillAfter="true">
+
+    <translate
+        android:fromYDelta="72%"
+        android:toYDelta="44%"
+        android:duration="400" />
+</set><!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/TopoPOC/topoPOC/src/main/res/anim/move_up_nom.xml -->

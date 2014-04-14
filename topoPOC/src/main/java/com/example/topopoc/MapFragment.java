@@ -45,11 +45,16 @@ import com.example.topopoc.views.VoieBulle;
 
 public class MapFragment extends Fragment {
 
+    public static String TAG = "MapFragment";
+
     KmlDocument kmlDocument;
     KmlDocument kmlSecteurs;
 	private ItemizedOverlay<OverlayItem> mMyLocationOverlay;
 	private DefaultResourceProxyImpl mResourceProxy;
+    private MapTileProviderArray provider;
+    private IArchiveFile[] files;
     private MapView mapView;
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -114,8 +119,7 @@ public class MapFragment extends Fragment {
 		String packageDir = "/mnt/sdcard/osmdroid";
 		String p = Environment.getExternalStorageDirectory() + packageDir;
 		File f = new File(packageDir, "testpoly.mbtiles");
-		IArchiveFile[] files = { MBTilesFileArchive.getDatabaseFileArchive(f) };
-
+		files = new IArchiveFile[]{ MBTilesFileArchive.getDatabaseFileArchive(f) };
 		MapTileModuleProviderBase moduleProvider;
 		moduleProvider = new MapTileFileArchiveProvider(sr, tSource, files);
 
@@ -132,8 +136,10 @@ public class MapFragment extends Fragment {
 		MapTileModuleProviderBase[] pBaseArray;
 		pBaseArray = new MapTileModuleProviderBase[] { moduleProvider };
 
-		MapTileProviderArray provider;
+
 		provider = new MapTileProviderArray(tSource, null, pBaseArray);
+
+
 
 		/**
 		 * Are we there yet??? Create the MapView already!
@@ -273,6 +279,13 @@ public class MapFragment extends Fragment {
 
         mapView.invalidate();
 
+    }
+
+    @Override
+    public void onDestroyView(){
+        provider.detach();
+        mapView.onDetach();
+        super.onDestroyView();
     }
 
 }
