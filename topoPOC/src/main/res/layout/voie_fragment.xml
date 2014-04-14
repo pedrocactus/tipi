@@ -24,15 +24,15 @@
         android:layout_alignParentLeft="false"
         android:layout_marginLeft="0dp"
         android:layout_alignParentBottom="true"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:layout_alignParentTop="true">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.Large"
-            android:text="Large Text"
+            android:text="8B"
             android:id="@+id/level"
-            android:layout_weight="0.28"
             android:textColor="#94913c"
             android:textStyle="bold"
             android:layout_alignParentLeft="false"
@@ -48,9 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.Large"
-            android:text="La déchirure"
+            android:text="La démo"
             android:id="@+id/nom_voie_textview"
-            android:layout_weight="0.28"
             android:textColor="#94913c"
             android:textStyle="bold"
             android:layout_marginLeft="0dp"
@@ -69,11 +68,15 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
             android:id="@+id/desciption_voie_textview"
+            android:textColor="#94913c"
+            android:textSize="24sp"
             android:layout_below="@+id/nom_voie_textview"
             android:layout_alignParentRight="true"
-            android:textStyle="bold"
-            android:textColor="#94913c"
-            android:textSize="24sp" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="31dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true" />
     </RelativeLayout>
 
 </RelativeLayout>

@@ -7,12 +7,15 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.otto.Subscribe;
 
 /**
  * Created by pierrecastex on 02/04/2014.
@@ -30,8 +33,11 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
     private Animation animMoveDownNom;
     private Animation animMoveDownCotation;
     private Animation animMoveDownDescription;
-    private int VIEWSTATE;
+    private AlphaAnimation animationFadeOut;
+    private AlphaAnimation animationFadeIn;
     private GestureDetector gestureDetector;
+    private int VIEWSTATE;
+    private ImageView imageView;
 
 
 
@@ -47,7 +53,7 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.voie_fragment, container, false);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageViewVoie);
+        imageView = (ImageView) view.findViewById(R.id.imageViewVoie);
         imageView.setImageResource(R.drawable.fanny6a);
         cotation = (TextView) view.findViewById(R.id.level);
         cotation.setText(voie);
@@ -56,7 +62,7 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
         description = (TextView) view.findViewById(R.id.desciption_voie_textview);
         description.setText("Belle voie de ouf avec tout le toutim");
 
-        VIEWSTATE = InfoPositionState.DOWN.state;
+
 
         layout = (RelativeLayout) view.findViewById(R.id.relative_layout_voiefragment);
         layout.setVisibility(View.INVISIBLE);
@@ -64,27 +70,34 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
         setupAnimations();
 
 
+
+
         //Setting touch events for text animation, need for up and down swipes
         view.setOnTouchListener(new OnSwipeTouchListener(){
         public void onSwipeTop() {
             Toast.makeText(getActivity(), "TOP", Toast.LENGTH_SHORT).show();
 
-            layout.setVisibility(View.VISIBLE);
-            if(VIEWSTATE==InfoPositionState.DOWN.state){
+            BusProvider.getInstance().post(new AnimationEvent(VIEWSTATE,"TOP"));
+
+            /*if(VIEWSTATE==InfoPositionState.DOWN.state){
                 VIEWSTATE=InfoPositionState.COTATION.state;
                 layout.startAnimation(animMoveUpCotation);
+                BusProvider.getInstance().post(InfoPositionState.COTATION);
 
             }else if(VIEWSTATE==InfoPositionState.COTATION.state){
 
                 VIEWSTATE=InfoPositionState.NOM.state;
                 layout.startAnimation(animMoveUpNom);
+                BusProvider.getInstance().post(InfoPositionState.NOM);
 
             }else if(VIEWSTATE==InfoPositionState.NOM.state){
 
                 VIEWSTATE=InfoPositionState.DESCRITPTION.state;
                 layout.startAnimation(animMoveUpDescription);
+                imageView.startAnimation(animationFadeIn);
+                BusProvider.getInstance().post(InfoPositionState.DESCRITPTION);
 
-            }
+            }*/
 
         }
 
@@ -92,30 +105,125 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
             Toast.makeText(getActivity(),"DOWN",Toast.LENGTH_SHORT).show();
 
+            BusProvider.getInstance().post(new AnimationEvent(VIEWSTATE, "BOTTOM"));
 
-            if(VIEWSTATE==InfoPositionState.DESCRITPTION.state){
+
+            /*if(VIEWSTATE==InfoPositionState.DESCRITPTION.state){
+
                 VIEWSTATE=InfoPositionState.NOM.state;
                 layout.startAnimation(animMoveDownDescription);
+                imageView.startAnimation(animationFadeOut);
+                BusProvider.getInstance().post(InfoPositionState.NOM);
 
             }else if(VIEWSTATE==InfoPositionState.NOM.state){
 
                 VIEWSTATE=InfoPositionState.COTATION.state;
                 layout.startAnimation(animMoveDownNom);
+                BusProvider.getInstance().post(InfoPositionState.COTATION);
 
             }else if(VIEWSTATE==InfoPositionState.COTATION.state){
 
                 VIEWSTATE=InfoPositionState.DOWN.state;
                 layout.startAnimation(animMoveDownCotation);
+                BusProvider.getInstance().post(InfoPositionState.DOWN);
 
-            }
+            }*/
 
 
         }
     });
 
-
+    view.setBackgroundColor(getActivity().getResources().getColor(android.R.color.black));
 
         return view;
+    }
+
+    @Subscribe
+    public void startAnimationsOnEvent(AnimationEvent event){
+    if(event.getDirection().equals("TOP")) {
+        layout.setVisibility(View.VISIBLE);
+        if (VIEWSTATE == InfoPositionState.DOWN.state) {
+            VIEWSTATE = InfoPositionState.COTATION.state;
+            ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.COTATION);
+            if(this.isHidden()) {
+               animMoveUpCotation.setDuration(0);
+            }else{
+
+                animMoveUpCotation.setDuration(400);
+            }
+            layout.startAnimation(animMoveUpCotation);
+
+        } else if (VIEWSTATE == InfoPositionState.COTATION.state) {
+
+            VIEWSTATE = InfoPositionState.NOM.state;
+            ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.NOM);
+            if(this.isHidden()) {
+                animMoveUpNom.setDuration(0);
+            }else{
+
+                animMoveUpNom.setDuration(400);
+            }
+            layout.startAnimation(animMoveUpNom);
+
+        } else if (VIEWSTATE == InfoPositionState.NOM.state) {
+
+            VIEWSTATE = InfoPositionState.DESCRITPTION.state;
+            ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.DESCRITPTION);
+            if(this.isHidden()) {
+                animMoveUpDescription.setDuration(0);
+                animationFadeIn.setDuration(0);
+            }else{
+
+                animMoveUpDescription.setDuration(400);
+                animationFadeIn.setDuration(400);
+            }
+            layout.startAnimation(animMoveUpDescription);
+            imageView.startAnimation(animationFadeIn);
+
+        }
+    }else{
+        if(VIEWSTATE==InfoPositionState.DESCRITPTION.state){
+
+            VIEWSTATE=InfoPositionState.NOM.state;
+            ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.NOM);
+            if(this.isHidden()) {
+                animMoveDownDescription.setDuration(0);
+                animationFadeOut.setDuration(0);
+            }else{
+
+                animMoveDownDescription.setDuration(400);
+                animationFadeOut.setDuration(400);
+            }
+            layout.startAnimation(animMoveDownDescription);
+            imageView.startAnimation(animationFadeOut);
+
+        }else if(VIEWSTATE==InfoPositionState.NOM.state){
+
+            VIEWSTATE=InfoPositionState.COTATION.state;
+            ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.COTATION);
+            if(this.isHidden()) {
+                animMoveDownNom.setDuration(0);
+            }else{
+
+                animMoveDownNom.setDuration(400);
+            }
+            layout.startAnimation(animMoveDownNom);
+
+        }else if(VIEWSTATE==InfoPositionState.COTATION.state){
+
+            VIEWSTATE=InfoPositionState.DOWN.state;
+            ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.DOWN);
+            if(this.isHidden()) {
+                animMoveDownCotation.setDuration(0);
+            }else{
+
+                animMoveDownCotation.setDuration(400);
+            }
+            layout.startAnimation(animMoveDownCotation);
+
+        }
+    }
+
     }
 
     private void setupAnimations() {
@@ -146,6 +254,26 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
         animMoveDownNom.setAnimationListener(this);
         animMoveDownCotation.setAnimationListener(this);
         animMoveDownDescription.setAnimationListener(this);
+
+        animationFadeOut = new AlphaAnimation(0.4f, 1f);
+        animationFadeOut.setDuration(400);
+        animationFadeOut.setFillAfter(true);
+
+        animationFadeIn = new AlphaAnimation(1f, 0.4f);
+        animationFadeIn.setDuration(400);
+        animationFadeIn.setFillAfter(true);
+
+        if(((App)getActivity().getApplication()).getVoiesViewState() == -1){
+
+            ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.DOWN);
+            VIEWSTATE = InfoPositionState.DOWN.state;
+
+        }else if(((App)getActivity().getApplication()).getVoiesViewState()!=-1){
+
+            VIEWSTATE = ((App)getActivity().getApplication()).getVoiesViewState();
+            startAnimationsOnEvent(new AnimationEvent(VIEWSTATE, "TOP"));
+
+        }
     }
 
     @Override
@@ -233,17 +361,17 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
         }
     }
 
-    public enum InfoPositionState {
-        DOWN (0),
-        COTATION (1),
-        NOM (2),
-        DESCRITPTION (3);
 
-        public int state;
 
-        InfoPositionState( int state){
-            this.state = state;
-        }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        BusProvider.getInstance().register(this);
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        BusProvider.getInstance().unregister(this);
     }
 }

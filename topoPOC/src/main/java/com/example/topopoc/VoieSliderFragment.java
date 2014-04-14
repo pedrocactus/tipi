@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.otto.Subscribe;
+
 import java.lang.reflect.Field;
 
 /**
@@ -71,7 +73,6 @@ public class VoieSliderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.voie_slider_layout, container, false);
         mPager = (ViewPager) view.findViewById(R.id.voie_slider_viewpager);
@@ -79,6 +80,7 @@ public class VoieSliderFragment extends Fragment {
         //mPagerAdapter = new ScreenSlidePagerAdapter(getChildFragmentManager());
         new SetAdapterTask().execute();
 
+        BusProvider.getInstance().register(this);
         return view;
     }
 
@@ -141,6 +143,7 @@ public class VoieSliderFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
 
+        BusProvider.getInstance().unregister(this);
         try {
             Field field = Fragment.class.getDeclaredField("mChildFragmentManager");
             field.setAccessible(true);
@@ -156,5 +159,8 @@ public class VoieSliderFragment extends Fragment {
         super.onResume();
         mPagerAdapter = new ScreenSlidePagerAdapter(getChildFragmentManager());
     }
-
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 }
