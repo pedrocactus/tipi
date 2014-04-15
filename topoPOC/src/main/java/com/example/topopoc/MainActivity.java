@@ -1,11 +1,16 @@
 package com.example.topopoc;
 
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -16,9 +21,12 @@ public class MainActivity extends FragmentActivity {
 
 	private String[] mPlanetTitles;
 	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private ListView mDrawerList;
     private MapFragment mapFragment;
     private VoieSliderFragment voieFragment;
+    private CharSequence mTitle;
+    private boolean isDrawerLocked = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +39,38 @@ public class MainActivity extends FragmentActivity {
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-		 // Set the adapter for the list view
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this, /* host Activity */
+                mDrawerLayout, /* DrawerLayout object */
+                R.drawable.ic_drawer, /* nav drawer icon to replace 'Up' caret */
+                R.string.drawer_open, /* "open drawer" description */
+                R.string.drawer_close /* "close drawer" description */
+          /* "close drawer" description */
+        ) {
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                //getActionBar().setTitle(mTitle);
+            }
+
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                //getActionBar().setTitle(mTitle);
+            }
+        };
+
+        // Set the drawer toggle as the DrawerListener
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setBackgroundDrawable(new ColorDrawable(this.getResources().getColor(R.color.sand)));
+
+
+        // Set the adapter for the list view
 		 mDrawerList.setAdapter(new ArrayAdapter<String>(this,
 		 android.R.layout.simple_list_item_1, mPlanetTitles));
 		 // Set the list's click listener
@@ -48,6 +87,8 @@ public class MainActivity extends FragmentActivity {
 
 
 				}
+
+             mDrawerLayout.closeDrawer(mDrawerList);
 
 			}
 		});
@@ -118,6 +159,7 @@ public class MainActivity extends FragmentActivity {
              ft.replace(R.id.content_frame, voieFragment);
 
 
+
         }
 
         // Null on the back stack to return on the previous fragment when user
@@ -167,4 +209,47 @@ public class MainActivity extends FragmentActivity {
 
     }
 */
+@Override
+public void setTitle(CharSequence title) {
+    mTitle = title;
+    //getActionBar().setTitle(mTitle);
+}
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // ProjectsActivity is my 'home' activity
+                super. onBackPressed();
+                return true;
+        }
+
+                return super.onOptionsItemSelected(item);
+       }
+
+    public void setDrawerEnable(boolean enabled){
+    if(enabled) {
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+    }else {
+        mDrawerToggle.setDrawerIndicatorEnabled(false);
+    }
+
+    }
 }

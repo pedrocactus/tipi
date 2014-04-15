@@ -59,6 +59,7 @@ public class MapFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+        ((MainActivity)getActivity()).setDrawerEnable(true);
 
 		/**
 		 * This whole thing revolves around instantiating a MapView class, way,
@@ -146,8 +147,8 @@ public class MapFragment extends Fragment {
 		 */
 		mapView = new MapView(getActivity(), 256, mResourceProxy,
 				provider);
-		mapView.setBuiltInZoomControls(true);
-
+		//mapView.setBuiltInZoomControls(false);
+        mapView.setMultiTouchControls(true);
 		mapView.getController().setZoom(20); // set initial zoom-level, depends
 
         //Paris
