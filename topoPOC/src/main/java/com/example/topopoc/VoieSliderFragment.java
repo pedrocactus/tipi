@@ -1,6 +1,8 @@
 package com.example.topopoc;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -53,6 +55,10 @@ public class VoieSliderFragment extends Fragment {
     }
 
 
+/********************************************FIX FOR NESTED FRAGMENTS, AVOIDING NESTED FRAGMENTS TO DISAPPEAR ON TRANSATION**********************************/
+    private Bitmap b = null;
+
+
 
 /*************************COMMON VARIABLES***************************************/
 
@@ -80,6 +86,7 @@ public class VoieSliderFragment extends Fragment {
 
 
     private VoieFragment voieFragment;
+    private int voieVISIBLE;
 
 
 
@@ -116,6 +123,20 @@ public class VoieSliderFragment extends Fragment {
         mPager = (ViewPager) view.findViewById(R.id.voie_slider_viewpager);
         mPager.setAdapter(new ScreenSlidePagerAdapter(getChildFragmentManager()));
         //mPagerAdapter = new ScreenSlidePagerAdapter(getChildFragmentManager());
+        mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
+
+            @Override
+            public void onPageSelected(int arg0) {
+                voieVISIBLE=arg0;
+            }
+        });
         new SetAdapterTask().execute();
 
         return view;
@@ -162,6 +183,16 @@ public class VoieSliderFragment extends Fragment {
     @Override
     public void onDestroyView() {
 
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            BitmapDrawable bd = new BitmapDrawable(b);
+            getView().findViewById(R.id.voie_slider_viewpager).setBackgroundDrawable(bd);
+        } else {
+            BitmapDrawable bd = new BitmapDrawable(getActivity().getResources(),b);
+            getView().findViewById(R.id.voie_slider_viewpager).setBackground(bd);
+        }
+        b = null;
+
         try{
             FragmentTransaction transaction = getChildFragmentManager()
                     .beginTransaction();
@@ -198,7 +229,22 @@ public class VoieSliderFragment extends Fragment {
     }
     @Override
     public void onPause() {
+        b = loadBitmapFromView(getView());
         super.onPause();
+    }
+
+    public static Bitmap loadBitmapFromView(View v) {
+        Bitmap b = Bitmap.createBitmap(v.getWidth(),
+                v.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(b);
+        v.layout(0, 0, v.getWidth(),
+                v.getHeight());
+        v.draw(c);
+        return b;
+    }
+
+    public int getCurrentVoie(){
+        return voieVISIBLE;
     }
 
 }

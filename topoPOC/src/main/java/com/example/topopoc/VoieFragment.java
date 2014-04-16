@@ -188,11 +188,11 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
     if(event.getDirection().equals("TOP")) {
         layout.setVisibility(View.VISIBLE);
         if (VIEWSTATE == InfoPositionState.DOWN.state) {
-            VIEWSTATE = InfoPositionState.COTATION.state;
             ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.COTATION);
-            if(!this.isVisible()) {
+            if(voie!=((VoieSliderFragment)getParentFragment()).getCurrentVoie()) {
                animMoveUpCotation.setDuration(0);
             }else{
+                VIEWSTATE = InfoPositionState.COTATION.state;
 
                 animMoveUpCotation.setDuration(400);
             }
@@ -200,11 +200,11 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
         } else if (VIEWSTATE == InfoPositionState.COTATION.state) {
 
-            VIEWSTATE = InfoPositionState.NOM.state;
             ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.NOM);
-            if(!this.isVisible()) {
+            if(voie!=((VoieSliderFragment)getParentFragment()).getCurrentVoie()) {
                 animMoveUpNom.setDuration(0);
             }else{
+                VIEWSTATE = InfoPositionState.NOM.state;
 
                 animMoveUpNom.setDuration(400);
             }
@@ -212,12 +212,12 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
         } else if (VIEWSTATE == InfoPositionState.NOM.state) {
 
-            VIEWSTATE = InfoPositionState.DESCRITPTION.state;
             ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.DESCRITPTION);
-            if(!this.isVisible()) {
+            if(voie!=((VoieSliderFragment)getParentFragment()).getCurrentVoie()) {
                 animMoveUpDescription.setDuration(0);
                 animationFadeIn.setDuration(0);
             }else{
+                VIEWSTATE = InfoPositionState.DESCRITPTION.state;
 
                 animMoveUpDescription.setDuration(400);
                 animationFadeIn.setDuration(400);
@@ -229,12 +229,12 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
     }else{
         if(VIEWSTATE==InfoPositionState.DESCRITPTION.state){
 
-            VIEWSTATE=InfoPositionState.NOM.state;
             ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.NOM);
-            if(!this.isVisible()) {
+            if(voie!=((VoieSliderFragment)getParentFragment()).getCurrentVoie()) {
                 animMoveDownDescription.setDuration(0);
                 animationFadeOut.setDuration(0);
             }else{
+                VIEWSTATE=InfoPositionState.NOM.state;
 
                 animMoveDownDescription.setDuration(400);
                 animationFadeOut.setDuration(400);
@@ -244,23 +244,23 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
         }else if(VIEWSTATE==InfoPositionState.NOM.state){
 
-            VIEWSTATE=InfoPositionState.COTATION.state;
             ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.COTATION);
-            if(!this.isVisible()) {
+            if(voie!=((VoieSliderFragment)getParentFragment()).getCurrentVoie()) {
                 animMoveDownNom.setDuration(0);
             }else{
 
+                VIEWSTATE=InfoPositionState.COTATION.state;
                 animMoveDownNom.setDuration(400);
             }
             layout.startAnimation(animMoveDownNom);
 
         }else if(VIEWSTATE==InfoPositionState.COTATION.state){
 
-            VIEWSTATE=InfoPositionState.DOWN.state;
             ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.DOWN);
-            if(!this.isVisible()) {
+            if(voie!=((VoieSliderFragment)getParentFragment()).getCurrentVoie()) {
                 animMoveDownCotation.setDuration(0);
             }else{
+                VIEWSTATE=InfoPositionState.DOWN.state;
 
                 animMoveDownCotation.setDuration(400);
             }

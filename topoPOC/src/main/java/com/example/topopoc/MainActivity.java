@@ -237,7 +237,7 @@ public void setTitle(CharSequence title) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // ProjectsActivity is my 'home' activity
-                super. onBackPressed();
+                super.onBackPressed();
                 return true;
         }
 

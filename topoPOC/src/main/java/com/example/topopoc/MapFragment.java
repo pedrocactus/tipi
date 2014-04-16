@@ -1,10 +1,6 @@
 package com.example.topopoc;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -29,7 +25,6 @@ import org.osmdroid.views.overlay.ItemizedOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
 
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -284,9 +279,11 @@ public class MapFragment extends Fragment {
 
     @Override
     public void onDestroyView(){
+
         provider.detach();
         mapView.onDetach();
         super.onDestroyView();
     }
+
 
 }
