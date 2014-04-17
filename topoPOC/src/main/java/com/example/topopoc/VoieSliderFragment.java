@@ -139,6 +139,7 @@ public class VoieSliderFragment extends Fragment {
         });
         new SetAdapterTask().execute();
 
+
         return view;
     }
 

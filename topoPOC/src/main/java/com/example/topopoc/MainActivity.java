@@ -245,11 +245,14 @@ public void setTitle(CharSequence title) {
        }
 
     public void setDrawerEnable(boolean enabled){
-    if(enabled) {
-        mDrawerToggle.setDrawerIndicatorEnabled(true);
-    }else {
-        mDrawerToggle.setDrawerIndicatorEnabled(false);
-    }
+        mDrawerToggle.setDrawerIndicatorEnabled(enabled);
+        isDrawerLocked = !enabled;
+        if(enabled) {
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        }else{
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
+        }
 
     }
 }
