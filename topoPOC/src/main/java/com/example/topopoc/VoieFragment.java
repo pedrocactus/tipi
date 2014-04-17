@@ -121,8 +121,8 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
         view.setOnTouchListener(new OnSwipeTouchListener(){
         public void onSwipeTop() {
 
-            Toast.makeText(getActivity(), "TOP", Toast.LENGTH_SHORT).show();
-            //startAnims(new AnimationEvent(VIEWSTATE, "TOP"),true);
+            //Toast.makeText(getActivity(), "TOP", Toast.LENGTH_SHORT).show();
+            startAnims(new AnimationEvent(VIEWSTATE, "TOP"),true);
             BusProvider.getInstance().post(new AnimationEvent(VIEWSTATE,"TOP"));
 
 
@@ -130,8 +130,8 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
         public void onSwipeBottom() {
 
-            Toast.makeText(getActivity(),"DOWN",Toast.LENGTH_SHORT).show();
-            //startAnims(new AnimationEvent(VIEWSTATE, "BOTTOM"), true);
+            //Toast.makeText(getActivity(),"DOWN",Toast.LENGTH_SHORT).show();
+            startAnims(new AnimationEvent(VIEWSTATE, "BOTTOM"), true);
             BusProvider.getInstance().post(new AnimationEvent(VIEWSTATE, "BOTTOM"));
 
         }
@@ -141,7 +141,7 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
         return view;
     }
-/*
+
     @Subscribe
     public void startAnimationsOnEvents(AnimationEvent event){
         if(voie!=((VoieSliderFragment)getParentFragment()).getCurrentVoie()) {
@@ -149,92 +149,127 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
         }
     }
 
-    public void startAnims(AnimationEvent event,boolean isCurrentFragment){
-        if(event.getDirection().equals("TOP")) {
+    private void startAnims(AnimationEvent event,boolean isCurrentFragment) {
+        if (event.getDirection().equals("TOP")) {
             layout.setVisibility(View.VISIBLE);
-            if (VIEWSTATE == InfoPositionState.DOWN.state) {
-                ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.COTATION);
-                if(!isCurrentFragment) {
-                    animMoveUpCotation.setDuration(0);
+            if (event.getStep() == InfoPositionState.DOWN.state) {
+                if (!isCurrentFragment) {
+                    VIEWSTATE = InfoPositionState.DOWN.state;
+                    animMoveDownCotation.setDuration(0);
+                    layout.startAnimation(animMoveDownCotation);
+
                 }else{
                     VIEWSTATE = InfoPositionState.COTATION.state;
 
-                    animMoveUpCotation.setDuration(400);
+                    ((App) getActivity().getApplication()).setVoiesViewState(InfoPositionState.COTATION);
+                    animMoveUpCotation.setDuration(200);
+                    layout.startAnimation(animMoveUpCotation);
                 }
-                layout.startAnimation(animMoveUpCotation);
 
-            } else if (VIEWSTATE == InfoPositionState.COTATION.state) {
+            } else if (event.getStep() == InfoPositionState.COTATION.state) {
 
-                ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.NOM);
-                if(voie!=((VoieSliderFragment)getParentFragment()).getCurrentVoie()) {
+                if (!isCurrentFragment) {
+
+                    VIEWSTATE = InfoPositionState.COTATION.state;
                     animMoveUpNom.setDuration(0);
-                }else{
+                    layout.startAnimation(animMoveUpCotation);
+                } else {
                     VIEWSTATE = InfoPositionState.NOM.state;
+                    ((App) getActivity().getApplication()).setVoiesViewState(InfoPositionState.NOM);
 
-                    animMoveUpNom.setDuration(400);
+                    animMoveUpNom.setDuration(200);
+                    layout.startAnimation(animMoveUpNom);
                 }
-                layout.startAnimation(animMoveUpNom);
 
-            } else if (VIEWSTATE == InfoPositionState.NOM.state) {
+            } else if (event.getStep() == InfoPositionState.NOM.state) {
 
-                ((App)getActivity().getApplication()).setVoiesViewState(InfoPositionState.DESCRITPTION);
-                if(voie!=((VoieSliderFragment)getParentFragment()).getCurrentVoie()) {
-                    animMoveUpDescription.setDuration(0);
-                    animationFadeIn.setDuration(0);
-                }else{
+                if (!isCurrentFragment) {
+                    VIEWSTATE = InfoPositionState.NOM.state;
+                    animMoveUpNom.setDuration(0);
+
+                    layout.startAnimation(animMoveUpNom);
+                } else {
                     VIEWSTATE = InfoPositionState.DESCRITPTION.state;
+                    ((App) getActivity().getApplication()).setVoiesViewState(InfoPositionState.DESCRITPTION);
 
                     animMoveUpDescription.setDuration(400);
                     animationFadeIn.setDuration(400);
-                }
-                layout.startAnimation(animMoveUpDescription);
-                imageView.startAnimation(animationFadeIn);
 
+                    layout.startAnimation(animMoveUpDescription);
+                    imageView.startAnimation(animationFadeIn);
+                }
+
+            } else if (event.getStep() == InfoPositionState.DESCRITPTION.state) {
+                if (!isCurrentFragment) {
+                    VIEWSTATE = InfoPositionState.DESCRITPTION.state;
+                    animMoveUpDescription.setDuration(0);
+                    animationFadeIn.setDuration(0);
+
+                    layout.startAnimation(animMoveUpDescription);
+                    imageView.startAnimation(animationFadeIn);
+                }
             }
-        }else {
-            if (VIEWSTATE == InfoPositionState.DESCRITPTION.state) {
+            } else if (event.getDirection().equals("BOTTOM"))  {
+                if (event.getStep() == InfoPositionState.DESCRITPTION.state) {
 
-                ((App) getActivity().getApplication()).setVoiesViewState(InfoPositionState.NOM);
-                if (voie != ((VoieSliderFragment) getParentFragment()).getCurrentVoie()) {
-                    animMoveDownDescription.setDuration(0);
-                    animationFadeOut.setDuration(0);
-                } else {
-                    VIEWSTATE = InfoPositionState.NOM.state;
+                    if (!isCurrentFragment) {
+                        VIEWSTATE = InfoPositionState.DESCRITPTION.state;
+                        animMoveUpDescription.setDuration(0);
+                        animationFadeIn.setDuration(0);
 
-                    animMoveDownDescription.setDuration(400);
-                    animationFadeOut.setDuration(400);
+                        layout.startAnimation(animMoveUpDescription);
+                    }else{
+                        VIEWSTATE = InfoPositionState.NOM.state;
+
+                        ((App) getActivity().getApplication()).setVoiesViewState(InfoPositionState.NOM);
+                        animMoveDownDescription.setDuration(400);
+                        animationFadeOut.setDuration(400);
+
+                        layout.startAnimation(animMoveDownDescription);
+                        imageView.startAnimation(animationFadeOut);
+                    }
+
+                } else if (event.getStep() == InfoPositionState.NOM.state) {
+
+                    if (!isCurrentFragment) {
+                        VIEWSTATE = InfoPositionState.NOM.state;
+                        animMoveDownDescription.setDuration(0);
+                        animationFadeOut.setDuration(0);
+                        layout.startAnimation(animMoveDownDescription);
+                        imageView.startAnimation(animationFadeOut);
+                    } else {
+
+                        VIEWSTATE = InfoPositionState.COTATION.state;
+                        animMoveDownNom.setDuration(200);
+                        ((App) getActivity().getApplication()).setVoiesViewState(InfoPositionState.COTATION);
+                        layout.startAnimation(animMoveDownNom);
+                    }
+
+                } else if (event.getStep() == InfoPositionState.COTATION.state) {
+
+                    if (!isCurrentFragment) {
+                        VIEWSTATE = InfoPositionState.COTATION.state;
+                        animMoveDownNom.setDuration(0);
+                        layout.startAnimation(animMoveDownNom);
+                    } else {
+                        VIEWSTATE = InfoPositionState.DOWN.state;
+
+                        ((App) getActivity().getApplication()).setVoiesViewState(InfoPositionState.DOWN);
+                        animMoveDownCotation.setDuration(200);
+                        layout.startAnimation(animMoveDownCotation);
+                    }
+
+                } else if (event.getStep() == InfoPositionState.DOWN.state) {
+                    if (!isCurrentFragment) {
+                        VIEWSTATE = InfoPositionState.DOWN.state;
+                        animMoveDownCotation.setDuration(0);
+                        layout.startAnimation(animMoveDownCotation);
+                    }
                 }
-                layout.startAnimation(animMoveDownDescription);
-                imageView.startAnimation(animationFadeOut);
-
-            } else if (VIEWSTATE == InfoPositionState.NOM.state) {
-
-                ((App) getActivity().getApplication()).setVoiesViewState(InfoPositionState.COTATION);
-                if (voie != ((VoieSliderFragment) getParentFragment()).getCurrentVoie()) {
-                    animMoveDownNom.setDuration(0);
-                } else {
-
-                    VIEWSTATE = InfoPositionState.COTATION.state;
-                    animMoveDownNom.setDuration(400);
-                }
-                layout.startAnimation(animMoveDownNom);
-
-            } else if (VIEWSTATE == InfoPositionState.COTATION.state) {
-
-                ((App) getActivity().getApplication()).setVoiesViewState(InfoPositionState.DOWN);
-                if (voie != ((VoieSliderFragment) getParentFragment()).getCurrentVoie()) {
-                    animMoveDownCotation.setDuration(0);
-                } else {
-                    VIEWSTATE = InfoPositionState.DOWN.state;
-
-                    animMoveDownCotation.setDuration(400);
-                }
-                layout.startAnimation(animMoveDownCotation);
 
             }
         }
-    }
-*/
+/*
     @Subscribe
     public void startAnimationsOnEvent(AnimationEvent event){
     if(event.getDirection().equals("TOP")) {
@@ -322,7 +357,7 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
     }
 
     }
-
+*/
     private void setupAnimations() {
 
         // load animations
@@ -368,7 +403,8 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
         }else if(((App)getActivity().getApplication()).getVoiesViewState()!=-1){
 
             VIEWSTATE = ((App)getActivity().getApplication()).getVoiesViewState();
-            startAnimationsOnEvent(new AnimationEvent(VIEWSTATE, "TOP"));
+            //startAnimationsOnEvent(new AnimationEvent(VIEWSTATE, "TOP"));
+            startAnims(new AnimationEvent(VIEWSTATE, "TOP"),false);
 
         }
     }
