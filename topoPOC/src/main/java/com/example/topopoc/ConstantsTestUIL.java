@@ -7,8 +7,7 @@ package com.example.topopoc;
 
         public static final String[] IMAGES = new String[] {
                 // Heavy images
-                "http://image.donga.com/mlbpark/fileUpload/201401/52dde15113c53b01da3b.jpg",
-                "https://lh6.googleusercontent.com/-55osAWw3x0Q/URquUtcFr5I/AAAAAAAAAbs/rWlj1RUKrYI/s1024/A%252520Photographer.jpg",
+                "https://doc-08-7s-docs.googleusercontent.com/docs/securesc/58hq4iptaftqok5egfkprl31ippcbi8q/52f10e4j9772rk59fm3ruhircnn6lsv1/1398700800000/01008450570975087581/01008450570975087581/0B-gIKMSTebmfTEdXN0dzSUh6Y2s?h=16653014193614665626&e=view",
                 "https://lh4.googleusercontent.com/--dq8niRp7W4/URquVgmXvgI/AAAAAAAAAbs/-gnuLQfNnBA/s1024/A%252520Song%252520of%252520Ice%252520and%252520Fire.jpg",
                 "https://lh5.googleusercontent.com/-7qZeDtRKFKc/URquWZT1gOI/AAAAAAAAAbs/hqWgteyNXsg/s1024/Another%252520Rockaway%252520Sunset.jpg",
                 "https://lh3.googleusercontent.com/--L0Km39l5J8/URquXHGcdNI/AAAAAAAAAbs/3ZrSJNrSomQ/s1024/Antelope%252520Butte.jpg",

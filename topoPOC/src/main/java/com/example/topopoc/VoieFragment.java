@@ -89,7 +89,7 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
                         message = "Unknown error";
                         break;
                 }
-                Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getParentFragment().getActivity(), message, Toast.LENGTH_SHORT).show();
 
                 spinner.setVisibility(View.GONE);
             }

@@ -38,6 +38,14 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
+        <activity
+            android:name="com.example.topopoc.TestActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.example.topopoc.UserSettingsActivity"
+            android:label="@string/title_activity_user_settings" >
+        </activity>
     </application>
 
 </manifest>

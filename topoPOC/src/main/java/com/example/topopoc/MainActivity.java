@@ -1,7 +1,7 @@
 package com.example.topopoc;
 
+import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -81,12 +81,17 @@ public class MainActivity extends FragmentActivity {
 		 long arg3) {
 				// Check that the activity is using the layout version with
 				// the fragment_container FrameLayout
-				if (findViewById(R.id.content_frame) != null) {
+				if (findViewById(R.id.content_frame) != null && !mPlanetTitles[arg2].equals("User Settings")) {
 
                     mapFragment.filerStyle(mPlanetTitles[arg2]);
 
 
-				}
+				}else{
+                    Intent intent = new Intent(MainActivity.this,
+                            TestActivity.class);
+                    startActivity(intent);
+
+                }
 
              mDrawerLayout.closeDrawer(mDrawerList);
 
@@ -118,6 +123,7 @@ public class MainActivity extends FragmentActivity {
 					.add(R.id.content_frame, mapFragment).commit();
 		}
         voieFragment = new VoieSliderFragment("6A");
+
 	}
 
 
