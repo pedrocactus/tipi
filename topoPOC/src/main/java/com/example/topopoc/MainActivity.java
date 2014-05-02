@@ -83,7 +83,7 @@ public class MainActivity extends FragmentActivity {
 				// the fragment_container FrameLayout
 				if (findViewById(R.id.content_frame) != null && !mPlanetTitles[arg2].equals("User Settings")) {
 
-                    mapFragment.filerStyle(mPlanetTitles[arg2]);
+                    mapFragment.filterStyle(mPlanetTitles[arg2]);
 
 
 				}else{

@@ -1,5 +1,8 @@
 package com.example.topopoc.database;
 
+import android.renderscript.Element;
+
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseFieldConfig;
 import com.j256.ormlite.table.DatabaseTableConfig;
 
@@ -19,11 +22,17 @@ public class FieldConfig {
         fieldConfig.setCanBeNull(true);
         fieldConfigs.add(fieldConfig);
         fieldConfig = new DatabaseFieldConfig("mName");
+        fieldConfig.setId(true);
         fieldConfig.setCanBeNull(true);
         fieldConfigs.add(fieldConfig);
         fieldConfig = new DatabaseFieldConfig("mDescription");
         fieldConfig.setCanBeNull(true);
         fieldConfigs.add(fieldConfig);
+        fieldConfig = new DatabaseFieldConfig("mExtendedData");
+        fieldConfig.setCanBeNull(true);
+        fieldConfig.setDataType(DataType.SERIALIZABLE);
+        fieldConfigs.add(fieldConfig);
+
         DatabaseTableConfig<KmlPlacemark> tableConfig = new DatabaseTableConfig<KmlPlacemark>(KmlPlacemark.class, fieldConfigs);
         return tableConfig;
     }

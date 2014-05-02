@@ -69,7 +69,7 @@ public class TestActivity extends Activity {
 
                         ffeature = iter.next();
 
-                        pDao.update((KmlPlacemark)ffeature);
+                        pDao.createOrUpdate((KmlPlacemark)ffeature);
                     }
 
                     break;
@@ -82,8 +82,8 @@ public class TestActivity extends Activity {
                 case R.id.btnSelect:
                     System.out.println("select: " + pDao.countOf());
                     for (KmlPlacemark entity : pDao.queryForAll()) {
-                        System.out.println(String.format("Id: %d, Nome: %s, Tp: %s", entity.mExtendedData.get("nom"),entity.mExtendedData.get("niveau"), entity.mExtendedData.get("style")));
-                        Log.d(LOG_TAG, String.format("Id: %d, Nome: %s, Tp: %s", entity.mExtendedData.get("nom"),entity.mExtendedData.get("niveau"), entity.mExtendedData.get("style")));
+                        System.out.println(String.format("name: %s,Id: %s, Nome: %s, Tp: %s",entity.mName, entity.mExtendedData.get("nom"),entity.mExtendedData.get("niveau"), entity.mExtendedData.get("style")));
+                        Log.d(LOG_TAG, String.format("name: %s,Id: %s, Nome: %s, Tp: %s",entity.mName, entity.mExtendedData.get("nom"),entity.mExtendedData.get("niveau"), entity.mExtendedData.get("style")));
                     }
                     break;
 

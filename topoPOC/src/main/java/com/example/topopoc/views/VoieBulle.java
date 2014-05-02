@@ -38,6 +38,7 @@ public class VoieBulle implements KmlFeature.Styler {
         marker.setSubDescription(kmlPlacemark.mExtendedData.get("niveau") + kmlPlacemark.mExtendedData.get("start") + kmlPlacemark.mExtendedData.get("style"));
         marker.setTitle(kmlPlacemark.mExtendedData.get("nom"));
         //marker.setRelatedObject();
+        marker.setIcon(mMarker);
 
         marker.setInfoWindow(new VoieInfoWindow(mapView));
     }
