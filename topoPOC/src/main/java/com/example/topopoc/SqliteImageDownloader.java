@@ -26,7 +26,7 @@ public class SqliteImageDownloader extends BaseImageDownloader {
             String path = imageUri.substring(DB_URI_PREFIX.length());
 
             // Your logic to retreive needed data from DB
-            byte[] imageData = ...;
+            byte[] imageData =null;
 
             return new ByteArrayInputStream(imageData);
         } else {

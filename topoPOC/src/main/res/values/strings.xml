@@ -24,5 +24,11 @@
 	    <item>Spherical</item>
 	    <item>Cylindrical</item>
 	</string-array>
+    <string-array name="cotations">
+        <item>Cubic</item>
+        <item>Spherical2</item>
+        <item>Spherical</item>
+        <item>Cylindrical</item>
+    </string-array>
 
 </resources>

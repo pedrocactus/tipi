@@ -88,7 +88,7 @@ public class MainActivity extends FragmentActivity {
 
 				}else{
                     Intent intent = new Intent(MainActivity.this,
-                            TestActivity.class);
+                            UserSettingsActivity.class);
                     startActivity(intent);
 
                 }

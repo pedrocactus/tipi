@@ -12,13 +12,19 @@ import org.osmdroid.bonuspack.kml.KmlFolder;
 import org.osmdroid.bonuspack.kml.KmlPlacemark;
 import org.osmdroid.bonuspack.kml.Style;
 import org.osmdroid.bonuspack.overlays.FolderOverlay;
+import org.osmdroid.events.MapListener;
+import org.osmdroid.events.ScrollEvent;
+import org.osmdroid.events.ZoomEvent;
 import org.osmdroid.tileprovider.MapTileProviderArray;
+import org.osmdroid.tileprovider.MapTileProviderBasic;
 import org.osmdroid.tileprovider.modules.IArchiveFile;
 import org.osmdroid.tileprovider.modules.MBTilesFileArchive;
 import org.osmdroid.tileprovider.modules.MapTileFileArchiveProvider;
 import org.osmdroid.tileprovider.modules.MapTileModuleProviderBase;
+import org.osmdroid.tileprovider.tilesource.ITileSource;
 import org.osmdroid.tileprovider.tilesource.XYTileSource;
 import org.osmdroid.tileprovider.util.SimpleRegisterReceiver;
+import org.osmdroid.util.BoundingBoxE6;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
@@ -37,14 +43,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.topopoc.views.SiteStyler;
 import com.example.topopoc.views.VoieBulle;
 
-public class MapFragment extends Fragment {
+public class MapFragment extends Fragment implements MapListener{
 
     public static String TAG = "MapFragment";
 
     KmlDocument kmlDocument;
     KmlDocument kmlSecteurs;
+    KmlDocument kmlSitesPoly;
+    KmlDocument kmlSitesPoints;
 	private ItemizedOverlay<OverlayItem> mMyLocationOverlay;
 	private DefaultResourceProxyImpl mResourceProxy;
     private MapTileProviderArray provider;
@@ -86,8 +95,9 @@ public class MapFragment extends Fragment {
 		 */
 		XYTileSource tSource;
 		tSource = new XYTileSource("mbtiles",
-				ResourceProxy.string.offline_mode, 8, 22, 256, ".png",
+				ResourceProxy.string.offline_mode, 13, 22, 256, ".png",
 				null);
+
 
 		/**
 		 * Don't think the name SimpleRegisterReceiver is particularly well
@@ -116,11 +126,12 @@ public class MapFragment extends Fragment {
 		 * /mnt/sdcard/osmdroid directory, which is a nice feature.
 		 */
 		String packageDir = "/mnt/sdcard/osmdroid";
-		String p = Environment.getExternalStorageDirectory() + packageDir;
-		File f = new File(packageDir, "testpoly.mbtiles");
-		files = new IArchiveFile[]{ MBTilesFileArchive.getDatabaseFileArchive(f) };
-		MapTileModuleProviderBase moduleProvider;
-		moduleProvider = new MapTileFileArchiveProvider(sr, tSource, files);
+		//String p = Environment.getExternalStorageDirectory() + packageDir;
+		//File f = new File(packageDir, "kerlou-entier.mbtiles");
+        //File f1 = new File(packageDir, "petit-paradis.mbtiles");
+		//files = new IArchiveFile[]{ MBTilesFileArchive.getDatabaseFileArchive(f),MBTilesFileArchive.getDatabaseFileArchive(f1)};
+		//MapTileModuleProviderBase moduleProvider;
+		//moduleProvider = new MapTileFileArchiveProvider(sr, tSource, files);
 
 		/**
 		 * So at this point we have a MapTileModuleProvider that provides
@@ -132,13 +143,16 @@ public class MapFragment extends Fragment {
 		 * it's useful for someone, but for simple applications it's probably
 		 * too much.
 		 */
-		MapTileModuleProviderBase[] pBaseArray;
-		pBaseArray = new MapTileModuleProviderBase[] { moduleProvider };
+		//MapTileModuleProviderBase[] pBaseArray;
+		//pBaseArray = new MapTileModuleProviderBase[] { moduleProvider };
 
 
-		provider = new MapTileProviderArray(tSource, null, pBaseArray);
+		//provider = new MapTileProviderArray(tSource, null, pBaseArray);
 
-
+        provider = new MapTileProviderBasic(getActivity());
+        ITileSource tileSource = new XYTileSource("kerlou", null, 13,22, 256, ".png",
+                new String[]{"http://pedrocactus.fr/tileset/"});
+        provider.setTileSource(tileSource);
 
 		/**
 		 * Are we there yet??? Create the MapView already!
@@ -147,12 +161,15 @@ public class MapFragment extends Fragment {
 				provider);
 		//mapView.setBuiltInZoomControls(false);
         mapView.setMultiTouchControls(true);
-		mapView.getController().setZoom(20); // set initial zoom-level, depends
+		mapView.getController().setZoom(13); // set initial zoom-level, depends
 
         //Paris
 		//mapView.getController().setCenter(new GeoPoint(48.6365, 2.439));
 
 		mapView.setUseDataConnection(true);
+
+        BoundingBoxE6 bounds = new BoundingBoxE6(48.6859,-4.2848,48.6287,-4.4433);
+        mapView.setScrollableAreaLimit(bounds);
 
         //Petit Paradis
 		GeoPoint point3 = new GeoPoint(48.6590, -4.3903); // icon
@@ -193,16 +210,22 @@ public class MapFragment extends Fragment {
 
         //Create KML document for Secteurs
         kmlSecteurs = new KmlDocument();
+        kmlSitesPoints = new KmlDocument();
+        kmlSitesPoly = new KmlDocument();
 
         //Get KML path
         File kerlou = new File(packageDir, "kerlou.kml");
         File secteurs = new File(packageDir, "secteurs-bivouac.kml");
+        File sitesPoly = new File(packageDir, "sites.geojson");
+        File sitesPoints = new File(packageDir, "sitesPoints.geojson");
 
 
 
 
-        kmlDocument.parseFile(kerlou);
-        kmlSecteurs.parseFile(secteurs);
+        kmlDocument.parseKMLFile(kerlou);
+        kmlSecteurs.parseKMLFile(secteurs);
+        kmlSitesPoints.parseGeoJSON(sitesPoints);
+        kmlSitesPoly.parseGeoJSON(sitesPoly);
 
 
         KmlFolder feature = kmlDocument.mKmlRoot.clone();
@@ -239,6 +262,13 @@ public class MapFragment extends Fragment {
         FolderOverlay kmlOverlaySecteur = (FolderOverlay)featureSecteur.buildOverlay(mapView, defaultStyle, null, kmlSecteurs);
 
         mapView.getOverlays().add(kmlOverlaySecteur);
+
+        KmlFeature featureSitesPoints = kmlSitesPoints.mKmlRoot.clone();
+
+        KmlFeature.Styler styler = new SiteStyler(defaultMarker,mapView,getActivity(),kmlDocument);
+        FolderOverlay kmlOverlaySitesPoly = (FolderOverlay)featureSitesPoints.buildOverlay(mapView, defaultStyle, styler, kmlSitesPoints);
+
+        mapView.getOverlays().add(kmlOverlaySitesPoly);
         mapView.invalidate();
 
 		// Inflate the layout for this fragment
@@ -299,4 +329,15 @@ public class MapFragment extends Fragment {
     }
 
 
+
+
+    @Override
+    public boolean onScroll(ScrollEvent scrollEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onZoom(ZoomEvent zoomEvent) {
+        return false;
+    }
 }

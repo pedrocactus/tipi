@@ -57,7 +57,7 @@ public class TestActivity extends Activity {
                 case R.id.btnInsert:
                     System.out.println("insert");
                     KmlDocument kmlDocument = new KmlDocument();
-                    kmlDocument.parseFile(kerlou);
+                    kmlDocument.parseKMLFile(kerlou);
 
                     KmlFolder feature = kmlDocument.mKmlRoot.clone();
                     ArrayList<KmlFeature> iTems = ((KmlFolder)feature.mItems.get(0)).mItems;
