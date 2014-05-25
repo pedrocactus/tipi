@@ -22,5 +22,6 @@
 
     <!-- App Colors -->
     <color name="sand">#fff7b232</color>
+    <color name="grey_text">#767575</color>
 
 </resources>

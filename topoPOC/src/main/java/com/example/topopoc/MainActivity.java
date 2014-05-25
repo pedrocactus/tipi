@@ -3,6 +3,7 @@ package com.example.topopoc;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
@@ -10,32 +11,49 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.topopoc.adapters.CustomDrawerAdapter;
+import com.example.topopoc.adapters.DrawerItem;
+import com.nineoldandroids.view.animation.AnimatorProxy;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+
+import org.osmdroid.bonuspack.kml.KmlFeature;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends FragmentActivity {
 
-	private String[] mPlanetTitles;
-	private DrawerLayout mDrawerLayout;
+    private String[] sites;
+    private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView mDrawerList;
+    List<DrawerItem> dataList;
+    CustomDrawerAdapter adapter;
     private MapFragment mapFragment;
     private VoieSliderFragment voieFragment;
     private CharSequence mTitle;
     private boolean isDrawerLocked = false;
+    private SlidingUpPanelLayout panelLayout;
+    public static final String SAVED_STATE_ACTION_BAR_HIDDEN = "saved_state_action_bar_hidden";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
 
 
 		setContentView(R.layout.root_layout);
 
-		mPlanetTitles = getResources().getStringArray(R.array.planets);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
@@ -63,6 +81,49 @@ public class MainActivity extends FragmentActivity {
 
         // Set the drawer toggle as the DrawerListener
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+        sites = getResources().getStringArray(R.array.sites);
+        dataList = new ArrayList<DrawerItem>();
+        dataList.add(new DrawerItem("Sites", R.drawable.sitemap,true));
+        dataList.add(new DrawerItem(sites[0],DrawerItem.NO_IMAGE ,false));
+        dataList.add(new DrawerItem(sites[1], DrawerItem.NO_IMAGE,false));
+        dataList.add(new DrawerItem(sites[2], DrawerItem.NO_IMAGE,false));
+        dataList.add(new DrawerItem(sites[3], DrawerItem.NO_IMAGE,false));
+        dataList.add(new DrawerItem("Filtres", R.drawable.filter,true));
+        dataList.add(new DrawerItem("Niveau", DrawerItem.NO_IMAGE,false));
+        dataList.add(new DrawerItem("Style", DrawerItem.NO_IMAGE,false));
+        dataList.add(new DrawerItem("Options", R.drawable.settings,true));
+        adapter = new CustomDrawerAdapter(this, R.layout.icon_drawer_item,R.layout.title_drawer_item,
+                dataList);
+
+        mDrawerList.setAdapter(adapter);
+        // Set the list's click listener
+        mDrawerList.setOnItemClickListener(new OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                    long arg3) {
+
+                BusProvider.getInstance().post(new ZoomToEvent(sites[arg2-1]));
+
+
+                // Check that the activity is using the layout version with
+                // the fragment_container FrameLayout
+                /*if (findViewById(R.id.content_frame) != null && !sites[arg2].equals("User Settings")) {
+
+                    mapFragment.filterStyle(sites[arg2]);
+
+
+                }else{
+                    Intent intent = new Intent(MainActivity.this,
+                            UserSettingsActivity.class);
+                    startActivity(intent);
+
+                }
+*/
+                mDrawerLayout.closeDrawer(mDrawerList);
+
+            }
+        });
 
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -70,33 +131,7 @@ public class MainActivity extends FragmentActivity {
         getActionBar().setBackgroundDrawable(new ColorDrawable(this.getResources().getColor(R.color.sand)));
 
 
-        // Set the adapter for the list view
-		 mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-		 android.R.layout.simple_list_item_1, mPlanetTitles));
-		 // Set the list's click listener
-		 mDrawerList.setOnItemClickListener(new OnItemClickListener() {
-		
-		 @Override
-		 public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-		 long arg3) {
-				// Check that the activity is using the layout version with
-				// the fragment_container FrameLayout
-				if (findViewById(R.id.content_frame) != null && !mPlanetTitles[arg2].equals("User Settings")) {
 
-                    mapFragment.filterStyle(mPlanetTitles[arg2]);
-
-
-				}else{
-                    Intent intent = new Intent(MainActivity.this,
-                            UserSettingsActivity.class);
-                    startActivity(intent);
-
-                }
-
-             mDrawerLayout.closeDrawer(mDrawerList);
-
-			}
-		});
 
 		// Check that the activity is using the layout version with
 		// the fragment_container FrameLayout
@@ -123,6 +158,31 @@ public class MainActivity extends FragmentActivity {
 					.add(R.id.content_frame, mapFragment).commit();
 		}
         voieFragment = new VoieSliderFragment("6A");
+
+
+        panelLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
+        panelLayout.setPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+            @Override
+            public void onPanelSlide(View panel, float slideOffset) {
+                setActionBarTranslation(panelLayout.getCurrentParalaxOffset());
+            }
+
+            @Override
+            public void onPanelExpanded(View panel) {
+
+            }
+
+            @Override
+            public void onPanelCollapsed(View panel) {
+
+            }
+
+            @Override
+            public void onPanelAnchored(View panel) {
+
+            }
+        });
+
 
 	}
 
@@ -184,6 +244,19 @@ public class MainActivity extends FragmentActivity {
     public void goToMapFragment(View v) {
         showFragment(mapFragment.TAG);
     }
+
+    public void showPanelDescription(KmlFeature feature){
+        PanelDescriptionFragment panelFragment = new PanelDescriptionFragment();
+        Bundle arguments = new Bundle();
+        arguments.putParcelable("description",feature);
+        panelFragment.setArguments(arguments);
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.panel, panelFragment).commit();
+        panelLayout.showPane();
+
+    }
+
+
 
     private String getCurrentFragmentName() {
 
@@ -261,4 +334,36 @@ public void setTitle(CharSequence title) {
         }
 
     }
+    private int getActionBarHeight(){
+        int actionBarHeight = 0;
+        TypedValue tv = new TypedValue();
+        if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data,getResources().getDisplayMetrics());
+        }
+        return actionBarHeight;
+    }
+
+    public void setActionBarTranslation(float y) {
+        // Figure out the actionbar height
+        int actionBarHeight = getActionBarHeight();
+        // A hack to add the translation to the action bar
+        ViewGroup content = ((ViewGroup) findViewById(android.R.id.content).getParent());
+        int children = content.getChildCount();
+        for (int i = 0; i < children; i++) {
+            View child = content.getChildAt(i);
+            if (child.getId() != android.R.id.content) {
+                if (y <= -actionBarHeight) {
+                    child.setVisibility(View.GONE);
+                } else {
+                    child.setVisibility(View.VISIBLE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                        child.setTranslationY(y);
+                    } else {
+                        AnimatorProxy.wrap(child).setTranslationY(y);
+                    }
+                }
+            }
+        }
+    }
+
 }

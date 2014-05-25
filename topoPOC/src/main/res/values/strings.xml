@@ -30,5 +30,11 @@
         <item>Spherical</item>
         <item>Cylindrical</item>
     </string-array>
+    <string-array name="sites">
+        <item>Petit Paradis</item>
+        <item>Menez Ham</item>
+        <item>La Rivière</item>
+        <item>Bivouac</item>
+    </string-array>
 
 </resources>

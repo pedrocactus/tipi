@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.widget.Toast;
 
+import com.example.topopoc.MainActivity;
 import com.example.topopoc.R;
 
 import org.osmdroid.bonuspack.kml.KmlDocument;
@@ -29,10 +31,12 @@ public class SiteStyler implements KmlFeature.Styler {
     private Style normalStyle;
     private Style defaultStyle;
     private KmlDocument docu;
+
+    private Drawable defaultMarker;
     public SiteStyler(Drawable marker, MapView map, Context context, KmlDocument document){
         mapView = map;
         mMarker = marker;
-        Drawable defaultMarker = context.getResources().getDrawable(R.drawable.marker);
+        defaultMarker = context.getResources().getDrawable(R.drawable.marker);
         Bitmap defaultBitmap = ((BitmapDrawable)defaultMarker).getBitmap();
         defaultStyle = new Style(defaultBitmap, 0x901010AA, 3.0f, 0x20AA1010);
 
@@ -50,13 +54,23 @@ public class SiteStyler implements KmlFeature.Styler {
     }
 
     @Override
-    public void onPoint(Marker marker, KmlPlacemark kmlPlacemark, KmlPoint kmlPoint) {
+    public void onPoint(Marker marker, final KmlPlacemark kmlPlacemark, KmlPoint kmlPoint) {
 
         marker.setTitle(kmlPlacemark.mExtendedData.get("nom"));
         //marker.setRelatedObject();
-        Drawable normalMarker = mapView.getContext().getResources().getDrawable(R.drawable.marker_node);
-        marker.setInfoWindow(new SiteInfoWindow(mapView));
-
+        Drawable normalMarker = mapView.getContext().getResources().getDrawable(R.drawable.marker_trans);
+        marker.setIcon(normalMarker);
+        //marker.setInfoWindow(new SiteInfoWindow(mapView));
+        marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker, MapView mapView) {
+                marker.setIcon(defaultMarker);
+                ((MainActivity)mapView.getContext()).showPanelDescription(kmlPlacemark);
+                Toast.makeText(mapView.getContext(),"yes",Toast.LENGTH_SHORT).show();
+                mapView.invalidate();
+                return false;
+            }
+        });
 
     }
 

@@ -1,11 +1,16 @@
 package com.example.topopoc;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.osmdroid.DefaultResourceProxyImpl;
 import org.osmdroid.ResourceProxy;
+import org.osmdroid.api.IGeoPoint;
 import org.osmdroid.bonuspack.kml.KmlDocument;
 import org.osmdroid.bonuspack.kml.KmlFeature;
 import org.osmdroid.bonuspack.kml.KmlFolder;
@@ -32,6 +37,7 @@ import org.osmdroid.views.overlay.ItemizedOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -45,6 +51,7 @@ import android.widget.Toast;
 
 import com.example.topopoc.views.SiteStyler;
 import com.example.topopoc.views.VoieBulle;
+import com.squareup.otto.Subscribe;
 
 public class MapFragment extends Fragment implements MapListener{
 
@@ -53,7 +60,7 @@ public class MapFragment extends Fragment implements MapListener{
     KmlDocument kmlDocument;
     KmlDocument kmlSecteurs;
     KmlDocument kmlSitesPoly;
-    KmlDocument kmlSitesPoints;
+    private KmlDocument kmlSitesPoints;
 	private ItemizedOverlay<OverlayItem> mMyLocationOverlay;
 	private DefaultResourceProxyImpl mResourceProxy;
     private MapTileProviderArray provider;
@@ -218,6 +225,15 @@ public class MapFragment extends Fragment implements MapListener{
         File secteurs = new File(packageDir, "secteurs-bivouac.kml");
         File sitesPoly = new File(packageDir, "sites.geojson");
         File sitesPoints = new File(packageDir, "sitesPoints.geojson");
+        AssetManager am = getActivity().getAssets();
+
+        InputStream inputStream = null;
+        try {
+            inputStream = am.open("sitesPoints.geojson");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        File file = createFileFromInputStream(inputStream);
 
 
 
@@ -228,7 +244,7 @@ public class MapFragment extends Fragment implements MapListener{
         kmlSitesPoly.parseGeoJSON(sitesPoly);
 
 
-        KmlFolder feature = kmlDocument.mKmlRoot.clone();
+        //KmlFolder feature = kmlDocument.mKmlRoot.clone();
 
         Drawable defaultMarker = getResources().getDrawable(R.drawable.marker_trans);
         Bitmap defaultBitmap = ((BitmapDrawable)defaultMarker).getBitmap();
@@ -237,7 +253,7 @@ public class MapFragment extends Fragment implements MapListener{
 
 
 
-
+/*
         ArrayList<KmlFeature> iTems = ((KmlFolder)feature.mItems.get(0)).mItems;
         int nbItmes = iTems.size();
         Iterator<KmlFeature> iter = iTems.iterator();
@@ -249,7 +265,7 @@ public class MapFragment extends Fragment implements MapListener{
             if (ffeature.mExtendedData.get("style")==null||!ffeature.mExtendedData.get("style").contains("dalle")) {
                 iter.remove();
             }
-        }*/
+        }
         FolderOverlay kmlOverlay = (FolderOverlay)feature.buildOverlay(mapView, defaultStyle,null, kmlDocument);
 
         mapView.getOverlays().add(kmlOverlay);
@@ -261,16 +277,15 @@ public class MapFragment extends Fragment implements MapListener{
 
         FolderOverlay kmlOverlaySecteur = (FolderOverlay)featureSecteur.buildOverlay(mapView, defaultStyle, null, kmlSecteurs);
 
-        mapView.getOverlays().add(kmlOverlaySecteur);
+        mapView.getOverlays().add(kmlOverlaySecteur);*/
 
         KmlFeature featureSitesPoints = kmlSitesPoints.mKmlRoot.clone();
 
-        KmlFeature.Styler styler = new SiteStyler(defaultMarker,mapView,getActivity(),kmlDocument);
+        KmlFeature.Styler styler = new SiteStyler(defaultMarker,mapView,getActivity(),kmlSitesPoints);
         FolderOverlay kmlOverlaySitesPoly = (FolderOverlay)featureSitesPoints.buildOverlay(mapView, defaultStyle, styler, kmlSitesPoints);
 
         mapView.getOverlays().add(kmlOverlaySitesPoly);
         mapView.invalidate();
-
 		// Inflate the layout for this fragment
 		return mapView;
 	}
@@ -328,7 +343,34 @@ public class MapFragment extends Fragment implements MapListener{
         super.onDestroyView();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        BusProvider.getInstance().register(this);
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        BusProvider.getInstance().unregister(this);
+    }
 
+    @Subscribe
+    public void zoomTo(ZoomToEvent event){
+        KmlFeature featureSitesPoints = kmlSitesPoints.mKmlRoot.clone();
+        ArrayList<KmlFeature> iTems = ((KmlFolder)featureSitesPoints).mItems;
+        Iterator<KmlFeature> iter = iTems.iterator();
+        KmlFeature ffeature = null;
+            while (iter.hasNext()) {
+
+                ffeature = iter.next();
+                if (ffeature.mExtendedData.get("nom").contains(event.getNamePoint())) {
+                    IGeoPoint point = ((KmlPlacemark)ffeature).mGeometry.mCoordinates.get(0);
+                    mapView.getController().animateTo(new GeoPoint(point.getLatitude(), point.getLongitude()));
+                    mapView.getController().setZoom(18);
+                }
+            }
+        mapView.invalidate();
+    }
 
 
     @Override
@@ -339,5 +381,28 @@ public class MapFragment extends Fragment implements MapListener{
     @Override
     public boolean onZoom(ZoomEvent zoomEvent) {
         return false;
+    }
+
+    private File createFileFromInputStream(InputStream inputStream) {
+
+        try{
+            File f = new File("sitesPoint.geojson");
+            OutputStream outputStream = new FileOutputStream(f);
+            byte buffer[] = new byte[1024];
+            int length = 0;
+
+            while((length=inputStream.read(buffer)) > 0) {
+                outputStream.write(buffer,0,length);
+            }
+
+            outputStream.close();
+            inputStream.close();
+
+            return f;
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
