@@ -5,7 +5,6 @@ package com.example.topopoc;
  */
 public class ZoomToEvent {
     private String namePoint;
-    private String DIRECTION;
 
     public ZoomToEvent( String nPoint){
         namePoint = nPoint;

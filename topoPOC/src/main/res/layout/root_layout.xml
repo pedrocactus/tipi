@@ -8,17 +8,20 @@
         android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clickable="true"
         android:gravity="bottom">
 
         <!-- The main content view -->
         <FrameLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
+            android:clickable="true"
             android:layout_height="match_parent"/>
 
         <FrameLayout
             android:id="@+id/panel"
             android:layout_width="match_parent"
+            android:clickable="true"
             android:layout_height="match_parent"/>
 
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>

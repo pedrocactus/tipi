@@ -25,6 +25,7 @@ import com.example.topopoc.adapters.CustomDrawerAdapter;
 import com.example.topopoc.adapters.DrawerItem;
 import com.nineoldandroids.view.animation.AnimatorProxy;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+import com.squareup.otto.Subscribe;
 
 import org.osmdroid.bonuspack.kml.KmlFeature;
 
@@ -49,7 +50,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        //getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
 
 
 		setContentView(R.layout.root_layout);
@@ -161,27 +162,33 @@ public class MainActivity extends FragmentActivity {
 
 
         panelLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
-        panelLayout.setPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+        panelLayout.setPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener(){
             @Override
             public void onPanelSlide(View panel, float slideOffset) {
                 setActionBarTranslation(panelLayout.getCurrentParalaxOffset());
             }
 
             @Override
-            public void onPanelExpanded(View panel) {
+            public void onPanelCollapsed(View view) {
 
             }
 
             @Override
-            public void onPanelCollapsed(View panel) {
+            public void onPanelExpanded(View view) {
 
             }
 
             @Override
-            public void onPanelAnchored(View panel) {
+            public void onPanelAnchored(View view) {
+
+            }
+
+            @Override
+            public void onPanelHidden(View view) {
 
             }
         });
+        panelLayout.setEnableDragViewTouchEvents(true);
 
 
 	}
@@ -250,9 +257,15 @@ public class MainActivity extends FragmentActivity {
         Bundle arguments = new Bundle();
         arguments.putParcelable("description",feature);
         panelFragment.setArguments(arguments);
+        if (voieFragment == null) {
+            voieFragment = new VoieSliderFragment("6A");
+        }
+        // Replace current fragment by the new one.
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.panel, panelFragment).commit();
-        panelLayout.showPane();
+                .add(R.id.panel, voieFragment).commit();
+        //getSupportFragmentManager().beginTransaction()
+         //       .add(R.id.panel, panelFragment).commit();
+        panelLayout.showPanel();
 
     }
 
@@ -343,6 +356,12 @@ public void setTitle(CharSequence title) {
         return actionBarHeight;
     }
 
+    @Subscribe
+    public void collapsePanel(ZoomToEvent event){
+        panelLayout.collapsePanel();
+        panelLayout.hidePanel();
+    }
+
     public void setActionBarTranslation(float y) {
         // Figure out the actionbar height
         int actionBarHeight = getActionBarHeight();
@@ -364,6 +383,17 @@ public void setTitle(CharSequence title) {
                 }
             }
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BusProvider.getInstance().register(this);
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        BusProvider.getInstance().unregister(this);
     }
 
 }

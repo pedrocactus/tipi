@@ -1,5 +1,6 @@
 package com.example.topopoc;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.json.JSONObject;
 import org.osmdroid.DefaultResourceProxyImpl;
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.api.IGeoPoint;
@@ -23,9 +25,6 @@ import org.osmdroid.events.ZoomEvent;
 import org.osmdroid.tileprovider.MapTileProviderArray;
 import org.osmdroid.tileprovider.MapTileProviderBasic;
 import org.osmdroid.tileprovider.modules.IArchiveFile;
-import org.osmdroid.tileprovider.modules.MBTilesFileArchive;
-import org.osmdroid.tileprovider.modules.MapTileFileArchiveProvider;
-import org.osmdroid.tileprovider.modules.MapTileModuleProviderBase;
 import org.osmdroid.tileprovider.tilesource.ITileSource;
 import org.osmdroid.tileprovider.tilesource.XYTileSource;
 import org.osmdroid.tileprovider.util.SimpleRegisterReceiver;
@@ -37,13 +36,12 @@ import org.osmdroid.views.overlay.ItemizedOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
 
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -224,16 +222,33 @@ public class MapFragment extends Fragment implements MapListener{
         File kerlou = new File(packageDir, "kerlou.kml");
         File secteurs = new File(packageDir, "secteurs-bivouac.kml");
         File sitesPoly = new File(packageDir, "sites.geojson");
-        File sitesPoints = new File(packageDir, "sitesPoints.geojson");
-        AssetManager am = getActivity().getAssets();
 
-        InputStream inputStream = null;
+        //Get Data From Text Resource File Contains Json Data.
+        InputStream inputStream = getResources().openRawResource(R.raw.sitespoints);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        int ctr;
+        JSONObject sitesPoints = null;
         try {
-            inputStream = am.open("sitesPoints.geojson");
+            ctr = inputStream.read();
+            while (ctr != -1) {
+                byteArrayOutputStream.write(ctr);
+                ctr = inputStream.read();
+            }
+            inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        File file = createFileFromInputStream(inputStream);
+        Log.v("Text Data", byteArrayOutputStream.toString());
+        try {
+            // Parse the data into jsonobject to get original data in form of json.
+            sitesPoints= new JSONObject(
+                    byteArrayOutputStream.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
 
 
@@ -367,9 +382,11 @@ public class MapFragment extends Fragment implements MapListener{
                     IGeoPoint point = ((KmlPlacemark)ffeature).mGeometry.mCoordinates.get(0);
                     mapView.getController().animateTo(new GeoPoint(point.getLatitude(), point.getLongitude()));
                     mapView.getController().setZoom(18);
+                    break;
                 }
             }
         mapView.invalidate();
+
     }
 
 

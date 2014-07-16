@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.osmdroid.bonuspack.kml.KmlFeature;
@@ -24,8 +25,22 @@ public class PanelDescriptionFragment extends Fragment {
         }
 
         View rootView = inflater.inflate(R.layout.panel_description_layout, container, false);
+
         TextView title = (TextView) rootView.findViewById(R.id.name);
         title.setText(feature.mExtendedData.get("nom"));
+
+        TextView subtitle = (TextView) rootView.findViewById(R.id.nbvoies);
+        subtitle.setText(feature.mExtendedData.get("nbvoies"));
+
+        Button zoomToButton =  (Button) rootView.findViewById(R.id.follow);
+
+        zoomToButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                BusProvider.getInstance().post(new ZoomToEvent(feature.mExtendedData.get("nom")));
+            }
+        });
         return rootView;
 
 
