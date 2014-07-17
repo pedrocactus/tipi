@@ -32,6 +32,9 @@ public class PanelDescriptionFragment extends Fragment {
         TextView subtitle = (TextView) rootView.findViewById(R.id.nbvoies);
         subtitle.setText(feature.mExtendedData.get("nbvoies"));
 
+        TextView description_secteur = (TextView) rootView.findViewById(R.id.description_secteur);
+        description_secteur.setText(feature.mExtendedData.get("description"));
+
         Button zoomToButton =  (Button) rootView.findViewById(R.id.follow);
 
         zoomToButton.setOnClickListener(new View.OnClickListener() {

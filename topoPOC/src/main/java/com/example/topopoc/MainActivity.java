@@ -190,7 +190,7 @@ public class MainActivity extends FragmentActivity {
         });
         panelLayout.setEnableDragViewTouchEvents(true);
 
-
+        panelLayout.hidePanel();
 	}
 
 
@@ -257,14 +257,14 @@ public class MainActivity extends FragmentActivity {
         Bundle arguments = new Bundle();
         arguments.putParcelable("description",feature);
         panelFragment.setArguments(arguments);
-        if (voieFragment == null) {
-            voieFragment = new VoieSliderFragment("6A");
-        }
+        //if (voieFragment == null) {
+        //    voieFragment = new VoieSliderFragment("6A");
+        //}
         // Replace current fragment by the new one.
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.panel, voieFragment).commit();
         //getSupportFragmentManager().beginTransaction()
-         //       .add(R.id.panel, panelFragment).commit();
+          //      .add(R.id.panel, voieFragment).commit();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.panel, panelFragment).commit();
         panelLayout.showPanel();
 
     }
