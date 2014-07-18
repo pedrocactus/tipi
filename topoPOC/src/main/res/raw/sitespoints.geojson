@@ -33,7 +33,13 @@
       "type": "Feature",
       "properties": {
         "nom": "Menez Ham",
-        "nbvoies": 200
+        "nbvoies": 200,
+        "min_voies"=4A,
+        "max_voies"=7A,
+        "devers"=10,
+        "surplomb"=50,
+        "dalle"=90,
+        "description"="Menez est le plus grand secteur du site et certainement l'un des plus./n Situé à côté de"
       },
       "geometry": {
         "type": "Point",
