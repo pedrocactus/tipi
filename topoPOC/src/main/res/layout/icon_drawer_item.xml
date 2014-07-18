@@ -10,7 +10,6 @@
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:layout_marginTop="0dp"
-        android:background="?android:attr/activatedBackgroundIndicator"
         >
 
         <LinearLayout

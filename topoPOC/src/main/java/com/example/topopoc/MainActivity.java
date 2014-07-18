@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
@@ -32,7 +33,7 @@ import org.osmdroid.bonuspack.kml.KmlFeature;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends ActionBarActivity {
 
     private String[] sites;
     private DrawerLayout mDrawerLayout;
@@ -127,9 +128,9 @@ public class MainActivity extends FragmentActivity {
         });
 
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
-        getActionBar().setBackgroundDrawable(new ColorDrawable(this.getResources().getColor(R.color.sand)));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(this.getResources().getColor(R.color.sand)));
 
 
 
@@ -196,7 +197,7 @@ public class MainActivity extends FragmentActivity {
 
 
     private void showFragment(final String fragmentTag) {
-        if (fragmentTag == null||fragmentTag.isEmpty())
+        if (fragmentTag == null||fragmentTag.equals(""))
             return;
         // Begin a fragment transaction.
         final FragmentManager fm = getSupportFragmentManager();
