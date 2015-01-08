@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="cotations">
         <item>Cubic</item>
@@ -22,7 +22,7 @@
         <item>tout</item>
         <item>User Settings</item>
     </string-array>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/strings_activity_user_settings.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/strings_activity_user_settings.xml -->
     <eat-comment/>
     <string-array name="pref_example_list_titles">
         <item>Always</item>
@@ -50,7 +50,7 @@
         <item>360</item>
         <item>-1</item>
     </string-array>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="sites">
         <item>Petit Paradis</item>
@@ -58,7 +58,7 @@
         <item>La Rivière</item>
         <item>Bivouac</item>
     </string-array>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -76,20 +76,20 @@
     <color name="abc_search_url_text_selected">@android:color/black</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/color.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="aqua">#00FFFF</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="background_floating_material_dark">#ff424242</color>
     <color name="background_floating_material_light">#ffeeeeee</color>
     <color name="background_material_dark">#ff303030</color>
     <color name="background_material_light">#ffeeeeee</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/color.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="black">#000000</color>
     <color name="blue">#0000FF</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
@@ -103,40 +103,40 @@
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/color.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="fuchsia">#FF00FF</color>
     <color name="gray">#808080</color>
     <color name="green">#008000</color>
     <color name="grey_text">#767575</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="hint_foreground_material_dark">@color/bright_foreground_disabled_material_dark</color>
     <color name="hint_foreground_material_light">@color/bright_foreground_disabled_material_light</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/color.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="lime">#00FF00</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="link_text_material_dark">@color/material_deep_teal_200</color>
     <color name="link_text_material_light">@color/material_deep_teal_500</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/color.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="maroon">#800000</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
     <color name="material_blue_grey_950">#ff21272b</color>
     <color name="material_deep_teal_200">#ff80cbc4</color>
     <color name="material_deep_teal_500">#ff009688</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/color.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="navy">#000080</color>
     <color name="olive">#808000</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="primary_dark_material_dark">#ff000000</color>
     <color name="primary_dark_material_light">#ff757575</color>
@@ -146,31 +146,31 @@
     <color name="primary_text_default_material_light">#de000000</color>
     <color name="primary_text_disabled_material_dark">#4Dffffff</color>
     <color name="primary_text_disabled_material_light">#39000000</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/color.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="purple">#800080</color>
     <color name="red">#FF0000</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="ripple_material_dark">#40ffffff</color>
     <color name="ripple_material_light">#40000000</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/color.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="sand">#fff7b232</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="secondary_text_default_material_dark">#b3ffffff</color>
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/color.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="silver">#C0C0C0</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/color.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="teal">#008080</color>
     <color name="white">#FFFFFF</color>
@@ -196,10 +196,10 @@
     <declare-styleable name="Spinner"><attr format="reference" name="prompt"/><attr format="enum" name="spinnerMode"><enum name="dialog" value="0"/><enum name="dropdown" value="1"/></attr><attr name="android:dropDownSelector"/><attr name="android:popupBackground"/><attr name="android:dropDownVerticalOffset"/><attr name="android:dropDownHorizontalOffset"/><attr name="android:dropDownWidth"/><attr format="reference" name="popupPromptView"/><attr name="android:gravity"/><attr format="boolean" name="disableChildrenWhenDisabled"/><attr name="android:background"/></declare-styleable>
     <declare-styleable name="SwitchCompat"><attr name="android:thumb"/><attr format="reference" name="track"/><attr name="android:textOn"/><attr name="android:textOff"/><attr format="dimension" name="thumbTextPadding"/><attr format="reference" name="switchTextAppearance"/><attr format="dimension" name="switchMinWidth"/><attr format="dimension" name="switchPadding"/><attr format="boolean" name="splitTrack"/><attr format="boolean" name="showText"/></declare-styleable>
     <declare-styleable name="Theme"><attr format="boolean" name="windowActionBar"/><attr format="boolean" name="windowActionBarOverlay"/><attr format="boolean" name="windowActionModeOverlay"/><attr format="dimension|fraction" name="windowFixedWidthMajor"/><attr format="dimension|fraction" name="windowFixedHeightMinor"/><attr format="dimension|fraction" name="windowFixedWidthMinor"/><attr format="dimension|fraction" name="windowFixedHeightMajor"/><attr name="android:windowIsFloating"/><attr format="reference" name="actionBarTabStyle"/><attr format="reference" name="actionBarTabBarStyle"/><attr format="reference" name="actionBarTabTextStyle"/><attr format="reference" name="actionOverflowButtonStyle"/><attr format="reference" name="actionOverflowMenuStyle"/><attr format="reference" name="actionBarPopupTheme"/><attr format="reference" name="actionBarStyle"/><attr format="reference" name="actionBarSplitStyle"/><attr format="reference" name="actionBarTheme"/><attr format="reference" name="actionBarWidgetTheme"/><attr format="dimension" name="actionBarSize"><enum name="wrap_content" value="0"/></attr><attr format="reference" name="actionBarDivider"/><attr format="reference" name="actionBarItemBackground"/><attr format="reference" name="actionMenuTextAppearance"/><attr format="color|reference" name="actionMenuTextColor"/><attr format="reference" name="actionModeStyle"/><attr format="reference" name="actionModeCloseButtonStyle"/><attr format="reference" name="actionModeBackground"/><attr format="reference" name="actionModeSplitBackground"/><attr format="reference" name="actionModeCloseDrawable"/><attr format="reference" name="actionModeCutDrawable"/><attr format="reference" name="actionModeCopyDrawable"/><attr format="reference" name="actionModePasteDrawable"/><attr format="reference" name="actionModeSelectAllDrawable"/><attr format="reference" name="actionModeShareDrawable"/><attr format="reference" name="actionModeFindDrawable"/><attr format="reference" name="actionModeWebSearchDrawable"/><attr format="reference" name="actionModePopupWindowStyle"/><attr format="reference" name="textAppearanceLargePopupMenu"/><attr format="reference" name="textAppearanceSmallPopupMenu"/><attr format="reference" name="actionDropDownStyle"/><attr format="dimension" name="dropdownListPreferredItemHeight"/><attr format="reference" name="spinnerStyle"/><attr format="reference" name="spinnerDropDownItemStyle"/><attr format="reference" name="homeAsUpIndicator"/><attr format="reference" name="actionButtonStyle"/><attr format="reference" name="buttonBarStyle"/><attr format="reference" name="buttonBarButtonStyle"/><attr format="reference" name="selectableItemBackground"/><attr format="reference" name="selectableItemBackgroundBorderless"/><attr format="reference" name="dividerVertical"/><attr format="reference" name="dividerHorizontal"/><attr format="reference" name="activityChooserViewStyle"/><attr format="reference" name="toolbarStyle"/><attr format="reference" name="toolbarNavigationButtonStyle"/><attr format="reference" name="popupMenuStyle"/><attr format="reference" name="popupWindowStyle"/><attr format="reference|color" name="editTextColor"/><attr format="reference" name="editTextBackground"/><attr format="reference" name="switchStyle"/><attr format="reference" name="textAppearanceSearchResultTitle"/><attr format="reference" name="textAppearanceSearchResultSubtitle"/><attr format="reference|color" name="textColorSearchUrl"/><attr format="reference" name="searchViewStyle"/><attr format="dimension" name="listPreferredItemHeight"/><attr format="dimension" name="listPreferredItemHeightSmall"/><attr format="dimension" name="listPreferredItemHeightLarge"/><attr format="dimension" name="listPreferredItemPaddingLeft"/><attr format="dimension" name="listPreferredItemPaddingRight"/><attr format="reference" name="dropDownListViewStyle"/><attr format="reference" name="listPopupWindowStyle"/><attr format="reference" name="textAppearanceListItem"/><attr format="reference" name="textAppearanceListItemSmall"/><attr format="reference" name="panelBackground"/><attr format="dimension" name="panelMenuListWidth"/><attr format="reference" name="panelMenuListTheme"/><attr format="reference" name="listChoiceBackgroundIndicator"/><attr format="color" name="colorPrimary"/><attr format="color" name="colorPrimaryDark"/><attr format="color" name="colorAccent"/><attr format="color" name="colorControlNormal"/><attr format="color" name="colorControlActivated"/><attr format="color" name="colorControlHighlight"/><attr format="color" name="colorButtonNormal"/><attr format="color" name="colorSwitchThumbNormal"/></declare-styleable>
-    <declare-styleable name="Toolbar"><attr format="reference" name="titleTextAppearance"/><attr format="reference" name="subtitleTextAppearance"/><attr name="title"/><attr name="subtitle"/><attr name="android:gravity"/><attr format="dimension" name="titleMargins"/><attr format="dimension" name="titleMarginStart"/><attr format="dimension" name="titleMarginEnd"/><attr format="dimension" name="titleMarginTop"/><attr format="dimension" name="titleMarginBottom"/><attr name="contentInsetStart"/><attr name="contentInsetEnd"/><attr name="contentInsetLeft"/><attr name="contentInsetRight"/><attr format="dimension" name="maxButtonHeight"/><attr format="reference" name="theme"/><attr name="buttonGravity"><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/></attr><attr format="reference" name="collapseIcon"/><attr name="popupTheme"/><attr format="reference" name="navigationIcon"/><attr format="string" name="navigationContentDescription"/><attr name="android:minHeight"/></declare-styleable>
+    <declare-styleable name="Toolbar"><attr format="reference" name="titleTextAppearance"/><attr format="reference" name="subtitleTextAppearance"/><attr name="title"/><attr name="subtitle"/><attr name="android:gravity"/><attr format="dimension" name="titleMargins"/><attr format="dimension" name="titleMarginStart"/><attr format="dimension" name="titleMarginEnd"/><attr format="dimension" name="titleMarginTop"/><attr format="dimension" name="titleMarginBottom"/><attr name="contentInsetStart"/><attr name="contentInsetEnd"/><attr name="contentInsetLeft"/><attr name="contentInsetRight"/><attr format="dimension" name="maxButtonHeight"/><attr format="reference" name="theme"/><attr format="reference" name="collapseIcon"/><attr format="string" name="collapseContentDescription"/><attr name="popupTheme"/><attr format="reference" name="navigationIcon"/><attr format="string" name="navigationContentDescription"/><attr name="android:minHeight"/></declare-styleable>
     <declare-styleable name="View"><attr format="dimension" name="paddingStart"/><attr format="dimension" name="paddingEnd"/><attr name="android:focusable"/></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
     <dimen name="abc_action_bar_default_padding_material">4dp</dimen>
@@ -238,11 +238,11 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">0dp</dimen>
     <dimen name="activity_vertical_margin">0dp</dimen>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
@@ -275,7 +275,8 @@
     <string name="abc_searchview_description_voice">Voice search</string>
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/strings.xml -->
+    <string name="abc_toolbar_collapse_description">Collapse</string>
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="app_name">TopoPOC</string>
@@ -283,7 +284,7 @@
     <string name="drawer_open">Open Drawer</string>
     <string name="hello_world">Hello world!</string>
     <string name="menez_ham"/>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/strings_activity_user_settings.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/strings_activity_user_settings.xml -->
     <eat-comment/>
     <string name="pref_default_display_name">John Smith</string>
     <string name="pref_description_online_map">Utilisation de la carte sans connection</string>
@@ -301,13 +302,13 @@
     <string name="pref_title_sync_frequency">Sync frequency</string>
     <string name="pref_title_system_sync_settings">System sync settings</string>
     <string name="pref_title_vibrate">Vibrate</string>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="spinner_prompt">Select the panorama type</string>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/strings_activity_user_settings.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/strings_activity_user_settings.xml -->
     <eat-comment/>
     <string name="title_activity_user_settings">Settings</string>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
@@ -316,10 +317,10 @@
             backward-compatibility can go here.
         -->
     </style>
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="AppTheme" parent="Theme.AppCompat">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    <!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/home/castex/Avisto/Top/tipi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance">
         <item name="android:textColor">?android:textColorPrimary</item>
@@ -418,8 +419,6 @@
     <style name="Base.TextAppearance.AppCompat.Subhead.Inverse">
         <item name="android:textColor">?android:attr/textColorSecondaryInverse</item>
         <item name="android:textColorHint">?android:attr/textColorHintInverse</item>
-        <item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
-        <item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
     </style>
     <style name="Base.TextAppearance.AppCompat.Title">
         <item name="android:textSize">@dimen/abc_text_size_title_material</item>
@@ -428,8 +427,6 @@
     <style name="Base.TextAppearance.AppCompat.Title.Inverse">
         <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
         <item name="android:textColorHint">?android:attr/textColorHintInverse</item>
-        <item name="android:textColorHighlight">?android:attr/textColorHighlightInverse</item>
-        <item name="android:textColorLink">?android:attr/textColorLinkInverse</item>
     </style>
     <style name="Base.TextAppearance.AppCompat.Widget.ActionBar.Menu" parent="android:TextAppearance.Small">
         <item name="android:textSize">12sp</item>
@@ -517,7 +514,7 @@
         <item name="android:textColorHint">@color/hint_foreground_material_dark</item>
         <item name="android:textColorHintInverse">@color/hint_foreground_material_light</item>
         <item name="android:textColorHighlight">@color/highlighted_text_material_dark</item>
-m>        <item name="android:textColorLink">@color/link_text_material_dark</item>
+        <item name="android:textColorLink">@color/link_text_material_dark</item>
 
         <!-- Action Bar styles -->
         <item name="actionBarItemBackground">@drawable/abc_item_background_holo_dark</item>
@@ -874,8 +871,6 @@ m>        <item name="android:textColorLink">@color/link_text_material_dark</ite
         <item name="backgroundSplit">@null</item>
         <item name="actionButtonStyle">@style/Widget.AppCompat.ActionButton</item>
         <item name="actionOverflowButtonStyle">@style/Widget.AppCompat.ActionButton.Overflow</item>
-        <item name="progressBarStyle">@style/Widget.AppCompat.ProgressBar.Horizontal</item>
-        <item name="indeterminateProgressStyle">@style/Widget.AppCompat.ProgressBar</item>
         <item name="android:gravity">center_vertical</item>
         <item name="elevation">8dp</item>
         <item name="popupTheme">?attr/actionBarPopupTheme</item>
@@ -1070,8 +1065,8 @@ m>        <item name="android:textColorLink">@color/link_text_material_dark</ite
         <item name="android:minHeight">?attr/actionBarSize</item>
         <item name="titleMargins">4dp</item>
         <item name="maxButtonHeight">56dp</item>
-        <item name="buttonGravity">top</item>
         <item name="collapseIcon">?attr/homeAsUpIndicator</item>
+        <item name="collapseContentDescription">@string/abc_toolbar_collapse_description</item>
         <item name="contentInsetStart">16dp</item>
     </style>
     <style name="Base.Widget.AppCompat.Toolbar.Button.Navigation" parent="android:Widget">
@@ -1104,7 +1099,7 @@ m>        <item name="android:textColorLink">@color/link_text_material_dark</ite
         <item name="android:textColorHint">@color/hint_foreground_material_dark</item>
         <item name="android:textColorHintInverse">@color/hint_foreground_material_light</item>
         <item name="android:textColorHighlight">@color/highlighted_text_material_dark</item>
-m>        <item name="android:textColorLink">@color/link_text_material_dark</item>
+        <item name="android:textColorLink">@color/link_text_material_dark</item>
 
         <!-- Text styles -->
         <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>
@@ -1145,7 +1140,7 @@ m>        <item name="android:textColorLink">@color/link_text_material_dark</ite
         <item name="android:textColorHint">@color/hint_foreground_material_dark</item>
         <item name="android:textColorHintInverse">@color/hint_foreground_material_light</item>
         <item name="android:textColorHighlight">@color/highlighted_text_material_dark</item>
-m>        <item name="android:textColorLink">@color/link_text_material_dark</item>
+        <item name="android:textColorLink">@color/link_text_material_dark</item>
 
         <!-- Text styles -->
         <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>

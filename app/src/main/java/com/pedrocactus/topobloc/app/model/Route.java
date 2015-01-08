@@ -1,7 +1,10 @@
 package com.pedrocactus.topobloc.app.model;
 
 
-public class Route {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Route implements Parcelable{
 
     public String level;
     private boolean surplomb;
@@ -46,7 +49,43 @@ public class Route {
         this.image = image;
     }
 
+    private Route(Parcel in) {
+        this.level = in.readString();
+        this.surplomb =  in.readByte() != 0;
+        this.devers =  in.readByte() != 0;
+        this.dalle =  in.readByte() != 0;
+        this.danger =  in.readByte() != 0;
+        this.highball =  in.readByte() != 0;
+        this.offshore =  in.readByte() != 0;
+        this.number = in.readInt();
+        this.rating = in.readInt();
+        this.circuit = in.readString();
+        this.name = name;
+        this.coordinates = coordinates;
+        this.image = image;
+        year = in.readInt();
+        synopsis = in.readString();
+        actors = new ArrayList<Actor>();
+        in.readTypedList(actors,Actor.CREATOR);
+        critics = in.readString();
+        posters = in.readParcelable(Posters.class.getClassLoader());
+        releaseDates = in.readParcelable(ReleaseDates.class.getClassLoader());
+        similarMovies = new ArrayList<Movie>();
+        in.readTypedList(similarMovies,Movie.CREATOR);
+    }
 
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+    }
+    public static final Parcelable.Creator<Movie> CREATOR
+            = new Parcelable.Creator<Movie>() {
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 
 
     /**

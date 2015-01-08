@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.json.JSONObject;
 import org.osmdroid.DefaultResourceProxyImpl;
@@ -40,6 +41,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,7 +52,10 @@ import android.widget.Toast;
 import com.path.android.jobqueue.JobManager;
 import com.pedrocactus.topobloc.app.R;
 import com.pedrocactus.topobloc.app.events.BusProvider;
+import com.pedrocactus.topobloc.app.events.FetchRouteListEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
+import com.pedrocactus.topobloc.app.job.RoutesJob;
+import com.pedrocactus.topobloc.app.model.Route;
 import com.pedrocactus.topobloc.app.ui.utils.SiteStyler;
 import com.pedrocactus.topobloc.app.ui.utils.VoieBulle;
 import com.squareup.otto.Subscribe;
@@ -72,6 +77,8 @@ public class MapFragment extends Fragment implements MapListener{
     private MapView mapView;
     private  KmlFeature.Styler normalStyler;
     private  KmlFeature.Styler pointedStyler;
+
+    private List<Route> routes;
 
     @Inject
     JobManager jobManager;
@@ -164,7 +171,7 @@ public class MapFragment extends Fragment implements MapListener{
 		//provider = new MapTileProviderArray(tSource, null, pBaseArray);
 
         provider = new MapTileProviderBasic(getActivity());
-        ITileSource tileSource = new XYTileSource("kerlou", null, 15,19, 256, ".png",
+        ITileSource tileSource = new XYTileSource("kerlou", null, 15,21, 256, ".png",
                 new String[]{/*"http://a.tile.openstreetmap.org/"*/"https://ancient-depths-9034.herokuapp.com/tiles/"});
         provider.setTileSource(tileSource);
 
@@ -358,6 +365,36 @@ public class MapFragment extends Fragment implements MapListener{
 
         mapView.invalidate();
 
+    }
+
+    private void fetchMovies(){
+        jobManager.addJobInBackground(new RoutesJob());
+    }
+    public void onEventMainThread(FetchRouteListEvent event) {
+        routes = (ArrayList<Route>) event.getMovies();
+        updateList();
+    }
+
+    private void updateList(){
+        noNetworkLayout.setVisibility(View.GONE);
+        ((MovieListAdapter)listView.getAdapter()).updateMovies(movies);
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if(savedInstanceState!=null){
+            routes = savedInstanceState.getParcelableArrayList("routes");
+            updateList();
+        }else {
+            fetchMovies();
+        }
+    }
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList("routes",routes);
+        super.onSaveInstanceState(outState);
     }
 
     @Override

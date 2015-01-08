@@ -53,6 +53,7 @@ public class TopoblocApp extends Application {
         }
 
         super.onCreate();
+        getObjectGraph();
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         initImageLoader(getApplicationContext());
@@ -69,7 +70,7 @@ public class TopoblocApp extends Application {
     private ObjectGraph objectGraph;
 
     public synchronized ObjectGraph getObjectGraph() {
-        objectGraph = ObjectGraph.create(/*new BoxotopModule()*/);
+        objectGraph = ObjectGraph.create(new TopoblocModule());
         return objectGraph;
     }
 

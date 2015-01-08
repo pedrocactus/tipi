@@ -35,4 +35,4 @@
         android:dividerHeight="0dp"
         android:background="@drawable/dark_geometry"
         android:layout_marginLeft="-200dp"/>
-</android.support.v4.widget.DrawerLayout><!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/layout/root_layout.xml -->
+</android.support.v4.widget.DrawerLayout><!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/layout/root_layout.xml -->

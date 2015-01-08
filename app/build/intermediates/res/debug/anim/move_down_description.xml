@@ -8,4 +8,4 @@
         android:fromYDelta="0%"
         android:toYDelta="72%"
         android:duration="400" />
-</set><!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/anim/move_down_description.xml -->
+</set><!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/anim/move_down_description.xml -->
