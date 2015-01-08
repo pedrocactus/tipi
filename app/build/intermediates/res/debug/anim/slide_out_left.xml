@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate android:fromXDelta="0" android:toXDelta="-100%p"
+        android:duration="@android:integer/config_longAnimTime"/>
+    <alpha android:fromAlpha="1.0" android:toAlpha="1.0"
+        android:duration="@android:integer/config_longAnimTime" />
+</set><!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/anim/slide_out_left.xml -->

@@ -1,0 +1,310 @@
+package com.pedrocactus.topobloc.app.model;
+
+
+public class Route {
+
+    public String level;
+    private boolean surplomb;
+    private boolean devers;
+    private boolean dalle;
+    private boolean danger;
+    private boolean highball;
+    private boolean offshore;
+    private int number;
+    private int rating;
+    private String circuit;
+    public String name;
+    public float[] coordinates;
+    public String image;
+
+
+
+
+    public Route(){
+
+    }
+
+
+
+
+    public Route(String level, boolean surplomb, boolean devers, boolean dalle,
+                 boolean danger, boolean highball, boolean offshore, int number,
+                 int rating, String circuit, String name, float[] coordinates,
+                 String image) {
+        this.level = level;
+        this.surplomb = surplomb;
+        this.devers = devers;
+        this.dalle = dalle;
+        this.danger = danger;
+        this.highball = highball;
+        this.offshore = offshore;
+        this.number = number;
+        this.rating = rating;
+        this.circuit = circuit;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.image = image;
+    }
+
+
+
+
+    /**
+     * @return the level
+     */
+    public String getLevel() {
+        return level;
+    }
+
+
+
+
+    /**
+     * @param level the level to set
+     */
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+
+
+
+    /**
+     * @return the surplomb
+     */
+    public boolean isSurplomb() {
+        return surplomb;
+    }
+
+
+
+
+    /**
+     * @param surplomb the surplomb to set
+     */
+    public void setSurplomb(boolean surplomb) {
+        this.surplomb = surplomb;
+    }
+
+
+
+
+    /**
+     * @return the devers
+     */
+    public boolean isDevers() {
+        return devers;
+    }
+
+
+
+
+    /**
+     * @param devers the devers to set
+     */
+    public void setDevers(boolean devers) {
+        this.devers = devers;
+    }
+
+
+
+
+    /**
+     * @return the dalle
+     */
+    public boolean isDalle() {
+        return dalle;
+    }
+
+
+
+
+    /**
+     * @param dalle the dalle to set
+     */
+    public void setDalle(boolean dalle) {
+        this.dalle = dalle;
+    }
+
+
+
+
+    /**
+     * @return the danger
+     */
+    public boolean isDanger() {
+        return danger;
+    }
+
+
+
+
+    /**
+     * @param danger the danger to set
+     */
+    public void setDanger(boolean danger) {
+        this.danger = danger;
+    }
+
+
+
+
+    /**
+     * @return the highball
+     */
+    public boolean isHighball() {
+        return highball;
+    }
+
+
+
+
+    /**
+     * @param highball the highball to set
+     */
+    public void setHighball(boolean highball) {
+        this.highball = highball;
+    }
+
+
+
+
+    /**
+     * @return the offshore
+     */
+    public boolean isOffshore() {
+        return offshore;
+    }
+
+
+
+
+    /**
+     * @param offshore the offshore to set
+     */
+    public void setOffshore(boolean offshore) {
+        this.offshore = offshore;
+    }
+
+
+
+
+    /**
+     * @return the number
+     */
+    public int getNumber() {
+        return number;
+    }
+
+
+
+
+    /**
+     * @param number the number to set
+     */
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+
+
+
+    /**
+     * @return the rating
+     */
+    public int getRating() {
+        return rating;
+    }
+
+
+
+
+    /**
+     * @param rating the rating to set
+     */
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+
+
+
+    /**
+     * @return the circuit
+     */
+    public String getCircuit() {
+        return circuit;
+    }
+
+
+
+
+    /**
+     * @param circuit the circuit to set
+     */
+    public void setCircuit(String circuit) {
+        this.circuit = circuit;
+    }
+
+
+
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+
+
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+
+    /**
+     * @return the coordinates
+     */
+    public float[] getCoordinates() {
+        return coordinates;
+    }
+
+
+
+
+    /**
+     * @param coordinates the coordinates to set
+     */
+    public void setCoordinates(float[] coordinates) {
+        this.coordinates = coordinates;
+    }
+
+
+
+
+    /**
+     * @return the image
+     */
+    public String getImage() {
+        return image;
+    }
+
+
+
+
+    /**
+     * @param image the image to set
+     */
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+
+}

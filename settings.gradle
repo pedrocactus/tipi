@@ -1,2 +1,2 @@
 include ':panoramaGL'
-include ':topoPOC'
+include ':app'

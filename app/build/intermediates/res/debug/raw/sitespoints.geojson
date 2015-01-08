@@ -1,0 +1,166 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "nom": "Neiz Vran",
+        "nbvoies": 70
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.436759948730469,
+          48.65423225111565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nom": "SNSM",
+        "nbvoies": 40
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.414787292480469,
+          48.65604661485727
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nom": "Menez Ham",
+        "nbvoies": 200,
+        "min_voies"=4A,
+        "max_voies"=7A,
+        "devers"=10,
+        "surplomb"=50,
+        "dalle"=90,
+        "description"="Menez est le plus grand secteur du site et certainement l'un des plus beau.
+        Situé en face de la maison des douaniers, ce secteur offre une escalade très diversifiée  sur un rocher quasi intacte."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.373073577880859,
+          48.66829186224258
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nom": "Chardon Bleu",
+        "nbvoies": 30
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.3320465087890625,
+          48.67713380189125
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nom": "Crémiou",
+        "nbvoies": 40
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.352989196777344,
+          48.675886955667366
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nom": "Le Phare",
+        "nbvoies": 40
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.343376159667969,
+          48.67860730764262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nom": "Petit Paradis",
+        "nbvoies": 55
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.390593767166138,
+          48.65869008264897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nom ": "Le Bivouac",
+        "nbvoies": 40
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.386967420578003,
+          48.660617671496134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nom": "La Rivière",
+        "nbvoies": 40
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.382869005203247,
+          48.66167356207882
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nom": "Ty Caillou",
+        "nbvoies": 60
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.382386207580566,
+          48.663941171788615
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nom": "Terre du Pont",
+        "nbvoies": 100
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.324740171432495,
+          48.67520684472006
+        ]
+      }
+    }
+  ]
+}

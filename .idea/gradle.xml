@@ -8,13 +8,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/panoramaGL" />
-            <option value="$PROJECT_DIR$/topoPOC" />
           </set>
         </option>
       </GradleProjectSettings>
     </option>
-    <option name="serviceDirectoryPath" value="$USER_HOME$/.gradle/wrapper/dists/gradle-1.6-bin/72srdo3a5eb3bic159kar72vok/gradle-1.6" />
   </component>
 </project>
 

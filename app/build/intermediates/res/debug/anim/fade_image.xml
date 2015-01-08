@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true">
+    <alpha
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:fromAlpha="0.0"
+        android:toAlpha="0.7"
+        android:duration="400"
+        android:repeatMode="reverse"
+        android:repeatCount="infinite" />
+</set><!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/anim/fade_image.xml -->

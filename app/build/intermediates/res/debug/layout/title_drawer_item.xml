@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp" >
+
+    <ImageView
+        android:id="@+id/drawer_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        android:paddingTop="7sp"
+        android:paddingBottom="7sp"
+        android:paddingLeft="4sp"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/drawer_itemName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/grey_text"
+        android:paddingTop="4sp"
+        android:paddingBottom="4sp"
+        android:paddingLeft="5sp" />
+
+
+</LinearLayout><!-- From: file:/Users/pierrecastex/Dev/AndroidStudioProjects/Topobloc/app/src/main/res/layout/title_drawer_item.xml -->
