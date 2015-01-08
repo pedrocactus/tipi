@@ -27,359 +27,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26642b0d-1140-447a-b13c-1b769232135c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/model/Site.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/service/TopoblocAPI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/TopoblocModule.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/PanoramaGL_0_2_beta.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/osmbonuspack_v4_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/osmdroid_android_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/slf4j_android_1_5_8.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_19_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TopoPOC.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/apk/topoPOC-debug-unaligned.apk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/MainActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/MainActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/MapFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/MapFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/PanoramaActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/PanoramaActivity$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/PanoramaActivity$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/PanoramaActivity$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/PanoramaActivity$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/PanoramaActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/R$anim.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/R$array.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/R$dimen.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/R$layout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/R$menu.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/R$raw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/VoieFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/VoieFragment$InfoPositionState.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/VoieFragment$OnSwipeTouchListener$GestureListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/VoieFragment$OnSwipeTouchListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/VoieFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/VoieSliderFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/VoieSliderFragment$ScreenSlidePagerAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/VoieSliderFragment$SetAdapterTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/VoieSliderFragment.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/adapters/NavDrawerListAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/views/VoieBulle.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/views/VoieInfoWindow$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/classes/debug/com/example/topopoc/views/VoieInfoWindow.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/dex/debug/classes.dex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/incremental/aidl/debug/dependency.store" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/incremental/mergeAssets/debug/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/incremental/mergeResources/debug/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/libs/topoPOC-debug.ap_" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/manifests/debug/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/pre-dexed/debug/PanoramaGL_0.2-beta-c5156fd53b81c875857bf6ef7ee363fbc3f086f0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/pre-dexed/debug/osmbonuspack_v4.3-a61703055c332211f13e7f235f85a7dfaf0886cb.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/pre-dexed/debug/osmdroid-android-4.1-e846d11d95a6f7c7e580e1fbb0f0e94f61b9e618.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/pre-dexed/debug/slf4j-android-1.5.8-44f77c5f24452596237c3125e7cbecaf7f96c98a.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/pre-dexed/debug/support-v4-19.0.1-3bf117e59e2e0f41bbf9219f2be90cdcf1dd583d.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/anim/move_down_cotation.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/anim/move_down_description.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/anim/move_down_nom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/anim/move_up_cotation.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/anim/move_up_description.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/anim/move_up_nom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/anim/slide_in_left.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/anim/slide_in_right.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/anim/slide_out_left.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/anim/slide_out_right.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-hdpi/bonuspack_bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-hdpi/fanny6a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-hdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-hdpi/marker.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-hdpi/moreinfo_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-hdpi/moreinfo_arrow_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-ldpi/bonuspack_bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-ldpi/fanny6a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-ldpi/moreinfo_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-ldpi/moreinfo_arrow_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-mdpi/bonuspack_bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-mdpi/fanny6a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-mdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-mdpi/marker.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-mdpi/moreinfo_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-mdpi/moreinfo_arrow_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-xhdpi/bonuspack_bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-xhdpi/fanny6a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-xhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-xhdpi/marker.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-xhdpi/moreinfo_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-xhdpi/moreinfo_arrow_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-xxhdpi/bonuspack_bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-xxhdpi/fanny6a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-xxhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-xxhdpi/marker.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-xxhdpi/moreinfo_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable-xxhdpi/moreinfo_arrow_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/drawable/btn_moreinfo.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/layout/bonuspack_bubble.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/layout/panorama_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/layout/root_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/layout/voie_fragment.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/layout/voie_slider_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/menu/main.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/hotspot.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/json_cubic.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/json_cubic_quito2.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/json_cubic_quito3.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/json_cylindrical.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/json_cylindrical_quito2.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/json_cylindrical_quito3.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/json_spherical.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/json_spherical2.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/json_spherical2_quito2.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/json_spherical2_quito3.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/json_spherical_quito2.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/json_spherical_quito3.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito1_b.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito1_d.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito1_f.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito1_l.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito1_p.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito1_r.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito1_s.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito1_s2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito1_sp.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito1_u.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito2_b.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito2_d.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito2_f.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito2_l.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito2_p.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito2_r.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito2_s.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito2_s2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito2_sp.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito2_u.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito3_b.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito3_d.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito3_f.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito3_l.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito3_p.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito3_r.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito3_s.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito3_s2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito3_sp.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/raw/quito3_u.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/values-sw720dp-land/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/values-v11/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/values-v14/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/res/all/debug/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/source/buildConfig/debug/com/example/topopoc/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/build/source/r/debug/com/example/topopoc/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/libs/PanoramaGL_0.2-beta.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/libs/ormlite-android-4.48.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/libs/ormlite-core-4.48.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/libs/osmbonuspack_v4.2.8.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/libs/osmbonuspack_v4.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/libs/osmbonuspack_v4.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/libs/osmdroid-android-4.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/libs/osmdroid-android-4.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/libs/slf4j-android-1.5.8.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/libs/square-otto-1.3.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/libs/universal-image-loader-1.9.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/AnimationEvent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/App.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/BusProvider.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/ConstantsTestUIL.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/InfoPositionState.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/MainActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/MapFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/PanelDescriptionFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/PanoramaActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/SqliteImageDownloader.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/TestActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/UserSettingsActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/VoieFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/VoieSliderFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/ZoomToEvent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/adapters/CustomDrawerAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/adapters/DrawerItem.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/adapters/NavDrawerListAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/database/DataBaseHelper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/database/FieldConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/views/SiteInfoWindow.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/views/SiteStyler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/views/VoieBulle.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/views/VoieInfoWindow.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/jniLibs/armeabi-v7a/libglues.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/jniLibs/armeabi/libglues.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/jniLibs/mips/libglues.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/jniLibs/x86/libglues.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/anim/fade_image.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/anim/move_down_cotation.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/anim/move_down_description.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/anim/move_down_nom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/anim/move_up_cotation.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/anim/move_up_description.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/anim/move_up_nom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/anim/slide_in_left.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/anim/slide_in_right.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/anim/slide_out_left.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/anim/slide_out_right.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/bonuspack_bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/dark_geometric.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/drawer_shadow.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/fanny6a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/filter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/ic_drawer.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/marker.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/marker_node.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/marker_trans.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/moreinfo_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/moreinfo_arrow_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/settings.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/sitemap.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-ldpi/bonuspack_bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-ldpi/fanny6a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-ldpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-ldpi/marker_trans.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-ldpi/moreinfo_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-ldpi/moreinfo_arrow_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/bonuspack_bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/dark_geometric.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/fanny6a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/filter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/marker.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/marker_node.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/marker_trans.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/moreinfo_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/moreinfo_arrow_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/settings.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/sitemap.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xhdpi/bonuspack_bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xhdpi/fanny6a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xhdpi/filter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xhdpi/marker.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xhdpi/marker_node.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xhdpi/marker_trans.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xhdpi/moreinfo_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xhdpi/moreinfo_arrow_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xhdpi/settings.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xhdpi/sitemap.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxhdpi/bonuspack_bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxhdpi/fanny6a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxhdpi/filter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxhdpi/marker.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxhdpi/marker_node.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxhdpi/marker_trans.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxhdpi/moreinfo_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxhdpi/moreinfo_arrow_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxhdpi/settings.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxhdpi/sitemap.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxxhdpi/bonuspack_bubble.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxxhdpi/fanny6a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxxhdpi/filter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxxhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxxhdpi/marker.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxxhdpi/marker_node.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxxhdpi/marker_trans.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxxhdpi/moreinfo_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxxhdpi/moreinfo_arrow_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxxhdpi/settings.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxxhdpi/sitemap.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable/btn_moreinfo.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/drawable/dark_geometry.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/layout/bonuspack_bubble.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/layout/icon_drawer_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/layout/panel_description_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/layout/panorama_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/layout/root_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/layout/test.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/layout/title_drawer_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/layout/voie_fragment.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/layout/voie_slider_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/menu/main.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/hotspot.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/json_cubic.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/json_cubic_quito2.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/json_cubic_quito3.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/json_cylindrical.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/json_cylindrical_quito2.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/json_cylindrical_quito3.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/json_spherical.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/json_spherical2.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/json_spherical2_quito2.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/json_spherical2_quito3.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/json_spherical_quito2.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/json_spherical_quito3.data" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito1_b.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito1_d.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito1_f.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito1_l.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito1_p.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito1_r.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito1_s.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito1_s2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito1_sp.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito1_u.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito2_b.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito2_d.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito2_f.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito2_l.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito2_p.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito2_r.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito2_s.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito2_s2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito2_sp.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito2_u.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito3_b.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito3_d.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito3_f.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito3_l.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito3_p.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito3_r.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito3_s.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito3_s2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito3_sp.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/quito3_u.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/raw/sitespoints.geojson" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/values-sw600dp/dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/values-sw720dp-land/dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/values-v11/styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/values-v14/styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/values/color.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/values/dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/values/strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/values/strings_activity_user_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/values/styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/xml/pref_data_sync.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/xml/pref_general.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/xml/pref_headers.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/src/main/res/xml/pref_notification.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/topoPOC/topoPOC.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/outputFileStates.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/1.10/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-hdpi/marker_plat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-mdpi/marker_plat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xhdpi/marker_plat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topoPOC/src/main/res/drawable-xxhdpi/marker_plat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/topoPOC/src/main/java/com/example/topopoc/SecteurSliderFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/ui/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/ui/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topoPOC/build.gradle" afterPath="$PROJECT_DIR$/topoPOC/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/icon_drawer_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/icon_drawer_item.xml" />
     </list>
     <ignored path="TopoPOC.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -457,10 +113,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapFragment.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MapFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/ui/MapFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9064449" vertical-offset="1334" max-vertical-offset="5730">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1334" max-vertical-offset="5730">
               <caret line="173" column="65" selection-start-line="173" selection-start-column="65" selection-end-line="173" selection-end-column="65" />
               <folding />
             </state>
@@ -470,18 +126,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/ui/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4215" max-vertical-offset="5490">
-              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BusProvider.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/events/BusProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="345">
-              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4545" max-vertical-offset="5895">
+              <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -539,12 +185,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopoblocApp.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/TopoblocApp.java">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="1935">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-              <folding />
+            <state vertical-scroll-proportion="0.14979757" vertical-offset="316" max-vertical-offset="810">
+              <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+              <folding>
+                <element signature="e#1247#1265#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1858,7 +1506,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/ui/utils/SiteInfoWindow.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/adapters/CustomDrawerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/SqliteImageDownloader.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/TopoblocApp.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/model/Site.java" />
@@ -1866,6 +1513,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/TopoblocModule.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/model/Route.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/ui/MapFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -2442,7 +2090,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2463,7 +2111,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24606581" sideWeight="0.49945354" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24606581" sideWeight="0.49945354" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21215881" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="101" y="100" width="1239" height="700" />
@@ -2645,13 +2293,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/events/ZoomToEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/ConstantsTestUIL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.0" vertical-offset="0" max-vertical-offset="2505">
@@ -2828,14 +2469,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="795">
-          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/TopoblocApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
@@ -2904,17 +2537,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/ui/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4215" max-vertical-offset="5490">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4545" max-vertical-offset="5895">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/ui/MapFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9064449" vertical-offset="1334" max-vertical-offset="5730">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1334" max-vertical-offset="5730">
           <caret line="173" column="65" selection-start-line="173" selection-start-column="65" selection-end-line="173" selection-end-column="65" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pedrocactus/topobloc/app/events/ZoomToEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15182187" vertical-offset="0" max-vertical-offset="494">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14979757" vertical-offset="316" max-vertical-offset="810">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+          <folding>
+            <element signature="e#1247#1265#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
