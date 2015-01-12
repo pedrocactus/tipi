@@ -12,12 +12,12 @@ import javax.inject.Inject;
 /**
  * Created by castex on 08/01/15.
  */
-public class RoutesJob extends BaseNetworkJob {
+public class SectorJob extends BaseNetworkJob {
     public static final int PRIORITY = 1;
     @Inject
     TopoblocAPI boxotopApiClient;
 
-    public RoutesJob() {
+    public SectorJob() {
         super();
         TopoblocApp.injectMembers(this);
     }
