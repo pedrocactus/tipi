@@ -4,7 +4,10 @@ package com.pedrocactus.topobloc.app.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Route implements Parcelable{
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Route extends Place implements Parcelable{
 
     public String level;
     private boolean surplomb;
@@ -16,8 +19,6 @@ public class Route implements Parcelable{
     private int number;
     private int rating;
     private String circuit;
-    public String name;
-    public float[] coordinates;
     public String image;
 
 
@@ -26,7 +27,7 @@ public class Route implements Parcelable{
     public Route(){
 
     }
-
+    public int describeContents() {return 0;}
 
 
 
@@ -34,6 +35,7 @@ public class Route implements Parcelable{
                  boolean danger, boolean highball, boolean offshore, int number,
                  int rating, String circuit, String name, float[] coordinates,
                  String image) {
+        super(name,coordinates);
         this.level = level;
         this.surplomb = surplomb;
         this.devers = devers;
@@ -44,8 +46,6 @@ public class Route implements Parcelable{
         this.number = number;
         this.rating = rating;
         this.circuit = circuit;
-        this.name = name;
-        this.coordinates = coordinates;
         this.image = image;
     }
 
@@ -60,10 +60,10 @@ public class Route implements Parcelable{
         this.number = in.readInt();
         this.rating = in.readInt();
         this.circuit = in.readString();
-        this.name = name;
-        this.coordinates = coordinates;
-        this.image = image;
-        year = in.readInt();
+        this.name = in.readString();
+        in.readFloatArray(this.coordinates);
+        this.image = in.readString();
+        /*year = in.readInt();
         synopsis = in.readString();
         actors = new ArrayList<Actor>();
         in.readTypedList(actors,Actor.CREATOR);
@@ -71,19 +71,19 @@ public class Route implements Parcelable{
         posters = in.readParcelable(Posters.class.getClassLoader());
         releaseDates = in.readParcelable(ReleaseDates.class.getClassLoader());
         similarMovies = new ArrayList<Movie>();
-        in.readTypedList(similarMovies,Movie.CREATOR);
+        in.readTypedList(similarMovies,Movie.CREATOR);*/
     }
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
     }
-    public static final Parcelable.Creator<Movie> CREATOR
-            = new Parcelable.Creator<Movie>() {
-        public Movie createFromParcel(Parcel in) {
-            return new Movie(in);
+    public static final Parcelable.Creator<Route> CREATOR
+            = new Parcelable.Creator<Route>() {
+        public Route createFromParcel(Parcel in) {
+            return new Route(in);
         }
-        public Movie[] newArray(int size) {
-            return new Movie[size];
+        public Route[] newArray(int size) {
+            return new Route[size];
         }
     };
 

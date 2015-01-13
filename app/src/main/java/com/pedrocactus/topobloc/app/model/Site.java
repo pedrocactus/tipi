@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by pierrecastex on 25/11/2014.
  */
-public class Site {
+public class Site extends Place{
 
 
     public List<Sector> sectors;
@@ -13,7 +13,6 @@ public class Site {
     public String description;
     public List<String> images;
 
-    public float[] coordinates;
 
 
     public Site(){
@@ -23,7 +22,7 @@ public class Site {
 
     public Site(List<Sector> sectors, String name, String description,
                 List<String> images, float[] coordinates) {
-        super();
+        super(name, coordinates);
         this.sectors = sectors;
         this.name = name;
         this.description = description;

@@ -50,6 +50,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.+'
     compile 'com.squareup.picasso:picasso:2.3.4'
     compile 'com.jakewharton:butterknife:5.1.2'
+    compile 'de.grundid.opendatalab:geojson-jackson:1.2'
     compile 'com.squareup.dagger:dagger:1.0.1'
     compile 'com.squareup.dagger:dagger-compiler:1.0.1'
     compile 'com.squareup.retrofit:retrofit:1.6.1'

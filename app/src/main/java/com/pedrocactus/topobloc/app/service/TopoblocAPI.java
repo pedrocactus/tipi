@@ -1,12 +1,14 @@
 package com.pedrocactus.topobloc.app.service;
 
 import com.pedrocactus.topobloc.app.model.Route;
+import com.pedrocactus.topobloc.app.model.Sector;
 
 import java.util.List;
 
 import retrofit.http.GET;
 import retrofit.http.Headers;
 import retrofit.http.Path;
+import retrofit.http.Query;
 
 /**
  * Created by pierrecastex on 23/11/2014.
@@ -15,8 +17,8 @@ public interface TopoblocAPI {
 
 
     @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
-    @GET("get/9")
-    List<Route> getListRoutes();
+    @GET("/getSector")
+    Sector getSectorByName(@Query("name") String sectorName);
 /*
     @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
     @GET("/api/public/v1.0/movies/{id}.json")

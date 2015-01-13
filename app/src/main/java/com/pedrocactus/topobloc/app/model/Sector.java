@@ -1,20 +1,21 @@
 package com.pedrocactus.topobloc.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.List;
+
 /**
  * Created by pierrecastex on 29/07/2014.
  */
-public class Sector {
-    private String Name;
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Sector extends Place{
 
-    public void setName(String name) {
-        Name = name;
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
-    public void setNumner(int numner) {
-        this.numner = numner;
-    }
-
-    public void setRoutes(Route[] routes) {
+    public void setRoutes(List<Route> routes) {
         this.routes = routes;
     }
 
@@ -25,22 +26,26 @@ public class Sector {
     public Sector() {
     }
 
-    private int numner;
-    private Route[] routes;
+    public Sector(String name, float[] coordinates, int number, List<Route> routes, String description) {
+        super(name, coordinates);
+        this.number = number;
+        this.routes = routes;
+        this.description = description;
+    }
+
+    private int number;
+    private List<Route> routes;
 
     public String getDescription() {
         return description;
     }
 
-    public String getName() {
-        return Name;
+
+    public int getNumber() {
+        return number;
     }
 
-    public int getNumner() {
-        return numner;
-    }
-
-    public Route[] getRoutes() {
+    public List<Route> getRoutes() {
         return routes;
     }
 

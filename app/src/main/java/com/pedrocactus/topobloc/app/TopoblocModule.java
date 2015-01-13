@@ -8,7 +8,7 @@ import com.path.android.jobqueue.config.Configuration;
 import com.path.android.jobqueue.log.CustomLogger;
 import com.path.android.jobqueue.network.NetworkUtilImpl;
 import com.pedrocactus.topobloc.app.events.NetworkErrorEvent;
-import com.pedrocactus.topobloc.app.job.RoutesJob;
+import com.pedrocactus.topobloc.app.job.SectorJob;
 import com.pedrocactus.topobloc.app.service.TopoblocAPI;
 import com.pedrocactus.topobloc.app.ui.MainActivity;
 import com.pedrocactus.topobloc.app.ui.MapFragment;
@@ -35,7 +35,7 @@ import retrofit.client.OkClient;
         injects = {
                 MainActivity.class,
                 MapFragment.class,
-                RoutesJob.class,
+                SectorJob.class,
                 TopoblocApp.class,
                 JobManager.class
         }

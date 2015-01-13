@@ -20,6 +20,7 @@ import org.osmdroid.bonuspack.kml.KmlFolder;
 import org.osmdroid.bonuspack.kml.KmlPlacemark;
 import org.osmdroid.bonuspack.kml.Style;
 import org.osmdroid.bonuspack.overlays.FolderOverlay;
+import org.osmdroid.bonuspack.overlays.Marker;
 import org.osmdroid.events.MapListener;
 import org.osmdroid.events.ScrollEvent;
 import org.osmdroid.events.ZoomEvent;
@@ -51,18 +52,23 @@ import android.widget.Toast;
 
 import com.path.android.jobqueue.JobManager;
 import com.pedrocactus.topobloc.app.R;
+import com.pedrocactus.topobloc.app.TopoblocApp;
 import com.pedrocactus.topobloc.app.events.BusProvider;
+import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
 import com.pedrocactus.topobloc.app.events.FetchRouteListEvent;
+import com.pedrocactus.topobloc.app.events.FetchSectorEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
-import com.pedrocactus.topobloc.app.job.RoutesJob;
+import com.pedrocactus.topobloc.app.job.SectorJob;
+import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.model.Route;
+import com.pedrocactus.topobloc.app.model.Sector;
 import com.pedrocactus.topobloc.app.ui.utils.SiteStyler;
 import com.pedrocactus.topobloc.app.ui.utils.VoieBulle;
 import com.squareup.otto.Subscribe;
 
 import javax.inject.Inject;
 
-public class MapFragment extends Fragment implements MapListener{
+public class MapFragment extends BaseFragment implements MapListener{
 
     public static String TAG = "MapFragment";
 
@@ -78,7 +84,8 @@ public class MapFragment extends Fragment implements MapListener{
     private  KmlFeature.Styler normalStyler;
     private  KmlFeature.Styler pointedStyler;
 
-    private List<Route> routes;
+    private List<Place> places;
+
 
     @Inject
     JobManager jobManager;
@@ -87,6 +94,9 @@ public class MapFragment extends Fragment implements MapListener{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+
+
+        TopoblocApp.injectMembers(this);
         ((MainActivity)getActivity()).setDrawerEnable(true);
 
 		/**
@@ -171,8 +181,8 @@ public class MapFragment extends Fragment implements MapListener{
 		//provider = new MapTileProviderArray(tSource, null, pBaseArray);
 
         provider = new MapTileProviderBasic(getActivity());
-        ITileSource tileSource = new XYTileSource("kerlou", null, 15,21, 256, ".png",
-                new String[]{/*"http://a.tile.openstreetmap.org/"*/"https://ancient-depths-9034.herokuapp.com/tiles/"});
+        ITileSource tileSource = new XYTileSource("kerlou", null, 15,22, 256, ".png",
+                new String[]{"http://a.tile.openstreetmap.org/"/*"https://ancient-depths-9034.herokuapp.com/tiles/"*/});
         provider.setTileSource(tileSource);
 
 		/**
@@ -199,32 +209,7 @@ public class MapFragment extends Fragment implements MapListener{
 														// here
 		mapView.getController().setCenter(point3);
 
-		ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-		// Put overlay icon a little way from map centre
-		items.add(new OverlayItem("Here", "SampleDescription", point3));
 
-		/* OnTapListener for the Markers, shows a simple Toast. */
-		this.mMyLocationOverlay = new ItemizedIconOverlay<OverlayItem>(items,
-				new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-					@Override
-					public boolean onItemSingleTapUp(final int index,
-							final OverlayItem item) {
-						Intent intent = new Intent(getActivity(), PanoramaActivity.class);
-						startActivity(intent);
-						return true; // We 'handled' this event.
-					}
-
-					@Override
-					public boolean onItemLongPress(final int index,
-							final OverlayItem item) {
-						Toast.makeText(getActivity(),
-								"Item '" + item.getTitle(), Toast.LENGTH_LONG)
-								.show();
-						return false;
-					}
-				}, mResourceProxy);
-		//mapView.getOverlays().add(this.mMyLocationOverlay);
-		mapView.invalidate();
 
 
         //Create KML document for Petit Paradis boulders
@@ -367,33 +352,64 @@ public class MapFragment extends Fragment implements MapListener{
 
     }
 
-    private void fetchMovies(){
-        jobManager.addJobInBackground(new RoutesJob());
+    private void fetchSector(){
+        jobManager.addJobInBackground(new SectorJob("Petit Paradis"));
     }
-    public void onEventMainThread(FetchRouteListEvent event) {
-        routes = (ArrayList<Route>) event.getMovies();
-        updateList();
+    public void onEventMainThread(FetchPlacesEvent event) {
+        places =  event.getPlaces();
+        showFeatures(places);
     }
 
-    private void updateList(){
-        noNetworkLayout.setVisibility(View.GONE);
-        ((MovieListAdapter)listView.getAdapter()).updateMovies(movies);
-        swipeRefreshLayout.setRefreshing(false);
+    private void showFeatures(List<Place> places){
+        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
+        GeoPoint point3 = new GeoPoint(48.6590, -4.3905);
+
+        for (int i=0;i<places.size();i++){
+            // Put overlay icon a little way from map centre
+            items.add(new OverlayItem("Here", "SampleDescription", new GeoPoint(places.get(i).getCoordinates()[1], places.get(i).getCoordinates()[0])));
+
+        }
+        //items.add(new OverlayItem("Here", "SampleDescription", point3));
+
+		/* OnTapListener for the Markers, shows a simple Toast. */
+        this.mMyLocationOverlay = new ItemizedIconOverlay<OverlayItem>(items,
+                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+                    @Override
+                    public boolean onItemSingleTapUp(final int index,
+                                                     final OverlayItem item) {
+                        Intent intent = new Intent(getActivity(), PanoramaActivity.class);
+                        startActivity(intent);
+                        return true; // We 'handled' this event.
+                    }
+
+                    @Override
+                    public boolean onItemLongPress(final int index,
+                                                   final OverlayItem item) {
+                        Toast.makeText(getActivity(),
+                                "Item '" + item.getTitle(), Toast.LENGTH_LONG)
+                                .show();
+                        return false;
+                    }
+                }, mResourceProxy);
+        mapView.getOverlays().add(this.mMyLocationOverlay);
+
+        mapView.invalidate();
+
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if(savedInstanceState!=null){
-            routes = savedInstanceState.getParcelableArrayList("routes");
-            updateList();
+            //routes = savedInstanceState.getParcelableArrayList("routes");
+            //showFeatures(sector.getRoutes());
         }else {
-            fetchMovies();
+            fetchSector();
         }
     }
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putParcelableArrayList("routes",routes);
+        //outState.putParcelableArrayList("routes",routes);
         super.onSaveInstanceState(outState);
     }
 
@@ -415,6 +431,7 @@ public class MapFragment extends Fragment implements MapListener{
         super.onPause();
         BusProvider.getInstance().unregister(this);
     }
+
 
     @Subscribe
     public void zoomTo(ZoomToEvent event){
