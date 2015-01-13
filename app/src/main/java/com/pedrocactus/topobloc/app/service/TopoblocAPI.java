@@ -1,5 +1,6 @@
 package com.pedrocactus.topobloc.app.service;
 
+import com.pedrocactus.topobloc.app.model.NationalSite;
 import com.pedrocactus.topobloc.app.model.Route;
 import com.pedrocactus.topobloc.app.model.Sector;
 
@@ -19,6 +20,10 @@ public interface TopoblocAPI {
     @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
     @GET("/getSector")
     Sector getSectorByName(@Query("name") String sectorName);
+
+    @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
+    @GET("/getNationalSites")
+    List<NationalSite> getNationalSites();
 /*
     @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
     @GET("/api/public/v1.0/movies/{id}.json")

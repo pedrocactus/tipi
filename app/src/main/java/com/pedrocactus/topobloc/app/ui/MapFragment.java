@@ -58,6 +58,7 @@ import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
 import com.pedrocactus.topobloc.app.events.FetchRouteListEvent;
 import com.pedrocactus.topobloc.app.events.FetchSectorEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
+import com.pedrocactus.topobloc.app.job.NationalSiteJob;
 import com.pedrocactus.topobloc.app.job.SectorJob;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.model.Route;
@@ -181,7 +182,7 @@ public class MapFragment extends BaseFragment implements MapListener{
 		//provider = new MapTileProviderArray(tSource, null, pBaseArray);
 
         provider = new MapTileProviderBasic(getActivity());
-        ITileSource tileSource = new XYTileSource("kerlou", null, 15,22, 256, ".png",
+        ITileSource tileSource = new XYTileSource("kerlou", null, 5,22, 256, ".png",
                 new String[]{"http://a.tile.openstreetmap.org/"/*"https://ancient-depths-9034.herokuapp.com/tiles/"*/});
         provider.setTileSource(tileSource);
 
@@ -201,7 +202,7 @@ public class MapFragment extends BaseFragment implements MapListener{
 
         BoundingBoxE6 bounds = new BoundingBoxE6(48.6580,-4.3984,48.6639,-4.3813);
 
-        mapView.setScrollableAreaLimit(bounds);
+        //mapView.setScrollableAreaLimit(bounds);
 
         //Petit Paradis
 		GeoPoint point3 = new GeoPoint(48.6590, -4.3905); // icon
@@ -352,8 +353,8 @@ public class MapFragment extends BaseFragment implements MapListener{
 
     }
 
-    private void fetchSector(){
-        jobManager.addJobInBackground(new SectorJob("Petit Paradis"));
+    private void fetchNationalSites(){
+        jobManager.addJobInBackground(new NationalSiteJob());
     }
     public void onEventMainThread(FetchPlacesEvent event) {
         places =  event.getPlaces();
@@ -404,7 +405,7 @@ public class MapFragment extends BaseFragment implements MapListener{
             //routes = savedInstanceState.getParcelableArrayList("routes");
             //showFeatures(sector.getRoutes());
         }else {
-            fetchSector();
+            fetchNationalSites();
         }
     }
     @Override

@@ -8,7 +8,9 @@ import com.path.android.jobqueue.config.Configuration;
 import com.path.android.jobqueue.log.CustomLogger;
 import com.path.android.jobqueue.network.NetworkUtilImpl;
 import com.pedrocactus.topobloc.app.events.NetworkErrorEvent;
+import com.pedrocactus.topobloc.app.job.NationalSiteJob;
 import com.pedrocactus.topobloc.app.job.SectorJob;
+import com.pedrocactus.topobloc.app.service.SignedOkClient;
 import com.pedrocactus.topobloc.app.service.TopoblocAPI;
 import com.pedrocactus.topobloc.app.ui.MainActivity;
 import com.pedrocactus.topobloc.app.ui.MapFragment;
@@ -23,6 +25,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import oauth.signpost.OAuthConsumer;
+import oauth.signpost.basic.DefaultOAuthConsumer;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
@@ -36,6 +40,7 @@ import retrofit.client.OkClient;
                 MainActivity.class,
                 MapFragment.class,
                 SectorJob.class,
+                NationalSiteJob.class,
                 TopoblocApp.class,
                 JobManager.class
         }
@@ -84,13 +89,20 @@ public class TopoblocModule {
 
     @Provides
     TopoblocAPI provideApiClient() {
+
+
+//        OAuthConsumer consumer = new DefaultOAuthConsumer(
+//                Config.API_KEY,
+//                Config.API_KEY_SECRET);
+//        consumer.setTokenWithSecret(token, tokenSecret);
+
         RestAdapter.Builder builder = new RestAdapter.Builder()
                 .setEndpoint(Config.PRODUCTION_BASE_URL)
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setConverter(new JacksonConverter(new ObjectMapper()));
-//Implementing cache for retrofit calls
-//Simple cache strategy with caching reading when the network is not available
-//(cache memory up to 10 mb
+        //Implementing cache for retrofit calls
+        //Simple cache strategy with caching reading when the network is not available
+        //(cache memory up to 10 mb)
         OkHttpClient okHttpClient = new OkHttpClient();
         File cacheDir = TopoblocApp.getInstance().getCacheDir();
         HttpResponseCache cache = null;
@@ -100,8 +112,8 @@ public class TopoblocModule {
             e.printStackTrace();
         }
         okHttpClient.setResponseCache(cache);
-        builder.setClient(new OkClient(okHttpClient));
-//Adding Interceptor for cache request only behaviors
+        builder.setClient(new OkClient(okHttpClient)/*new SignedOkClient(consumer,okHttpClient)*/);
+        //Adding Interceptor for cache request only behaviors
         builder.setRequestInterceptor(new RequestInterceptor() {
             @Override
             public void intercept(RequestFacade request) {

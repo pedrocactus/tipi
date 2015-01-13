@@ -7,9 +7,6 @@ import android.os.Build;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 
-import com.pedrocactus.topobloc.app.database.DataBaseHelper;
-import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.Dao;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -29,9 +26,6 @@ public class TopoblocApp extends Application {
     private static TopoblocApp instance;
 
     private SharedPreferences preferences;
-    private DataBaseHelper databaseHelper = null;
-
-    private Dao<KmlPlacemark, Integer> kmlDocumentDAO = null;
 
 
     private int VOIES_VIEW_STATE = -1;
@@ -79,8 +73,8 @@ public class TopoblocApp extends Application {
     }
 
     public void createDB(){
-        databaseHelper = new DataBaseHelper(this);
-        databaseHelper.getWritableDatabase();
+//        databaseHelper = new DataBaseHelper(this);
+//        databaseHelper.getWritableDatabase();
 
     }
 
@@ -104,21 +98,13 @@ public class TopoblocApp extends Application {
     public SharedPreferences getPreferences() {return preferences;}
 
 
-
-    public Dao<KmlPlacemark, Integer> getKmlPlacemarkDao() throws SQLException {
-        if (kmlDocumentDAO == null) {
-            kmlDocumentDAO = databaseHelper.getPlacemarkDAO();
-        }
-        return kmlDocumentDAO;
-    }
-
     @Override
     public void onTerminate() {
         super.onTerminate();
-        if (databaseHelper != null) {
-            OpenHelperManager.releaseHelper();
-            databaseHelper = null;
-        }
+//        if (databaseHelper != null) {
+//            OpenHelperManager.releaseHelper();
+//            databaseHelper = null;
+//        }
     }
 
 }

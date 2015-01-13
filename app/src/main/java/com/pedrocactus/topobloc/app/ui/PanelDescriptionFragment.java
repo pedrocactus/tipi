@@ -65,7 +65,7 @@ public class PanelDescriptionFragment extends Fragment {
         ImageView image = (ImageView) rootView.findViewById(R.id.imageView);
         int resid = Utils.getResIdFromName(feature.mExtendedData.get("nom"), getActivity());
         //Toast.makeText(getActivity(),"Ressource id "+resid,Toast.LENGTH_SHORT).show();
-        image.setImageResource(R.drawable.menez_ham);
+        //image.setImageResource(R.drawable.menez_ham);
 
         return rootView;
 
