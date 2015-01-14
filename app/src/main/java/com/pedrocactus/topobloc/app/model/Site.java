@@ -1,5 +1,8 @@
 package com.pedrocactus.topobloc.app.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
@@ -11,7 +14,6 @@ public class Site extends Place{
     public List<Sector> sectors;
     public String name;
     public String description;
-    public List<String> images;
 
 
 
@@ -22,15 +24,29 @@ public class Site extends Place{
 
     public Site(List<Sector> sectors, String name, String description,
                 List<String> images, float[] coordinates) {
-        super(name, coordinates);
+        super(name, coordinates,images);
         this.sectors = sectors;
         this.name = name;
         this.description = description;
-        this.images = images;
         this.coordinates = coordinates;
     }
 
+    private Site(Parcel in) {
 
+    }
+    public int describeContents() {return 0;}
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+    }
+    public static final Parcelable.Creator<Site> CREATOR
+            = new Parcelable.Creator<Site>() {
+        public Site createFromParcel(Parcel in) {
+            return new Site(in);
+        }
+        public Site[] newArray(int size) {
+            return new Site[size];
+        }
+    };
     /**
      * @return the sectors
      */
@@ -77,23 +93,6 @@ public class Site extends Place{
     public void setDescription(String description) {
         this.description = description;
     }
-
-
-    /**
-     * @return the images
-     */
-    public List<String> getImages() {
-        return images;
-    }
-
-
-    /**
-     * @param images the images to set
-     */
-    public void setImages(List<String> images) {
-        this.images = images;
-    }
-
 
     /**
      * @return the coordinates

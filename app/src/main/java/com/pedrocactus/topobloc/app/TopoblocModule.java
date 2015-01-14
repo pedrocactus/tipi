@@ -14,9 +14,10 @@ import com.pedrocactus.topobloc.app.service.SignedOkClient;
 import com.pedrocactus.topobloc.app.service.TopoblocAPI;
 import com.pedrocactus.topobloc.app.ui.MainActivity;
 import com.pedrocactus.topobloc.app.ui.MapFragment;
+import com.pedrocactus.topobloc.app.ui.MapboxFragment;
 import com.pedrocactus.topobloc.app.ui.utils.JacksonConverter;
-import com.squareup.okhttp.HttpResponseCache;
 import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Cache;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +39,7 @@ import retrofit.client.OkClient;
 @Module(
         injects = {
                 MainActivity.class,
+                MapboxFragment.class,
                 MapFragment.class,
                 SectorJob.class,
                 NationalSiteJob.class,
@@ -105,13 +107,13 @@ public class TopoblocModule {
         //(cache memory up to 10 mb)
         OkHttpClient okHttpClient = new OkHttpClient();
         File cacheDir = TopoblocApp.getInstance().getCacheDir();
-        HttpResponseCache cache = null;
+        Cache cache = null;
         try {
-            cache = new HttpResponseCache(cacheDir, 10 * 1024 * 1024);
+            cache = new Cache(cacheDir, 10 * 1024 * 1024);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        okHttpClient.setResponseCache(cache);
+        okHttpClient.setCache(cache);
         builder.setClient(new OkClient(okHttpClient)/*new SignedOkClient(consumer,okHttpClient)*/);
         //Adding Interceptor for cache request only behaviors
         builder.setRequestInterceptor(new RequestInterceptor() {

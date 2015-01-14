@@ -6,6 +6,8 @@ import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Route extends Place implements Parcelable{
 
@@ -19,7 +21,6 @@ public class Route extends Place implements Parcelable{
     private int number;
     private int rating;
     private String circuit;
-    public String image;
 
 
 
@@ -34,8 +35,8 @@ public class Route extends Place implements Parcelable{
     public Route(String level, boolean surplomb, boolean devers, boolean dalle,
                  boolean danger, boolean highball, boolean offshore, int number,
                  int rating, String circuit, String name, float[] coordinates,
-                 String image) {
-        super(name,coordinates);
+                 List<String> images) {
+        super(name,coordinates,images);
         this.level = level;
         this.surplomb = surplomb;
         this.devers = devers;
@@ -46,7 +47,6 @@ public class Route extends Place implements Parcelable{
         this.number = number;
         this.rating = rating;
         this.circuit = circuit;
-        this.image = image;
     }
 
     private Route(Parcel in) {
@@ -62,7 +62,6 @@ public class Route extends Place implements Parcelable{
         this.circuit = in.readString();
         this.name = in.readString();
         in.readFloatArray(this.coordinates);
-        this.image = in.readString();
         /*year = in.readInt();
         synopsis = in.readString();
         actors = new ArrayList<Actor>();
@@ -326,24 +325,6 @@ public class Route extends Place implements Parcelable{
     }
 
 
-
-
-    /**
-     * @return the image
-     */
-    public String getImage() {
-        return image;
-    }
-
-
-
-
-    /**
-     * @param image the image to set
-     */
-    public void setImage(String image) {
-        this.image = image;
-    }
 
 
 }

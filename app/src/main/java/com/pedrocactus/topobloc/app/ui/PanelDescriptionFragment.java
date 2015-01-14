@@ -25,7 +25,7 @@ import java.util.ArrayList;
  */
 public class PanelDescriptionFragment extends Fragment {
 
-    private KmlFeature feature;
+    private Place feature;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

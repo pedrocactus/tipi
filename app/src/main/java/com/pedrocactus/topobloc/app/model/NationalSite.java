@@ -1,17 +1,22 @@
 package com.pedrocactus.topobloc.app.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 /**
  * Created by pierrecastex on 12/01/2015.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NationalSite extends Place{
 
 
     public List<Sector> sectors;
     public String name;
     public String description;
-    public List<String> images;
 
 
 
@@ -22,13 +27,30 @@ public class NationalSite extends Place{
 
     public NationalSite(List<Sector> sectors, String name, String description,
                 List<String> images, float[] coordinates) {
-        super(name, coordinates);
+        super(name, coordinates,images);
         this.sectors = sectors;
         this.name = name;
         this.description = description;
         this.images = images;
     }
 
+    private NationalSite(Parcel in) {
+
+    }
+
+    public int describeContents() {return 0;}
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+    }
+    public static final Parcelable.Creator<NationalSite> CREATOR
+            = new Parcelable.Creator<NationalSite>() {
+        public NationalSite createFromParcel(Parcel in) {
+            return new NationalSite(in);
+        }
+        public NationalSite[] newArray(int size) {
+            return new NationalSite[size];
+        }
+    };
 
     /**
      * @return the sectors
