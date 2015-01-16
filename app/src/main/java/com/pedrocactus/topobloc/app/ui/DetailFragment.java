@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.path.android.jobqueue.JobManager;
 import com.pedrocactus.topobloc.app.R;
+import com.pedrocactus.topobloc.app.events.FetchDetailPlaceEvent;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.ui.view.DetailView;
 
@@ -36,8 +37,8 @@ public class DetailFragment extends BaseFragment{
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.item_detail_fragment, container,false);
-        ButterKnife.inject(this, view);
+        //View view = inflater.inflate(R.layout.item_detail_fragment, container,false);
+        //ButterKnife.inject(this, view);
         placeDetailView = new DetailView(getActivity());
         return placeDetailView;
     }
@@ -47,8 +48,8 @@ public class DetailFragment extends BaseFragment{
         if(savedInstanceState!=null){
             place = savedInstanceState.getParcelable("place");
         }else {
-//            place_id = getArguments().getParcelable(ARG_ITEM_ID);
-//            fetchMovie(place_id);
+            place = getArguments().getParcelable(ARG_ITEM_ID);
+            placeDetailView.bindModel(place);
         }
     }
     @Override
@@ -59,12 +60,12 @@ public class DetailFragment extends BaseFragment{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((BaseActivity) getActivity()).setActionBar(null, true);
+//        ((BaseActivity) getActivity()).setActionBar(null, true);
     }
 
-    public void onEventMainThread(FetchMovieEvent event) {
-        movie = event.getMovie();
-        updateMovie();
+    public void onEventMainThread(FetchDetailPlaceEvent event) {
+        place = event.getPlace();
+        updatePlace();
     }
 //    public void onEventMainThread(AddJobEvent event) {
 //        fetchMovie(movie_id);
