@@ -25,6 +25,7 @@ import com.pedrocactus.topobloc.app.adapters.DrawerItem;
 import com.nineoldandroids.view.animation.AnimatorProxy;
 import com.pedrocactus.topobloc.app.events.BusProvider;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
+import com.pedrocactus.topobloc.app.model.Place;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.squareup.otto.Subscribe;
 
@@ -41,7 +42,8 @@ public class MainActivity extends ActionBarActivity {
     private ListView mDrawerList;
     List<DrawerItem> dataList;
     CustomDrawerAdapter adapter;
-    private MapFragment mapFragment;
+    //private MapFragment mapFragment;
+    private MapboxFragment mapBoxFragment;
     private VoieSliderFragment voieFragment;
     private CharSequence mTitle;
     private boolean isDrawerLocked = false;
@@ -148,16 +150,16 @@ public class MainActivity extends ActionBarActivity {
 
 			// Create a new Fragment to be placed in the activity layout
 
-			mapFragment = new MapFragment();
+            mapBoxFragment = new MapboxFragment();
 
 			// In case this activity was started with special instructions from
 			// an
 			// Intent, pass the Intent's extras to the fragment as arguments
-			mapFragment.setArguments(getIntent().getExtras());
+            mapBoxFragment.setArguments(getIntent().getExtras());
 
 			// Add the fragment to the 'fragment_container' FrameLayout
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.content_frame, mapFragment).commit();
+					.add(R.id.content_frame, mapBoxFragment).commit();
 		}
         voieFragment = new VoieSliderFragment("6A");
 
@@ -205,19 +207,19 @@ public class MainActivity extends ActionBarActivity {
         final FragmentTransaction ft = fm.beginTransaction();
 
 
-        if(fragmentTag.equals(MapFragment.TAG)) {
+        if(fragmentTag.equals(MapboxFragment.TAG)) {
 
             // We can also animate the changing of fragment.
             ft.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_right,R.anim.slide_out_left);
-            mapFragment = (MapFragment) fm.findFragmentByTag(MapFragment.TAG);
-            if(mapFragment==null) {
-                mapFragment = new MapFragment();
+            mapBoxFragment = (MapboxFragment) fm.findFragmentByTag(MapboxFragment.TAG);
+            if(mapBoxFragment==null) {
+                mapBoxFragment = new MapboxFragment();
                 // Replace current fragment by the new one.
-                ft.add(R.id.content_frame, mapFragment);
+                ft.add(R.id.content_frame, mapBoxFragment);
 
             }else{
                 // Replace current fragment by the new one.
-                ft.replace(R.id.content_frame, mapFragment);
+                ft.replace(R.id.content_frame, mapBoxFragment);
 
             }
 
@@ -250,14 +252,21 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void goToMapFragment(View v) {
-        showFragment(mapFragment.TAG);
+        showFragment(mapBoxFragment.TAG);
     }
 
-    public void showPanelDescription(KmlFeature feature){
-        PanelDescriptionFragment panelFragment = new PanelDescriptionFragment();
+    public void showPanelDescription(Place place){
+//        PanelDescriptionFragment panelFragment = new PanelDescriptionFragment();
+//        Bundle arguments = new Bundle();
+//        arguments.putParcelable("description",feature);
+//        panelFragment.setArguments(arguments);
+
+        DetailFragment panelFragment = new DetailFragment();
         Bundle arguments = new Bundle();
-        arguments.putParcelable("description",feature);
+        arguments.putParcelable("detailPlace", place);
         panelFragment.setArguments(arguments);
+
+
         //if (voieFragment == null) {
         //    voieFragment = new VoieSliderFragment("6A");
         //}

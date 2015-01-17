@@ -1,5 +1,8 @@
 package com.pedrocactus.topobloc.app.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
@@ -26,8 +29,26 @@ public class Sector extends Place{
     public Sector() {
     }
 
-    public Sector(String name, float[] coordinates, int number, List<Route> routes, String description) {
-        super(name, coordinates);
+
+    private Sector(Parcel in) {
+
+    }
+    public int describeContents() {return 0;}
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+    }
+    public static final Parcelable.Creator<Sector> CREATOR
+            = new Parcelable.Creator<Sector>() {
+        public Sector createFromParcel(Parcel in) {
+            return new Sector(in);
+        }
+        public Sector[] newArray(int size) {
+            return new Sector[size];
+        }
+    };
+
+    public Sector(String name, float[] coordinates, int number, List<Route> routes, String description,List<String> images) {
+        super(name, coordinates,images);
         this.number = number;
         this.routes = routes;
         this.description = description;
@@ -35,6 +56,7 @@ public class Sector extends Place{
 
     private int number;
     private List<Route> routes;
+    private List<String> images;
 
     public String getDescription() {
         return description;
