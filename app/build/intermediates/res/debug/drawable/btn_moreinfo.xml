@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/moreinfo_arrow_pressed"
-        android:state_pressed="true" />
-    <item android:drawable="@drawable/moreinfo_arrow"
-        android:state_focused="true" />
-    <item android:drawable="@drawable/moreinfo_arrow" />
-</selector><!-- From: file:/home/castex/Avisto/Top/tipi/app/src/main/res/drawable/btn_moreinfo.xml -->
