@@ -1,10 +1,13 @@
 package com.pedrocactus.topobloc.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 /**
  * Created by pierrecastex on 12/01/2015.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NationalSite extends Place{
 
 
