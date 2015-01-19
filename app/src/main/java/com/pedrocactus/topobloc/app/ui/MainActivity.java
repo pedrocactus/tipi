@@ -37,7 +37,7 @@ import org.osmdroid.bonuspack.kml.KmlFeature;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends BaseActivity {
 
     private String[] sites;
     private DrawerLayout mDrawerLayout;
@@ -110,7 +110,7 @@ public class MainActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
 
-                BusProvider.getInstance().post(new ZoomToEvent(sites[arg2-1]));
+               // BusProvider.getInstance().post(new ZoomToEvent(sites[arg2-1]));
 
                 mDrawerLayout.closeDrawer(mDrawerList);
 
@@ -365,8 +365,7 @@ public void setTitle(CharSequence title) {
         return actionBarHeight;
     }
 
-    @Subscribe
-    public void collapsePanel(ZoomToEvent event){
+    public void onEventMainThread(ZoomToEvent event) {
         panelLayout.collapsePanel();
         panelLayout.hidePanel();
     }
@@ -393,6 +392,4 @@ public void setTitle(CharSequence title) {
             }
         }
     }
-
-
 }

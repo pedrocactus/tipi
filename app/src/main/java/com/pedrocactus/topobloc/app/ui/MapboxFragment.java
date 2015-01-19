@@ -1,14 +1,8 @@
 package com.pedrocactus.topobloc.app.ui;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,47 +21,35 @@ import com.pedrocactus.topobloc.app.TopoblocApp;
 import com.pedrocactus.topobloc.app.events.BusProvider;
 import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
-import com.pedrocactus.topobloc.app.job.NationalSiteJob;
+import com.pedrocactus.topobloc.app.job.NationalSitesJob;
+import com.pedrocactus.topobloc.app.job.RoutesJob;
+import com.pedrocactus.topobloc.app.job.SectorsJob;
+import com.pedrocactus.topobloc.app.job.SitesJob;
+import com.pedrocactus.topobloc.app.model.NationalSite;
 import com.pedrocactus.topobloc.app.model.Place;
-import com.pedrocactus.topobloc.app.ui.utils.SiteStyler;
-import com.pedrocactus.topobloc.app.ui.utils.VoieBulle;
+import com.pedrocactus.topobloc.app.model.Sector;
+import com.pedrocactus.topobloc.app.model.Site;
 import com.squareup.otto.Subscribe;
 
-import org.json.JSONObject;
 import org.osmdroid.DefaultResourceProxyImpl;
-import org.osmdroid.ResourceProxy;
-import org.osmdroid.api.IGeoPoint;
-import org.osmdroid.bonuspack.kml.KmlDocument;
 import org.osmdroid.bonuspack.kml.KmlFeature;
-import org.osmdroid.bonuspack.kml.KmlFolder;
-import org.osmdroid.bonuspack.kml.KmlPlacemark;
-import org.osmdroid.bonuspack.kml.Style;
-import org.osmdroid.bonuspack.overlays.FolderOverlay;
 import org.osmdroid.events.MapListener;
 import org.osmdroid.events.ScrollEvent;
 import org.osmdroid.events.ZoomEvent;
 import org.osmdroid.tileprovider.MapTileProviderArray;
-import org.osmdroid.tileprovider.MapTileProviderBasic;
 import org.osmdroid.tileprovider.modules.IArchiveFile;
-import org.osmdroid.tileprovider.tilesource.ITileSource;
-import org.osmdroid.tileprovider.tilesource.XYTileSource;
-import org.osmdroid.tileprovider.util.SimpleRegisterReceiver;
-import org.osmdroid.util.BoundingBoxE6;
 import org.osmdroid.util.GeoPoint;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.ItemizedOverlay;
-import com.mapbox.mapboxsdk.overlay.Overlay;
 
 import com.mapbox.mapboxsdk.views.MapView;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -117,11 +99,40 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
 
     private void fetchNationalSites(){
-        jobManager.addJobInBackground(new NationalSiteJob());
+        jobManager.addJobInBackground(new NationalSitesJob());
     }
+
+    private void fetchSites(String nationaSiteName){
+        jobManager.addJobInBackground(new SitesJob(nationaSiteName));
+    }
+
+    private void fetchSectors(String siteName){
+        jobManager.addJobInBackground(new SectorsJob(siteName));
+    }
+
+    private void fetchRoutes(String sectorName){
+        jobManager.addJobInBackground(new RoutesJob(sectorName));
+    }
+
     public void onEventMainThread(FetchPlacesEvent event) {
         places =  event.getPlaces();
         showFeatures(places);
+    }
+
+    public void onEventMainThread(ZoomToEvent event) {
+        mapView.zoomToBoundingBox(new BoundingBox(new LatLng(event.getBoundingBox()[4],event.getBoundingBox()[3]),new LatLng(event.getBoundingBox()[8],event.getBoundingBox()[7])));
+
+        if(places.get(0) instanceof NationalSite){
+            fetchSites(event.getNamePoint());
+        }else if(places.get(0) instanceof Site){
+            fetchSectors(event.getNamePoint());
+        }else if(places.get(0) instanceof Sector){
+            fetchRoutes(event.getNamePoint());
+        }
+        mapView.removeOverlay(mMyLocationOverlay);
+
+        mapView.invalidate();
+
     }
 
     private void showFeatures(final List<Place> places){
@@ -134,7 +145,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
         }
 
-        mapView.addItemizedOverlay(new ItemizedIconOverlay(getActivity(), markers, new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
+      mMyLocationOverlay = new ItemizedIconOverlay(getActivity(), markers, new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
             @Override
             public boolean onItemSingleTapUp(int i, Marker marker) {
                 ((MainActivity)getActivity()).showPanelDescription(places.get(i));
@@ -146,8 +157,8 @@ public class MapboxFragment extends BaseFragment implements MapListener{
                 Toast.makeText(getActivity(), "Marker Selected: " + marker.getTitle(), Toast.LENGTH_LONG).show();
                 return true;
             }
-        }));
-//        mapView.addItemizedOverlay(this.mMyLocationOverlay);
+        });
+        mapView.addItemizedOverlay(this.mMyLocationOverlay);
 
        // mapView.addItemizedOverlay(overlayTemp);
 

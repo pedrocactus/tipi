@@ -1,0 +1,269 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.390361832535141,
+                    48.65898083884311
+                ]
+            },
+            "properties": {
+                "name": "Dispeau",
+                "level": "6a",
+                "number": "1",
+                "highball": "true",
+                "devers": "true",
+                "dalle": "true",
+                "surplomb": "true",
+                "offshore": "true",
+                "danger": "false",
+                "circuit": "rouge"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.39035903706625,
+                    48.659026210387815
+                ]
+            },
+            "properties": {
+                "name": "Mon gaillard",
+                "level": "6c",
+                "number": "5",
+                "highball": "false",
+                "devers": "true",
+                "dalle": "true",
+                "surplomb": "true",
+                "offshore": "true",
+                "danger": "true",
+                "circuit": "rouge"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.390354644186564,
+                    48.65901091068544
+                ]
+            },
+            "properties": {
+                "name": "Monosodique",
+                "level": "7a+",
+                "number": "4",
+                "highball": "false",
+                "devers": "true",
+                "dalle": "true",
+                "surplomb": "true",
+                "offshore": "true",
+                "danger": "false",
+                "circuit": "rouge"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.390354644186564,
+                    48.65899561097842
+                ]
+            },
+            "properties": {
+                "name": "La couleur",
+                "level": "6a",
+                "number": "3",
+                "highball": "false",
+                "devers": "true",
+                "dalle": "true",
+                "surplomb": "true",
+                "offshore": "true",
+                "danger": "false",
+                "circuit": "rouge"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.390358637713551,
+                    48.65899033521631
+                ]
+            },
+            "properties": {
+                "name": "De l'amour",
+                "level": "6a",
+                "number": "2",
+                "highball": "false",
+                "devers": "true",
+                "dalle": "true",
+                "surplomb": "true",
+                "offshore": "true",
+                "danger": "false",
+                "circuit": "rouge"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.390356640950058,
+                    48.65905074265952
+                ]
+            },
+            "properties": {
+                "name": "Le crabe",
+                "level": "6a",
+                "number": "7",
+                "highball": "false",
+                "devers": "true",
+                "dalle": "true",
+                "surplomb": "true",
+                "offshore": "true",
+                "danger": "false",
+                "circuit": "rouge"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.390363030593237,
+                    48.659042565236945
+                ]
+            },
+            "properties": {
+                "name": "Lowe",
+                "level": "6c",
+                "number": "6",
+                "highball": "false",
+                "devers": "true",
+                "dalle": "true",
+                "surplomb": "true",
+                "offshore": "true",
+                "danger": "false",
+                "circuit": "rouge"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.390398572983422,
+                    48.659082397186
+                ]
+            },
+            "properties": {
+                "name": "Sweet dream",
+                "level": "6b",
+                "number": "12",
+                "highball": "false",
+                "devers": "true",
+                "dalle": "true",
+                "surplomb": "true",
+                "offshore": "true",
+                "danger": "false",
+                "circuit": "rouge"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.390399371688819,
+                    48.659073692193196
+                ]
+            },
+            "properties": {
+                "name": "Le savoir",
+                "level": "6c",
+                "number": "11",
+                "highball": "false",
+                "devers": "true",
+                "dalle": "true",
+                "surplomb": "true",
+                "offshore": "true",
+                "danger": "false",
+                "circuit": "rouge"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.39039298204564,
+                    48.65906525098662
+                ]
+            },
+            "properties": {
+                "name": "La rose des sables",
+                "level": "5",
+                "number": "10",
+                "highball": "false",
+                "devers": "true",
+                "dalle": "true",
+                "surplomb": "true",
+                "offshore": "true",
+                "danger": "false",
+                "circuit": "rouge"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.390373413763403,
+                    48.659061557958296
+                ]
+            },
+            "properties": {
+                "name": "La déchirure",
+                "level": "6c",
+                "number": "9",
+                "highball": "false",
+                "devers": "true",
+                "dalle": "true",
+                "surplomb": "true",
+                "offshore": "true",
+                "danger": "false",
+                "circuit": "rouge"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.39035903706625,
+                    48.659061557958296
+                ]
+            },
+            "properties": {
+                "name": "Projet",
+                "level": "?",
+                "number": "8",
+                "highball": "false",
+                "devers": "true",
+                "dalle": "true",
+                "surplomb": "true",
+                "offshore": "true",
+                "danger": "false",
+                "circuit": "rouge"
+            }
+        }
+    ]
+}

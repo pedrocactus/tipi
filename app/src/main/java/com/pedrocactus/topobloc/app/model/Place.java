@@ -3,42 +3,44 @@ package com.pedrocactus.topobloc.app.model;
 import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import java.util.List;
 
 /**
  * Created by pierrecastex on 12/01/2015.
  */
+//@JsonTypeInfo(
+//        use = JsonTypeInfo.Id.NAME,
+//        include = JsonTypeInfo.As.PROPERTY,
+//        property = "type")
+//@JsonSubTypes({
+//        @JsonSubTypes.Type(value = NationalSite.class, name = "nationalsite"),
+//        @JsonSubTypes.Type(value = Site.class, name = "site"),
+//        @JsonSubTypes.Type(value = Sector.class, name = "sector"),
+//        @JsonSubTypes.Type(value = Route.class, name = "route")
+//})
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class Place  implements Parcelable{
 
     public String name;
     public float[] coordinates;
-    public int zLevel;
-    public int[] boundingBox;
+    public float[] boundingBox;
     public List<String> images;
 
-    public Place(String name, float[] coordinates,List<String> images,int zLevel, int[] boundingBox) {
+    public Place(String name, float[] coordinates,List<String> images, float[] boundingBox) {
         this.name = name;
         this.coordinates = coordinates;
         this.images = images;
-        this.zLevel = zLevel;
         this.boundingBox = boundingBox;
     }
 
-    public int getzLevel() {
-        return zLevel;
-    }
-
-    public void setzLevel(int zLevel) {
-        this.zLevel = zLevel;
-    }
-
-    public int[] getBoundingBox() {
+    public float[] getBoundingBox() {
         return boundingBox;
     }
 
-    public void setBoundingBox(int[] boundingBox) {
+    public void setBoundingBox(float[] boundingBox) {
         this.boundingBox = boundingBox;
     }
 

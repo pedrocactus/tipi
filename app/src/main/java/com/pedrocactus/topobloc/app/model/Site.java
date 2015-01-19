@@ -23,8 +23,8 @@ public class Site extends Place{
 
 
     public Site(List<Sector> sectors, String name, String description,
-                List<String> images, float[] coordinates,int zLevel, int[] boundingBox) {
-        super(name, coordinates,images,zLevel,boundingBox);
+                List<String> images, float[] coordinates, float[] boundingBox) {
+        super(name, coordinates,images,boundingBox);
         this.sectors = sectors;
         this.name = name;
         this.description = description;
@@ -48,7 +48,7 @@ public class Site extends Place{
         }
     };
     /**
-     * @return the sectors
+     * @return the sites
      */
     public List<Sector> getSectors() {
         return sectors;
@@ -56,7 +56,7 @@ public class Site extends Place{
 
 
     /**
-     * @param sectors the sectors to set
+     * @param sectors the sites to set
      */
     public void setSectors(List<Sector> sectors) {
         this.sectors = sectors;

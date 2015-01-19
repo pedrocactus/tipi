@@ -20,7 +20,6 @@ import org.osmdroid.bonuspack.kml.KmlFolder;
 import org.osmdroid.bonuspack.kml.KmlPlacemark;
 import org.osmdroid.bonuspack.kml.Style;
 import org.osmdroid.bonuspack.overlays.FolderOverlay;
-import org.osmdroid.bonuspack.overlays.Marker;
 import org.osmdroid.events.MapListener;
 import org.osmdroid.events.ScrollEvent;
 import org.osmdroid.events.ZoomEvent;
@@ -43,7 +42,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,14 +53,9 @@ import com.pedrocactus.topobloc.app.R;
 import com.pedrocactus.topobloc.app.TopoblocApp;
 import com.pedrocactus.topobloc.app.events.BusProvider;
 import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
-import com.pedrocactus.topobloc.app.events.FetchRouteListEvent;
-import com.pedrocactus.topobloc.app.events.FetchSectorEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
-import com.pedrocactus.topobloc.app.job.NationalSiteJob;
-import com.pedrocactus.topobloc.app.job.SectorJob;
+import com.pedrocactus.topobloc.app.job.NationalSitesJob;
 import com.pedrocactus.topobloc.app.model.Place;
-import com.pedrocactus.topobloc.app.model.Route;
-import com.pedrocactus.topobloc.app.model.Sector;
 import com.pedrocactus.topobloc.app.ui.utils.SiteStyler;
 import com.pedrocactus.topobloc.app.ui.utils.VoieBulle;
 import com.squareup.otto.Subscribe;
@@ -354,7 +347,7 @@ public class MapFragment extends BaseFragment implements MapListener{
     }
 
     private void fetchNationalSites(){
-        jobManager.addJobInBackground(new NationalSiteJob());
+        jobManager.addJobInBackground(new NationalSitesJob());
     }
     public void onEventMainThread(FetchPlacesEvent event) {
         places =  event.getPlaces();

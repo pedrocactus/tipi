@@ -8,9 +8,8 @@ import com.path.android.jobqueue.config.Configuration;
 import com.path.android.jobqueue.log.CustomLogger;
 import com.path.android.jobqueue.network.NetworkUtilImpl;
 import com.pedrocactus.topobloc.app.events.NetworkErrorEvent;
-import com.pedrocactus.topobloc.app.job.NationalSiteJob;
-import com.pedrocactus.topobloc.app.job.SectorJob;
-import com.pedrocactus.topobloc.app.service.SignedOkClient;
+import com.pedrocactus.topobloc.app.job.NationalSitesJob;
+import com.pedrocactus.topobloc.app.job.SectorsJob;
 import com.pedrocactus.topobloc.app.service.TopoblocAPI;
 import com.pedrocactus.topobloc.app.ui.DetailFragment;
 import com.pedrocactus.topobloc.app.ui.MainActivity;
@@ -27,8 +26,6 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import oauth.signpost.OAuthConsumer;
-import oauth.signpost.basic.DefaultOAuthConsumer;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
@@ -43,8 +40,8 @@ import retrofit.client.OkClient;
                 MapboxFragment.class,
                 MapFragment.class,
                 DetailFragment.class,
-                SectorJob.class,
-                NationalSiteJob.class,
+                SectorsJob.class,
+                NationalSitesJob.class,
                 TopoblocApp.class,
                 JobManager.class
         }

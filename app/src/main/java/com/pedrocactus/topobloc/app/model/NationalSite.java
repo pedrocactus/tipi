@@ -4,17 +4,19 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import java.util.List;
 
 /**
  * Created by pierrecastex on 12/01/2015.
  */
+//@JsonTypeName("nationalsite")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NationalSite extends Place{
 
 
-    public List<Sector> sectors;
+    public List<Site> sites;
     public String name;
     public String description;
     public String history;
@@ -25,10 +27,10 @@ public class NationalSite extends Place{
 
     }
 
-    public NationalSite(List<Sector> sectors, String name, String description,String history,
-                List<String> images, float[] coordinates,int zLevel, int[] boundingBox) {
-        super(name, coordinates,images,zLevel,boundingBox);
-        this.sectors = sectors;
+    public NationalSite(List<Site> sites, String name, String description,String history,
+                List<String> images, float[] coordinates, float[] boundingBox) {
+        super(name, coordinates,images,boundingBox);
+        this.sites = sites;
         this.name = name;
         this.description = description;
         this.images = images;
@@ -54,18 +56,18 @@ public class NationalSite extends Place{
     };
 
     /**
-     * @return the sectors
+     * @return the sites
      */
-    public List<Sector> getSectors() {
-        return sectors;
+    public List<Site> getSites() {
+        return sites;
     }
 
 
     /**
-     * @param sectors the sectors to set
+     * @param sites the sites to set
      */
-    public void setSectors(List<Sector> sectors) {
-        this.sectors = sectors;
+    public void setSites(List<Site> sites) {
+        this.sites = sites;
     }
 
 

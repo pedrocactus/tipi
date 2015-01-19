@@ -25,6 +25,7 @@ import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by castex on 14/01/15.
@@ -37,6 +38,8 @@ public class DetailView extends LinearLayout {
 
     //@InjectView(R.id.place_imageview)
     ImageView placeImage;
+
+    Button zoomToButton;
 
     ListView placeDescriptionListView;
 
@@ -59,9 +62,19 @@ public class DetailView extends LinearLayout {
         adapter = new DetailListAdapter(context);
         placeDescriptionListView.setAdapter(adapter);
 
+        zoomToButton = (Button)findViewById(R.id.follow);
+
+
 
 }
-    public void bindModel(Place place){
+    public void bindModel(final Place place){
+        zoomToButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EventBus.getDefault().post(new ZoomToEvent(place.getName(),place.getBoundingBox()));
+            }
+        });
+
         title.setText(place.getName());
         Picasso.with(context)
                 .load(place.images.get(1))
