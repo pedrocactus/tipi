@@ -14,12 +14,32 @@ public abstract class Place  implements Parcelable{
 
     public String name;
     public float[] coordinates;
+    public int zLevel;
+    public int[] boundingBox;
     public List<String> images;
 
-    public Place(String name, float[] coordinates,List<String> images) {
+    public Place(String name, float[] coordinates,List<String> images,int zLevel, int[] boundingBox) {
         this.name = name;
         this.coordinates = coordinates;
         this.images = images;
+        this.zLevel = zLevel;
+        this.boundingBox = boundingBox;
+    }
+
+    public int getzLevel() {
+        return zLevel;
+    }
+
+    public void setzLevel(int zLevel) {
+        this.zLevel = zLevel;
+    }
+
+    public int[] getBoundingBox() {
+        return boundingBox;
+    }
+
+    public void setBoundingBox(int[] boundingBox) {
+        this.boundingBox = boundingBox;
     }
 
     public Place() {

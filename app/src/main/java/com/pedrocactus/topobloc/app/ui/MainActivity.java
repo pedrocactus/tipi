@@ -17,7 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.pedrocactus.topobloc.app.R;
 import com.pedrocactus.topobloc.app.adapters.CustomDrawerAdapter;
@@ -26,6 +28,7 @@ import com.nineoldandroids.view.animation.AnimatorProxy;
 import com.pedrocactus.topobloc.app.events.BusProvider;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
 import com.pedrocactus.topobloc.app.model.Place;
+import com.pedrocactus.topobloc.app.ui.utils.Utils;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.squareup.otto.Subscribe;
 
@@ -109,21 +112,6 @@ public class MainActivity extends ActionBarActivity {
 
                 BusProvider.getInstance().post(new ZoomToEvent(sites[arg2-1]));
 
-
-                // Check that the activity is using the layout version with
-                // the fragment_container FrameLayout
-                /*if (findViewById(R.id.content_frame) != null && !sites[arg2].equals("User Settings")) {
-
-                    mapFragment.filterStyle(sites[arg2]);
-
-
-                }else{
-                    Intent intent = new Intent(MainActivity.this,
-                            UserSettingsActivity.class);
-                    startActivity(intent);
-
-                }
-*/
                 mDrawerLayout.closeDrawer(mDrawerList);
 
             }
@@ -169,6 +157,10 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onPanelSlide(View panel, float slideOffset) {
                 setActionBarTranslation(panelLayout.getCurrentParalaxOffset());
+                if (panel.getPaddingBottom() != 0) {
+                    panel.setPadding(panel.getPaddingLeft(),
+                            panel.getPaddingTop(), panel.getPaddingRight(), 0);
+                }
             }
 
             @Override
@@ -182,7 +174,10 @@ public class MainActivity extends ActionBarActivity {
             }
 
             @Override
-            public void onPanelAnchored(View view) {
+            public void onPanelAnchored(View panel) {
+                int paddingPx = (int) Utils.getPixels(TypedValue.COMPLEX_UNIT_DIP, 68);
+                panel.setPadding(panel.getPaddingLeft(),
+                        panel.getPaddingTop(), panel.getPaddingRight(), paddingPx);
 
             }
 
@@ -191,7 +186,11 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
+
+
+       // panelLayout.setDragView((View) findViewById(R.id.dragView));
         panelLayout.setEnableDragViewTouchEvents(true);
+        panelLayout.setSlidingEnabled(true);
 
         panelLayout.hidePanel();
 	}
@@ -274,7 +273,7 @@ public class MainActivity extends ActionBarActivity {
         //getSupportFragmentManager().beginTransaction()
           //      .add(R.id.panel, voieFragment).commit();
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.panel, panelFragment).commit();
+                .replace(R.id.panel, panelFragment).commit();
         panelLayout.showPanel();
 
     }
@@ -395,15 +394,5 @@ public void setTitle(CharSequence title) {
         }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        BusProvider.getInstance().register(this);
-    }
-    @Override
-    public void onPause() {
-        super.onPause();
-        BusProvider.getInstance().unregister(this);
-    }
 
 }

@@ -51,16 +51,16 @@
     <string name="pencil">Pencil</string>
     <string name="spaceShip">Space Ship</string>
     <!-- Map Ids -->
-    <string name="satelliteMapId">brunosan.map-cyglrrfu</string>
+    <string name="satelliteMapId">pedrocactus.zyk138fr</string>
     <string name="terrainMapId">examples.map-zgrqqx0w</string>
     <string name="streetMapId">examples.map-i87786ca</string>
-    <string name="outdoorsMapId">examples.ik7djhcc</string>
+    <string name="outdoorsMapId">pedrocactus.k675ibhe</string>
     <string name="woodcutMapId">examples.xqwfusor</string>
     <string name="pencilMapId">examples.a4c252ab</string>
     <string name="spaceShipMapId">examples.3hqcl3di</string>
 
 
-    <string name="detail_description">Description</string>
+    <string name="detail_description">&lt;u>Description&lt;u> :</string>
 
 
 

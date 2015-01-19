@@ -65,7 +65,7 @@ public class SiteStyler implements KmlFeature.Styler {
             @Override
             public boolean onMarkerClick(Marker marker, MapView mapView) {
                 marker.setIcon(defaultMarker);
-                ((MainActivity)mapView.getContext()).showPanelDescription(kmlPlacemark);
+                //((MainActivity)mapView.getContext()).showPanelDescription(kmlPlacemark);
                 Toast.makeText(mapView.getContext(),"yes",Toast.LENGTH_SHORT).show();
                 mapView.invalidate();
                 return false;

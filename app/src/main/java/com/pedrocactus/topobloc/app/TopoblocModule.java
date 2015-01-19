@@ -12,6 +12,7 @@ import com.pedrocactus.topobloc.app.job.NationalSiteJob;
 import com.pedrocactus.topobloc.app.job.SectorJob;
 import com.pedrocactus.topobloc.app.service.SignedOkClient;
 import com.pedrocactus.topobloc.app.service.TopoblocAPI;
+import com.pedrocactus.topobloc.app.ui.DetailFragment;
 import com.pedrocactus.topobloc.app.ui.MainActivity;
 import com.pedrocactus.topobloc.app.ui.MapFragment;
 import com.pedrocactus.topobloc.app.ui.MapboxFragment;
@@ -41,6 +42,7 @@ import retrofit.client.OkClient;
                 MainActivity.class,
                 MapboxFragment.class,
                 MapFragment.class,
+                DetailFragment.class,
                 SectorJob.class,
                 NationalSiteJob.class,
                 TopoblocApp.class,

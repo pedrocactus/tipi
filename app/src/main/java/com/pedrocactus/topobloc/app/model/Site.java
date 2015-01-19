@@ -23,8 +23,8 @@ public class Site extends Place{
 
 
     public Site(List<Sector> sectors, String name, String description,
-                List<String> images, float[] coordinates) {
-        super(name, coordinates,images);
+                List<String> images, float[] coordinates,int zLevel, int[] boundingBox) {
+        super(name, coordinates,images,zLevel,boundingBox);
         this.sectors = sectors;
         this.name = name;
         this.description = description;

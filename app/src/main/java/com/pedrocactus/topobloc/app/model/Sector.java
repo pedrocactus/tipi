@@ -47,8 +47,8 @@ public class Sector extends Place{
         }
     };
 
-    public Sector(String name, float[] coordinates, int number, List<Route> routes, String description,List<String> images) {
-        super(name, coordinates,images);
+    public Sector(String name, float[] coordinates, int number, List<Route> routes, String description,List<String> images,int zLevel, int[] boundingBox) {
+        super(name, coordinates,images,zLevel,boundingBox);
         this.number = number;
         this.routes = routes;
         this.description = description;

@@ -32,25 +32,30 @@ import butterknife.InjectView;
 public class DetailView extends LinearLayout {
 
 
-    @InjectView(R.id.name)
+    //@InjectView(R.id.name)
     TextView title;
 
-    @InjectView(R.id.place_imageview)
+    //@InjectView(R.id.place_imageview)
     ImageView placeImage;
 
     ListView placeDescriptionListView;
 
     private DetailListAdapter adapter;
 
+    private Context context;
+
 
     public DetailView(Context context) {
         super(context);
-        View headerView = LayoutInflater.from(context).inflate(R.layout.panel_description_layout, null, true);
-        LayoutInflater.from(context).inflate(R.layout.root_layout_slideup, this, true);
-        ButterKnife.inject(this, headerView);
+        this.context = context;
+        //View headerView = LayoutInflater.from(context).inflate(R.layout., null, true);
+        LayoutInflater.from(context).inflate(R.layout.panel_description_layout, this, true);
+        //ButterKnife.inject(this, this);
 
         placeDescriptionListView = (ListView)findViewById(R.id.listView_detail_info);
-        placeDescriptionListView.addHeaderView(headerView);
+        title = (TextView)findViewById(R.id.name);
+        placeImage = (ImageView)findViewById(R.id.place_imageview);
+        //placeDescriptionListView.addHeaderView(headerView);
         adapter = new DetailListAdapter(context);
         placeDescriptionListView.setAdapter(adapter);
 
@@ -58,8 +63,8 @@ public class DetailView extends LinearLayout {
 }
     public void bindModel(Place place){
         title.setText(place.getName());
-        Picasso.with(getContext())
-                .load(place.images.get(0))
+        Picasso.with(context)
+                .load(place.images.get(1))
                 .into(placeImage);
 
         //Setting up the listview with different layotus

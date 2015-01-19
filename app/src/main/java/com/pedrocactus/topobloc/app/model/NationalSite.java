@@ -17,6 +17,7 @@ public class NationalSite extends Place{
     public List<Sector> sectors;
     public String name;
     public String description;
+    public String history;
 
 
 
@@ -24,14 +25,14 @@ public class NationalSite extends Place{
 
     }
 
-
-    public NationalSite(List<Sector> sectors, String name, String description,
-                List<String> images, float[] coordinates) {
-        super(name, coordinates,images);
+    public NationalSite(List<Sector> sectors, String name, String description,String history,
+                List<String> images, float[] coordinates,int zLevel, int[] boundingBox) {
+        super(name, coordinates,images,zLevel,boundingBox);
         this.sectors = sectors;
         this.name = name;
         this.description = description;
         this.images = images;
+        this.history = history;
     }
 
     private NationalSite(Parcel in) {
@@ -130,5 +131,15 @@ public class NationalSite extends Place{
     public void setCoordinates(float[] coordinates) {
         this.coordinates = coordinates;
     }
+
+
+    public String getHistory() {
+        return history;
+    }
+
+    public void setHistory(String history) {
+        this.history = history;
+    }
+
 
 }

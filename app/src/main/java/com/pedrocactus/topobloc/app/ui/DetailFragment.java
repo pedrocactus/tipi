@@ -37,8 +37,8 @@ public class DetailFragment extends BaseFragment{
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //View view = inflater.inflate(R.layout.item_detail_fragment, container,false);
-        //ButterKnife.inject(this, view);
+        View view = inflater.inflate(R.layout.panel_description_layout, container,false);
+        ButterKnife.inject(this, view);
         placeDetailView = new DetailView(getActivity());
         return placeDetailView;
     }

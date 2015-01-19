@@ -107,7 +107,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         mapView.setCenter(mapView.getTileProvider().getCenterCoordinate());
         mapView.setZoom(0);
 
-        currentMap = getString(R.string.streetMapId);
+        currentMap = getString(R.string.outdoorsMapId);
         mapView.setUserLocationEnabled(true);
 
 
@@ -124,58 +124,29 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         showFeatures(places);
     }
 
-    private void showFeatures(List<Place> places){
+    private void showFeatures(final List<Place> places){
         final ArrayList<Marker> items = new ArrayList<Marker>();
         GeoPoint point3 = new GeoPoint(48.6590, -4.3905);
-
+        ArrayList<Marker> markers = new ArrayList<Marker>();
         for (int i=0;i<places.size();i++){
             // Put overlay icon a little way from map centre
-            mapView.addMarker(new Marker("Here", "SampleDescription", new LatLng(places.get(i).getCoordinates()[1], places.get(i).getCoordinates()[0])));
+            markers.add(new Marker("Here", "SampleDescription", new LatLng(places.get(i).getCoordinates()[1], places.get(i).getCoordinates()[0])));
 
         }
-        //items.add(new OverlayItem("Here", "SampleDescription", point3));
 
-		/* OnTapListener for the Markers, shows a simple Toast. */
-
-
-//        this.mMyLocationOverlay = new ItemizedIconOverlay(items,
-//                new ItemizedIconOverlay.OnItemGestureListener<Overlay>() {
-//                    @Override
-//                    public boolean onItemSingleTapUp(final int index,
-//                                                     final Overlay item) {
-//                        Intent intent = new Intent(getActivity(), PanoramaActivity.class);
-//                        startActivity(intent);
-//                        return true; // We 'handled' this event.
-//                    }
-//
-//                    @Override
-//                    public boolean onItemLongPress(final int index,
-//                                                   final Overlay item) {
-////                        Toast.makeText(getActivity(),
-////                                "Item '" + item.getTitle(), Toast.LENGTH_LONG)
-////                                .show();
-//                        return false;
-//                    }
-//                }, mResourceProxy);
-
-        ItemizedOverlay overlayTemp = new ItemizedOverlay() {
+        mapView.addItemizedOverlay(new ItemizedIconOverlay(getActivity(), markers, new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
             @Override
-            protected Marker createItem(int i) {
-                return items.get(i);
+            public boolean onItemSingleTapUp(int i, Marker marker) {
+                ((MainActivity)getActivity()).showPanelDescription(places.get(i));
+                return true;
             }
 
             @Override
-            public int size() {
-                return items.size();
+            public boolean onItemLongPress(int i, Marker marker) {
+                Toast.makeText(getActivity(), "Marker Selected: " + marker.getTitle(), Toast.LENGTH_LONG).show();
+                return true;
             }
-
-            @Override
-            public boolean onSnapToItem(int x, int y, Point snapPoint, MapView mapView) {
-
-                ((MainActivity)getActivity()).showPanelDescription();
-                return false;
-            }
-        };
+        }));
 //        mapView.addItemizedOverlay(this.mMyLocationOverlay);
 
        // mapView.addItemizedOverlay(overlayTemp);
