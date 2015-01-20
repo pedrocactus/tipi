@@ -120,7 +120,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     }
 
     public void onEventMainThread(ZoomToEvent event) {
-        mapView.zoomToBoundingBox(new BoundingBox(new LatLng(event.getBoundingBox()[4],event.getBoundingBox()[3]),new LatLng(event.getBoundingBox()[8],event.getBoundingBox()[7])));
+        mapView.zoomToBoundingBox(new BoundingBox(new LatLng(event.getBoundingBox()[3],event.getBoundingBox()[2]),new LatLng(event.getBoundingBox()[7],event.getBoundingBox()[6])));
 
         if(places.get(0) instanceof NationalSite){
             fetchSites(event.getNamePoint());
@@ -131,7 +131,6 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         }
         mapView.removeOverlay(mMyLocationOverlay);
 
-        mapView.invalidate();
 
     }
 

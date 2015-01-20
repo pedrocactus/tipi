@@ -3,8 +3,6 @@ package com.pedrocactus.topobloc.app.model;
 import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import java.util.List;
 
@@ -26,22 +24,22 @@ public abstract class Place  implements Parcelable{
 
     public String name;
     public float[] coordinates;
-    public float[] boundingBox;
+    public float[] boundingbox;
     public List<String> images;
 
-    public Place(String name, float[] coordinates,List<String> images, float[] boundingBox) {
+    public Place(String name, float[] coordinates,List<String> images, float[] boundingbox) {
         this.name = name;
         this.coordinates = coordinates;
         this.images = images;
-        this.boundingBox = boundingBox;
+        this.boundingbox = boundingbox;
     }
 
-    public float[] getBoundingBox() {
-        return boundingBox;
+    public float[] getBoundingbox() {
+        return boundingbox;
     }
 
-    public void setBoundingBox(float[] boundingBox) {
-        this.boundingBox = boundingBox;
+    public void setBoundingbox(float[] boundingbox) {
+        this.boundingbox = boundingbox;
     }
 
     public Place() {

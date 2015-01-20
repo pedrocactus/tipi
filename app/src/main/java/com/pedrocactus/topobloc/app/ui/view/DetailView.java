@@ -1,10 +1,8 @@
 package com.pedrocactus.topobloc.app.ui.view;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,19 +10,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.pedrocactus.topobloc.app.R;
-import com.pedrocactus.topobloc.app.events.BusProvider;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
 import com.pedrocactus.topobloc.app.model.NationalSite;
 import com.pedrocactus.topobloc.app.model.Place;
-import com.pedrocactus.topobloc.app.ui.utils.Utils;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -71,7 +65,7 @@ public class DetailView extends LinearLayout {
         zoomToButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                EventBus.getDefault().post(new ZoomToEvent(place.getName(),place.getBoundingBox()));
+                EventBus.getDefault().post(new ZoomToEvent(place.getName(),place.getBoundingbox()));
             }
         });
 

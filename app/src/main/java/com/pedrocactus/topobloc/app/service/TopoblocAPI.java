@@ -19,19 +19,19 @@ public interface TopoblocAPI {
 
 
     @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
-    @GET("/getRoute")
-    List<Route> getRoutesFromSector(@Query("name") String sectorName);
+    @GET("/getRoutes")
+    List<Route> getRoutesFromSector(@Query("sectorName") String sectorName);
 
     @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
     @GET("/getNationalSites")
     List<NationalSite> getNationalSites();
 
     @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
-    @GET("/getSite")
+    @GET("/getSectors")
     List<Sector> getSectorsFromSite(@Query("siteName") String siteName);
 
     @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
-    @GET("/getSite")
+    @GET("/getSites")
     List<Site> getSitesFromNational(@Query("nationalSiteName") String siteName);
 /*
     @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")

@@ -14,6 +14,7 @@ android {
             res.srcDirs =
                     [
                             'src/main/res/layouts/layout-detailslideup',
+                            'src/main/res/layouts/layout-list',
                             'src/main/res/layouts/layout-map',
                             'src/main/res/layouts',
                             'src/main/res'
