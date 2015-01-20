@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TopoPOC</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="drawer_open">Open Drawer</string>
+    <string name="drawer_close">Close Drawer</string>
+
+    <string-array name="planets">
+        <item>dalle</item>
+        <item>plat</item>
+        <item>arrete</item>
+        <item>reta</item>
+        <item>tout</item>
+        <item>User Settings</item>
+    </string-array>
+    
+    	<string name="spinner_prompt">Select the panorama type</string>
+	<string-array name="panorama_types">
+	    <item>Cubic</item>
+	    <item>Spherical2</item>
+	    <item>Spherical</item>
+	    <item>Cylindrical</item>
+	</string-array>
+    <string-array name="cotations">
+        <item>Cubic</item>
+        <item>Spherical2</item>
+        <item>Spherical</item>
+        <item>Cylindrical</item>
+    </string-array>
+    <string-array name="sites">
+        <item>Petit Paradis</item>
+        <item>Menez Ham</item>
+        <item>La Rivière</item>
+        <item>Bivouac</item>
+    </string-array>
+
+    <string name="menez_ham"></string>
+
+
+    <string name="menu_examplemaps">Layers</string>
+    <string name="reportBugs">Report Bugs</string>
+    <!-- Map Labels -->
+    <string name="satellite">Satellite</string>
+    <string name="terrain">Terrain</string>
+    <string name="street">Street</string>
+    <string name="outdoors">Outdoors</string>
+    <string name="woodcut">Woodcut</string>
+    <string name="pencil">Pencil</string>
+    <string name="spaceShip">Space Ship</string>
+    <!-- Map Ids -->
+    <string name="satelliteMapId">pedrocactus.zyk138fr</string>
+    <string name="terrainMapId">examples.map-zgrqqx0w</string>
+    <string name="streetMapId">examples.map-i87786ca</string>
+    <string name="outdoorsMapId">pedrocactus.k675ibhe</string>
+    <string name="woodcutMapId">examples.xqwfusor</string>
+    <string name="pencilMapId">examples.a4c252ab</string>
+    <string name="spaceShipMapId">examples.3hqcl3di</string>
+
+
+    <string name="detail_description">&lt;u>Description&lt;u> :</string>
+    <string name="detail_history">&lt;u>Histoire&lt;u> :</string>
+
+
+
+</resources>

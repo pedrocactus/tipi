@@ -1,18 +1,11 @@
 package com.pedrocactus.topobloc.app.ui;
 
-import android.app.SearchManager;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
-import android.text.TextUtils;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 
 import com.pedrocactus.topobloc.app.R;
+import com.pedrocactus.topobloc.app.ui.base.BaseActivity;
 
 /**
  * Created by pierrecastex on 19/01/2015.
@@ -110,7 +103,7 @@ public class ListActivity extends BaseActivity /*implements android.support.v7.w
 //    private void goToDetailFragment(long movieId) {
 //
 //        Intent detailIntent = new Intent(this, DetailActivity.class);
-//        detailIntent.putExtra(MovieDetailFragment.ARG_ITEM_ID, movieId);
+//        detailIntent.putExtra(MovieDetailFragment.PLACE_ID, movieId);
 //        startActivity(detailIntent);
 //
 //    }

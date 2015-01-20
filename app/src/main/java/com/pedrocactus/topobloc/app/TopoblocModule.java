@@ -13,10 +13,11 @@ import com.pedrocactus.topobloc.app.job.RoutesJob;
 import com.pedrocactus.topobloc.app.job.SectorsJob;
 import com.pedrocactus.topobloc.app.job.SitesJob;
 import com.pedrocactus.topobloc.app.service.TopoblocAPI;
-import com.pedrocactus.topobloc.app.ui.DetailFragment;
+import com.pedrocactus.topobloc.app.ui.slidepanel.DetailFragment;
 import com.pedrocactus.topobloc.app.ui.MainActivity;
 import com.pedrocactus.topobloc.app.ui.MapFragment;
 import com.pedrocactus.topobloc.app.ui.MapboxFragment;
+import com.pedrocactus.topobloc.app.ui.slidepanel.DetailSliderFragment;
 import com.pedrocactus.topobloc.app.ui.utils.JacksonConverter;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Cache;
@@ -42,6 +43,7 @@ import retrofit.client.OkClient;
                 MapboxFragment.class,
                 MapFragment.class,
                 DetailFragment.class,
+                DetailSliderFragment.class,
                 SectorsJob.class,
                 SitesJob.class,
                 RoutesJob.class,

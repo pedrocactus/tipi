@@ -56,6 +56,7 @@ import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
 import com.pedrocactus.topobloc.app.job.NationalSitesJob;
 import com.pedrocactus.topobloc.app.model.Place;
+import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
 import com.pedrocactus.topobloc.app.ui.utils.SiteStyler;
 import com.pedrocactus.topobloc.app.ui.utils.VoieBulle;
 import com.squareup.otto.Subscribe;

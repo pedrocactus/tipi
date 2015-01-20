@@ -5,11 +5,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
@@ -17,22 +15,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.pedrocactus.topobloc.app.R;
 import com.pedrocactus.topobloc.app.adapters.CustomDrawerAdapter;
 import com.pedrocactus.topobloc.app.adapters.DrawerItem;
 import com.nineoldandroids.view.animation.AnimatorProxy;
-import com.pedrocactus.topobloc.app.events.BusProvider;
+import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
+import com.pedrocactus.topobloc.app.events.ShowDetailEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
 import com.pedrocactus.topobloc.app.model.Place;
+import com.pedrocactus.topobloc.app.ui.base.BaseActivity;
+import com.pedrocactus.topobloc.app.ui.slidepanel.DetailFragment;
+import com.pedrocactus.topobloc.app.ui.slidepanel.DetailSliderFragment;
 import com.pedrocactus.topobloc.app.ui.utils.Utils;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
-import com.squareup.otto.Subscribe;
-
-import org.osmdroid.bonuspack.kml.KmlFeature;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +45,7 @@ public class MainActivity extends BaseActivity {
     //private MapFragment mapFragment;
     private MapboxFragment mapBoxFragment;
     private VoieSliderFragment voieFragment;
+    private DetailSliderFragment detailSliderFragment;
     private CharSequence mTitle;
     private boolean isDrawerLocked = false;
     private SlidingUpPanelLayout panelLayout;
@@ -254,16 +252,31 @@ public class MainActivity extends BaseActivity {
         showFragment(mapBoxFragment.TAG);
     }
 
-    public void showPanelDescription(Place place){
+
+    public void onEventMainThread(FetchPlacesEvent event) {
+        detailSliderFragment = new DetailSliderFragment();
+                Bundle arguments = new Bundle();
+        arguments.putParcelableArrayList("places", (ArrayList<Place>) event.getPlaces());
+        detailSliderFragment.setArguments(arguments);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.panel, detailSliderFragment).commit();
+    }
+
+    public void showPanelDescription(int placeIndex){
 //        PanelDescriptionFragment panelFragment = new PanelDescriptionFragment();
 //        Bundle arguments = new Bundle();
 //        arguments.putParcelable("description",feature);
 //        panelFragment.setArguments(arguments);
 
-        DetailFragment panelFragment = new DetailFragment();
-        Bundle arguments = new Bundle();
-        arguments.putParcelable("detailPlace", place);
-        panelFragment.setArguments(arguments);
+//        DetailFragment panelFragment = new DetailFragment();
+//        Bundle arguments = new Bundle();
+//        arguments.putParcelable("detailPlace", place);
+//        panelFragment.setArguments(arguments);
+
+//        DetailSliderFragment slierFragment = new DetailSliderFragment();
+//        Bundle arguments = new Bundle();
+//        arguments.putParcelable("detailPlace", places);
+//        slierFragment.setArguments(arguments);
 
 
         //if (voieFragment == null) {
@@ -272,9 +285,11 @@ public class MainActivity extends BaseActivity {
         // Replace current fragment by the new one.
         //getSupportFragmentManager().beginTransaction()
           //      .add(R.id.panel, voieFragment).commit();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.panel, panelFragment).commit();
+
+
+        eventBus.post(new ShowDetailEvent(placeIndex));
         panelLayout.showPanel();
+
 
     }
 

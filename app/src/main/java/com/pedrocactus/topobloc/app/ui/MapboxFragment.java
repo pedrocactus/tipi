@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.mapbox.mapboxsdk.api.ILatLng;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.overlay.Icon;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MapboxTileLayer;
@@ -20,6 +21,7 @@ import com.pedrocactus.topobloc.app.R;
 import com.pedrocactus.topobloc.app.TopoblocApp;
 import com.pedrocactus.topobloc.app.events.BusProvider;
 import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
+import com.pedrocactus.topobloc.app.events.SwipeDetailEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
 import com.pedrocactus.topobloc.app.job.NationalSitesJob;
 import com.pedrocactus.topobloc.app.job.RoutesJob;
@@ -29,6 +31,7 @@ import com.pedrocactus.topobloc.app.model.NationalSite;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.model.Sector;
 import com.pedrocactus.topobloc.app.model.Site;
+import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
 import com.squareup.otto.Subscribe;
 
 import org.osmdroid.DefaultResourceProxyImpl;
@@ -86,8 +89,8 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         mapView = (MapView) rootView.findViewById(R.id.mapview);
         mapView.setMinZoomLevel(mapView.getTileProvider().getMinimumZoomLevel());
         mapView.setMaxZoomLevel(mapView.getTileProvider().getMaximumZoomLevel());
-        mapView.setCenter(mapView.getTileProvider().getCenterCoordinate());
-        mapView.setZoom(0);
+        mapView.setCenter(new LatLng(46.629824,1.845703));
+        mapView.setZoom(7);
 
         currentMap = getString(R.string.outdoorsMapId);
         mapView.setUserLocationEnabled(true);
@@ -120,7 +123,10 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     }
 
     public void onEventMainThread(ZoomToEvent event) {
-        mapView.zoomToBoundingBox(new BoundingBox(new LatLng(event.getBoundingBox()[3],event.getBoundingBox()[2]),new LatLng(event.getBoundingBox()[7],event.getBoundingBox()[6])));
+
+        LatLng northEast = new LatLng(event.getBoundingBox()[5],event.getBoundingBox()[4]);
+        LatLng southWest = new LatLng(event.getBoundingBox()[1],event.getBoundingBox()[0]);
+        mapView.zoomToBoundingBox(new BoundingBox(northEast,southWest));
 
         if(places.get(0) instanceof NationalSite){
             fetchSites(event.getNamePoint());
@@ -134,20 +140,29 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
     }
 
+    public void onEventMainThread(SwipeDetailEvent event) {
+        mMyLocationOverlay.getItem(event.getIndexToShow()).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
+        mMyLocationOverlay.getItem(event.getPreviousIndex()).setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
+        mapView.invalidate();
+
+    }
+
     private void showFeatures(final List<Place> places){
         final ArrayList<Marker> items = new ArrayList<Marker>();
         GeoPoint point3 = new GeoPoint(48.6590, -4.3905);
         ArrayList<Marker> markers = new ArrayList<Marker>();
         for (int i=0;i<places.size();i++){
             // Put overlay icon a little way from map centre
-            markers.add(new Marker("Here", "SampleDescription", new LatLng(places.get(i).getCoordinates()[1], places.get(i).getCoordinates()[0])));
+            Marker marker = new Marker("Here", "SampleDescription", new LatLng(places.get(i).getCoordinates()[1], places.get(i).getCoordinates()[0]));
+            marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
+            markers.add(marker);
 
         }
 
       mMyLocationOverlay = new ItemizedIconOverlay(getActivity(), markers, new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
             @Override
             public boolean onItemSingleTapUp(int i, Marker marker) {
-                ((MainActivity)getActivity()).showPanelDescription(places.get(i));
+                ((MainActivity)getActivity()).showPanelDescription(i);
                 return true;
             }
 
