@@ -1,5 +1,6 @@
 package com.pedrocactus.topobloc.app.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -64,7 +65,6 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
 	private ItemizedOverlay mMyLocationOverlay;
 	private DefaultResourceProxyImpl mResourceProxy;
-    private MapTileProviderArray provider;
     private IArchiveFile[] files;
     private MapView mapView;
     private  KmlFeature.Styler normalStyler;
@@ -74,18 +74,21 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     private List<Place> places;
 
 
+
     @Inject
     JobManager jobManager;
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+    }
 
-	@Override
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
 
         View rootView = inflater.inflate(R.layout.mapbox, container, false);
-        TopoblocApp.injectMembers(this);
-        ((MainActivity)getActivity()).setDrawerEnable(true);
         mapView = (MapView) rootView.findViewById(R.id.mapview);
         mapView.setMinZoomLevel(mapView.getTileProvider().getMinimumZoomLevel());
         mapView.setMaxZoomLevel(mapView.getTileProvider().getMaximumZoomLevel());
@@ -199,7 +202,6 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     @Override
     public void onDestroyView(){
 
-        provider.detach();
         mapView.onDetach();
         super.onDestroyView();
     }

@@ -10,7 +10,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.pedrocactus.topobloc.app.R;
-import com.pedrocactus.topobloc.app.events.PhotoTouchEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
 import com.pedrocactus.topobloc.app.model.NationalSite;
 import com.pedrocactus.topobloc.app.model.Place;
@@ -25,7 +24,7 @@ import de.greenrobot.event.EventBus;
 /**
  * Created by castex on 14/01/15.
  */
-public class DetailView extends LinearLayout implements CustomDetailView{
+public class RouteDetailView extends LinearLayout implements CustomDetailView{
 
 
     //@InjectView(R.id.name)
@@ -43,7 +42,7 @@ public class DetailView extends LinearLayout implements CustomDetailView{
     private Context context;
 
 
-    public DetailView(Context context) {
+    public RouteDetailView(Context context) {
         super(context);
         this.context = context;
         //View headerView = LayoutInflater.from(context).inflate(R.layout., null, true);
@@ -70,14 +69,6 @@ public class DetailView extends LinearLayout implements CustomDetailView{
                 EventBus.getDefault().post(new ZoomToEvent(place.getName(),place.getBoundingbox()));
             }
         });
-
-        placeImage.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EventBus.getDefault().post(new PhotoTouchEvent(place.getName(),));
-            }
-        });
-
 
         title.setText(place.getName());
         if(place.images!=null)

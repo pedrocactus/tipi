@@ -97,7 +97,6 @@ public class DetailSliderFragment extends BaseFragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            ((MainActivity)getActivity()).setDrawerEnable(false);
             // Inflate the layout for this fragment
             View view = inflater.inflate(R.layout.voie_slider_layout, container, false);
 

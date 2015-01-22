@@ -22,6 +22,7 @@ import com.pedrocactus.topobloc.app.adapters.CustomDrawerAdapter;
 import com.pedrocactus.topobloc.app.adapters.DrawerItem;
 import com.nineoldandroids.view.animation.AnimatorProxy;
 import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
+import com.pedrocactus.topobloc.app.events.PhotoTouchEvent;
 import com.pedrocactus.topobloc.app.events.ShowDetailEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
 import com.pedrocactus.topobloc.app.model.Place;
@@ -50,6 +51,10 @@ public class MainActivity extends BaseActivity {
     private boolean isDrawerLocked = false;
     private SlidingUpPanelLayout panelLayout;
     public static final String SAVED_STATE_ACTION_BAR_HIDDEN = "saved_state_action_bar_hidden";
+
+
+
+    private List<Place> places;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +116,8 @@ public class MainActivity extends BaseActivity {
                // BusProvider.getInstance().post(new ZoomToEvent(sites[arg2-1]));
 
                 mDrawerLayout.closeDrawer(mDrawerList);
+                if(arg2==8)
+                goToVoieFragment(arg1);
 
             }
         });
@@ -185,11 +192,6 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-
-       // panelLayout.setDragView((View) findViewById(R.id.dragView));
-        panelLayout.setEnableDragViewTouchEvents(true);
-        panelLayout.setSlidingEnabled(true);
-
         panelLayout.hidePanel();
 	}
 
@@ -254,12 +256,17 @@ public class MainActivity extends BaseActivity {
 
 
     public void onEventMainThread(FetchPlacesEvent event) {
+        places = event.getPlaces();
         detailSliderFragment = new DetailSliderFragment();
                 Bundle arguments = new Bundle();
         arguments.putParcelableArrayList("places", (ArrayList<Place>) event.getPlaces());
         detailSliderFragment.setArguments(arguments);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.panel, detailSliderFragment).commit();
+    }
+
+    public void onEventMainThread(PhotoTouchEvent event) {
+
     }
 
     public void showPanelDescription(int placeIndex){
@@ -385,8 +392,11 @@ public void setTitle(CharSequence title) {
         panelLayout.hidePanel();
     }
 
+
+
     public void setActionBarTranslation(float y) {
         // Figure out the actionbar height
+        //
         int actionBarHeight = getActionBarHeight();
         // A hack to add the translation to the action bar
         ViewGroup content = ((ViewGroup) findViewById(android.R.id.content).getParent());
@@ -406,5 +416,13 @@ public void setTitle(CharSequence title) {
                 }
             }
         }
+    }
+
+    public List<Place> getPlaces(){
+        return places;
+    }
+
+    public void setPlaces(List<Place> places){
+        this.places = places;
     }
 }
