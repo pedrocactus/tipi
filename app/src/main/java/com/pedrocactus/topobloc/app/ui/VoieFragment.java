@@ -26,7 +26,10 @@ import com.pedrocactus.topobloc.app.InfoPositionState;
 import com.pedrocactus.topobloc.app.TopoblocApp;
 import com.pedrocactus.topobloc.app.events.AnimationEvent;
 import com.pedrocactus.topobloc.app.events.BusProvider;
+import com.pedrocactus.topobloc.app.model.Place;
+import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
 import com.squareup.otto.Subscribe;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by pierrecastex on 02/04/2014.
@@ -49,14 +52,16 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
     private GestureDetector gestureDetector;
     private int VIEWSTATE;
     private ImageView imageView;
+    private Place place;
+    private int placeIndex;
+    public static final String PLACE_ID = "detailPlace";
+    public static final String PLACE_INDEX = "indexlace";
 
 
 
 
 
-    public VoieFragment(int voie){
-        this.voie = voie;
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,54 +69,63 @@ public class VoieFragment extends Fragment implements Animation.AnimationListene
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.voie_fragment, container, false);
+        place = getArguments().getParcelable(PLACE_ID);
+        placeIndex = getArguments().getInt(PLACE_INDEX);
+
 
         imageView = (ImageView) view.findViewById(R.id.imageViewVoie);
+
+        if(place.images!=null)
+            Picasso.with(getActivity())
+                    .load(place.images.get(1))
+                    .into(imageView);
+
         //imageView.setImageResource(R.drawable.fanny6a);
         final ProgressBar spinner = (ProgressBar) view.findViewById(R.id.loading);
 
-        ImageLoader.getInstance().displayImage(ConstantsTestUIL.IMAGES[voie], imageView, ((VoieSliderFragment) getParentFragment()).options, new SimpleImageLoadingListener() {
-            @Override
-            public void onLoadingStarted(String imageUri, View view) {
-                spinner.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                String message = null;
-                switch (failReason.getType()) {
-                    case IO_ERROR:
-                        message = "Input/Output error";
-                        break;
-                    case DECODING_ERROR:
-                        message = "Image can't be decoded";
-                        break;
-                    case NETWORK_DENIED:
-                        message = "Downloads are denied";
-                        break;
-                    case OUT_OF_MEMORY:
-                        message = "Out Of Memory error";
-                        break;
-                    case UNKNOWN:
-                        message = "Unknown error";
-                        break;
-                }
-                Toast.makeText(getParentFragment().getActivity(), message, Toast.LENGTH_SHORT).show();
-
-                spinner.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                spinner.setVisibility(View.GONE);
-            }
-        });
+//        ImageLoader.getInstance().displayImage(ConstantsTestUIL.IMAGES[voie], imageView, ((VoieSliderFragment) getParentFragment()).options, new SimpleImageLoadingListener() {
+//            @Override
+//            public void onLoadingStarted(String imageUri, View view) {
+//                spinner.setVisibility(View.VISIBLE);
+//            }
+//
+//            @Override
+//            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+//                String message = null;
+//                switch (failReason.getType()) {
+//                    case IO_ERROR:
+//                        message = "Input/Output error";
+//                        break;
+//                    case DECODING_ERROR:
+//                        message = "Image can't be decoded";
+//                        break;
+//                    case NETWORK_DENIED:
+//                        message = "Downloads are denied";
+//                        break;
+//                    case OUT_OF_MEMORY:
+//                        message = "Out Of Memory error";
+//                        break;
+//                    case UNKNOWN:
+//                        message = "Unknown error";
+//                        break;
+//                }
+//                Toast.makeText(getParentFragment().getActivity(), message, Toast.LENGTH_SHORT).show();
+//
+//                spinner.setVisibility(View.GONE);
+//            }
+//
+//            @Override
+//            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+//                spinner.setVisibility(View.GONE);
+//            }
+//        });
 
         cotation = (TextView) view.findViewById(R.id.level);
-        cotation.setText("6A");
+        cotation.setText(place.getName());
         nom = (TextView) view.findViewById(R.id.nom_voie_textview);
-        nom.setText("La déchirure");
+        nom.setText(place.getName());
         description = (TextView) view.findViewById(R.id.desciption_voie_textview);
-        description.setText("Belle voie de ouf avec tout le toutim");
+        //description.setText(place.get);
 
 
 

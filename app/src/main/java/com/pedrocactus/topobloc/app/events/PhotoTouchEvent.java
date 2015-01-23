@@ -9,12 +9,10 @@ import java.util.List;
  */
 public class PhotoTouchEvent {
 
-    List<Place> places;
 
     int index;
 
-    public PhotoTouchEvent(List<Place> places, int index) {
-        this.places = places;
+    public PhotoTouchEvent( int index) {
         this.index = index;
     }
 
@@ -26,11 +24,4 @@ public class PhotoTouchEvent {
         this.index = index;
     }
 
-    public List<Place> getPlaces() {
-        return places;
-    }
-
-    public void setPlaces(List<Place> places) {
-        this.places = places;
-    }
 }

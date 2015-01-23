@@ -32,7 +32,7 @@ import de.greenrobot.event.EventBus;
 /**
  * Created by castex on 20/01/15.
  */
-public class DetailSliderFragment extends BaseFragment {
+public class DetailSliderFragment extends Fragment {
 
 
 
@@ -101,6 +101,7 @@ public class DetailSliderFragment extends BaseFragment {
             View view = inflater.inflate(R.layout.voie_slider_layout, container, false);
 
             places = getArguments().getParcelableArrayList("places");
+            placeVIsible = getArguments().getInt("placeIndex");
 
             mPager = (ViewPager) view.findViewById(R.id.voie_slider_viewpager);
             mPager.setAdapter(new ScreenSlidePagerAdapter(getChildFragmentManager()));
@@ -116,12 +117,13 @@ public class DetailSliderFragment extends BaseFragment {
 
                 @Override
                 public void onPageSelected(int newIndex) {
-                    eventBus.post(new SwipeDetailEvent(newIndex, placeVIsible));
+                    EventBus.getDefault().post(new SwipeDetailEvent(newIndex, placeVIsible));
                     placeVIsible =newIndex;
                 }
             });
             new SetAdapterTask().execute();
 
+            mPager.setCurrentItem(placeVIsible);
 
             return view;
         }

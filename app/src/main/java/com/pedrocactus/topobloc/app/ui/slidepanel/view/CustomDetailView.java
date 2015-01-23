@@ -7,5 +7,5 @@ import com.pedrocactus.topobloc.app.model.Place;
  */
 public interface CustomDetailView {
 
-    public void bindModel(Place place);
+    public void bindModel(Place place, int placeIndex);
 }

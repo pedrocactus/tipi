@@ -31,8 +31,10 @@ import com.pedrocactus.topobloc.app.job.SitesJob;
 import com.pedrocactus.topobloc.app.model.NationalSite;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.model.Sector;
+import com.pedrocactus.topobloc.app.model.Route;
 import com.pedrocactus.topobloc.app.model.Site;
 import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
+import com.pedrocactus.topobloc.app.ui.utils.TextOverlay;
 import com.squareup.otto.Subscribe;
 
 import org.osmdroid.DefaultResourceProxyImpl;
@@ -151,33 +153,42 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     }
 
     private void showFeatures(final List<Place> places){
-        final ArrayList<Marker> items = new ArrayList<Marker>();
-        GeoPoint point3 = new GeoPoint(48.6590, -4.3905);
-        ArrayList<Marker> markers = new ArrayList<Marker>();
-        for (int i=0;i<places.size();i++){
-            // Put overlay icon a little way from map centre
-            Marker marker = new Marker("Here", "SampleDescription", new LatLng(places.get(i).getCoordinates()[1], places.get(i).getCoordinates()[0]));
-            marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
-            markers.add(marker);
 
+
+        if(places.get(0) instanceof Route) {
+            TextOverlay textOverlay = new TextOverlay(getActivity(),mapView,(List<Route>)(List<?>)places);
+            mapView.addOverlay(textOverlay);
+        }else {
+
+
+            final ArrayList<Marker> items = new ArrayList<Marker>();
+            GeoPoint point3 = new GeoPoint(48.6590, -4.3905);
+            ArrayList<Marker> markers = new ArrayList<Marker>();
+            for (int i = 0; i < places.size(); i++) {
+                // Put overlay icon a little way from map centre
+                Marker marker = new Marker("Here", "SampleDescription", new LatLng(places.get(i).getCoordinates()[1], places.get(i).getCoordinates()[0]));
+                marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
+                markers.add(marker);
+
+            }
+
+            mMyLocationOverlay = new ItemizedIconOverlay(getActivity(), markers, new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
+                @Override
+                public boolean onItemSingleTapUp(int i, Marker marker) {
+                    ((MainActivity) getActivity()).showPanelDescription(i);
+                    return true;
+                }
+
+                @Override
+                public boolean onItemLongPress(int i, Marker marker) {
+                    Toast.makeText(getActivity(), "Marker Selected: " + marker.getTitle(), Toast.LENGTH_LONG).show();
+                    return true;
+                }
+            });
+            mapView.addItemizedOverlay(this.mMyLocationOverlay);
+
+            // mapView.addItemizedOverlay(overlayTemp);
         }
-
-      mMyLocationOverlay = new ItemizedIconOverlay(getActivity(), markers, new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
-            @Override
-            public boolean onItemSingleTapUp(int i, Marker marker) {
-                ((MainActivity)getActivity()).showPanelDescription(i);
-                return true;
-            }
-
-            @Override
-            public boolean onItemLongPress(int i, Marker marker) {
-                Toast.makeText(getActivity(), "Marker Selected: " + marker.getTitle(), Toast.LENGTH_LONG).show();
-                return true;
-            }
-        });
-        mapView.addItemizedOverlay(this.mMyLocationOverlay);
-
-       // mapView.addItemizedOverlay(overlayTemp);
 
         mapView.invalidate();
 

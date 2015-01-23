@@ -62,7 +62,7 @@ public class RouteDetailView extends LinearLayout implements CustomDetailView{
 
 }
     @Override
-    public void bindModel(final Place place){
+    public void bindModel(final Place place, final int index){
         zoomToButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

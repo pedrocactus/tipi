@@ -154,7 +154,7 @@ public class MainActivity extends BaseActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.content_frame, mapBoxFragment).commit();
 		}
-        voieFragment = new VoieSliderFragment("6A");
+        voieFragment = new VoieSliderFragment();
 
 
         panelLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
@@ -228,7 +228,7 @@ public class MainActivity extends BaseActivity {
             ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
 
             if (voieFragment == null) {
-                voieFragment = new VoieSliderFragment("6A");
+                voieFragment = new VoieSliderFragment();
             }
              // Replace current fragment by the new one.
              ft.replace(R.id.content_frame, voieFragment);
@@ -266,7 +266,25 @@ public class MainActivity extends BaseActivity {
     }
 
     public void onEventMainThread(PhotoTouchEvent event) {
+        panelLayout.hidePanel();
 
+        final FragmentManager fm = getSupportFragmentManager();
+
+        final FragmentTransaction ft = fm.beginTransaction();
+        // We can also animate the changing of fragment.
+        ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
+
+        if (voieFragment == null) {
+            voieFragment = new VoieSliderFragment();
+        }
+        Bundle arguments = new Bundle();
+        arguments.putParcelableArrayList("places", (ArrayList<Place>) places);
+        arguments.putInt("placeIndex",event.getIndex());
+        voieFragment.setArguments(arguments);
+        // Replace current fragment by the new one.
+        ft.replace(R.id.content_frame, voieFragment);
+
+        ft.commit();
     }
 
     public void showPanelDescription(int placeIndex){

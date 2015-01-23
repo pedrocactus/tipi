@@ -18,8 +18,6 @@ public class NationalSite extends Place{
 
     public List<Site> sites;
     public String name;
-    public String description;
-    public String history;
 
 
 
@@ -29,12 +27,10 @@ public class NationalSite extends Place{
 
     public NationalSite(List<Site> sites, String name, String description,String history,
                 List<String> images, float[] coordinates, float[] boundingBox) {
-        super(name, coordinates,images,boundingBox);
+        super(name, coordinates,images,boundingBox,description,history);
         this.sites = sites;
         this.name = name;
-        this.description = description;
         this.images = images;
-        this.history = history;
     }
 
     private NationalSite(Parcel in) {
@@ -86,23 +82,6 @@ public class NationalSite extends Place{
         this.name = name;
     }
 
-
-    /**
-     * @return the description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-
-    /**
-     * @param description the description to set
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
     /**
      * @return the images
      */
@@ -135,13 +114,6 @@ public class NationalSite extends Place{
     }
 
 
-    public String getHistory() {
-        return history;
-    }
-
-    public void setHistory(String history) {
-        this.history = history;
-    }
 
 
 }

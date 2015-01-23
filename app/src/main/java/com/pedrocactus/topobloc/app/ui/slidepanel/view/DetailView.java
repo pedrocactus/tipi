@@ -63,7 +63,7 @@ public class DetailView extends LinearLayout implements CustomDetailView{
 
 }
     @Override
-    public void bindModel(final Place place){
+    public void bindModel(final Place place, final int placeIndex){
         zoomToButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +74,7 @@ public class DetailView extends LinearLayout implements CustomDetailView{
         placeImage.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                EventBus.getDefault().post(new PhotoTouchEvent(place.getName(),));
+                EventBus.getDefault().post(new PhotoTouchEvent( placeIndex));
             }
         });
 
@@ -87,9 +87,12 @@ public class DetailView extends LinearLayout implements CustomDetailView{
 
         //Setting up the listview with different layotus
         ArrayList<Map<String, Object>> detailList = new ArrayList<Map<String, Object>>();
-        if(((NationalSite)place).getDescription().length()!=0)
-            detailList.add(getDetailItemInfo(DetailListAdapter.DetailType.DESCRIPTION,getContext().getString(R.string.detail_description),((NationalSite)place).getDescription()));
-        detailList.add(getDetailItemInfo(DetailListAdapter.DetailType.HISTORY,getContext().getString(R.string.detail_history),((NationalSite)place).getHistory()));
+        if(place.getDescription()!=null && place.getDescription().length()!=0)
+            detailList.add(getDetailItemInfo(DetailListAdapter.DetailType.DESCRIPTION,getContext().getString(R.string.detail_description),place.getDescription()));
+
+
+        if(place.getHistory()!=null && place.getHistory().length()!=0)
+        detailList.add(getDetailItemInfo(DetailListAdapter.DetailType.HISTORY,getContext().getString(R.string.detail_history),place.getHistory()));
 //        if(movie.getActors()!=null&&movie.getActors().size()!=0)
 //            detailList.add(getDetailItemInfo(DetaiListAdapter.DetailType.CAST,getContext().getString(R.string.detail_casting),movie.getActors()));
 //        if(movie.getSimilarMovies()!=null&&movie.getSimilarMovies().size()!=0)

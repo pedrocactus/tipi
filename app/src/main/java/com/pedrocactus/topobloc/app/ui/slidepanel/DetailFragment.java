@@ -22,10 +22,12 @@ import butterknife.ButterKnife;
 public class DetailFragment extends BaseFragment {
 
     public static final String PLACE_ID = "detailPlace";
+    public static final String PLACE_INDEX = "indexlace";
 
     //CustomView with binding method to movie model
     private DetailView placeDetailView;
     private Place place;
+    private int placeIndex;
 
     @Inject
     JobManager jobManager;
@@ -49,7 +51,8 @@ public class DetailFragment extends BaseFragment {
 //            place = savedInstanceState.getParcelable("place");
 //        }else {
             place = getArguments().getParcelable(PLACE_ID);
-            placeDetailView.bindModel(place);
+            placeIndex = getArguments().getInt(PLACE_INDEX);
+            placeDetailView.bindModel(place,placeIndex);
 //        }
     }
     @Override
@@ -76,7 +79,7 @@ public class DetailFragment extends BaseFragment {
 //        }
 //    }
     private void updatePlace(){
-        placeDetailView.bindModel(place);
+        placeDetailView.bindModel(place,placeIndex);
 
     }
 //    public void onEventMainThread(SaveCommentEvent event) {

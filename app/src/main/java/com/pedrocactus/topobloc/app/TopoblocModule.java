@@ -13,6 +13,8 @@ import com.pedrocactus.topobloc.app.job.RoutesJob;
 import com.pedrocactus.topobloc.app.job.SectorsJob;
 import com.pedrocactus.topobloc.app.job.SitesJob;
 import com.pedrocactus.topobloc.app.service.TopoblocAPI;
+import com.pedrocactus.topobloc.app.ui.VoieFragment;
+import com.pedrocactus.topobloc.app.ui.VoieSliderFragment;
 import com.pedrocactus.topobloc.app.ui.slidepanel.DetailFragment;
 import com.pedrocactus.topobloc.app.ui.MainActivity;
 import com.pedrocactus.topobloc.app.ui.MapFragment;
@@ -44,6 +46,8 @@ import retrofit.client.OkClient;
                 MapFragment.class,
                 DetailFragment.class,
                 DetailSliderFragment.class,
+//                VoieSliderFragment.class,
+//                VoieFragment.class,
                 SectorsJob.class,
                 SitesJob.class,
                 RoutesJob.class,

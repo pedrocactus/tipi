@@ -23,8 +23,14 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.pedrocactus.topobloc.app.events.BusProvider;
+import com.pedrocactus.topobloc.app.events.SwipeDetailEvent;
+import com.pedrocactus.topobloc.app.model.Place;
+import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
 
 import java.lang.reflect.Field;
+import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by pierrecastex on 02/04/2014.
@@ -85,7 +91,9 @@ public class VoieSliderFragment extends Fragment {
 
 
     private VoieFragment voieFragment;
-    private int voieVISIBLE;
+    private int placeVIsible;
+
+    private List<Place> places;
 
 
 
@@ -93,9 +101,6 @@ public class VoieSliderFragment extends Fragment {
 
 
 
-    public VoieSliderFragment(String voie){
-        this.voie = voie;
-    }
 
     public VoieSliderFragment() {
     }
@@ -107,6 +112,10 @@ public class VoieSliderFragment extends Fragment {
         ((MainActivity)getActivity()).setDrawerEnable(false);
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.voie_slider_layout, container, false);
+
+        places = getArguments().getParcelableArrayList("places");
+        placeVIsible = getArguments().getInt("placeIndex");
+
         ///A corriger flemme de mettre des images
         options = new DisplayImageOptions.Builder()
                 .showImageForEmptyUri(R.drawable.marker)
@@ -131,15 +140,18 @@ public class VoieSliderFragment extends Fragment {
             }
 
             @Override
-            public void onPageSelected(int arg0) {
-                voieVISIBLE=arg0;
+            public void onPageSelected(int newIndex) {
+                EventBus.getDefault().post(new SwipeDetailEvent(newIndex, placeVIsible));
+                placeVIsible =newIndex;
             }
         });
         new SetAdapterTask().execute();
+        mPager.setCurrentItem(placeVIsible);
 
 
         return view;
     }
+
 
     /**
      * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
@@ -152,13 +164,17 @@ public class VoieSliderFragment extends Fragment {
 
         @Override
             public Fragment getItem(int position) {
-                voieFragment = new VoieFragment(position);
-                return voieFragment;
+            voieFragment = new VoieFragment();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("detailPlace", places.get(position));
+            voieFragment.setArguments(bundle);
+            return voieFragment;
+
         }
 
         @Override
         public int getCount() {
-            return NUM_PAGES;
+            return places.size();
         }
 
         @Override
@@ -188,7 +204,7 @@ public class VoieSliderFragment extends Fragment {
             getView().findViewById(R.id.voie_slider_viewpager).setBackgroundDrawable(bd);
         } else {
             BitmapDrawable bd = new BitmapDrawable(getActivity().getResources(),b);
-            getView().findViewById(R.id.voie_slider_viewpager).setBackground(bd);
+            getView().findViewById(R.id.voie_slider_viewpager).setBackgroundDrawable(bd);
         }
         b = null;
 
@@ -243,7 +259,7 @@ public class VoieSliderFragment extends Fragment {
     }
 
     public int getCurrentVoie(){
-        return voieVISIBLE;
+        return placeVIsible;
     }
 
 }
