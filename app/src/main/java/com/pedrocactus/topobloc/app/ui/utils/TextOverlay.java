@@ -9,8 +9,10 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
 
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.overlay.Overlay;
 import com.mapbox.mapboxsdk.views.MapView;
@@ -43,13 +45,16 @@ public class TextOverlay extends Overlay implements Overlay.Snappable {
     private final Matrix mMatrix = new Matrix();
     private List<Route> routes;
 
+    protected OnItemGestureListener<Route> mOnItemGestureListener;
 
 
 
-    public TextOverlay(final Context ctx, final MapView mapView, List<Route> routes) {
+
+    public TextOverlay(final Context ctx, final MapView mapView, List<Route> routes,final TextOverlay.OnItemGestureListener<Route> onGestureListener) {
         this(ctx, mapView, new DefaultResourceProxyImpl(ctx));
         mMapView = mapView;
         this.routes = routes;
+        mOnItemGestureListener = onGestureListener;
     }
 
     public TextOverlay(final Context ctx, final MapView mapView,
@@ -78,11 +83,6 @@ public class TextOverlay extends Overlay implements Overlay.Snappable {
         mPaint.setTextAlign(Paint.Align.CENTER);
 
         mPaint.setColor(Color.RED);
-        mPaint.setStyle(Paint.);
-        canvas.drawText("Lat: " , tx, ty + 5, this.mPaint);
-        canvas.drawText("Lon: " , tx, ty + 20, this.mPaint);
-        canvas.drawText("Alt: " , tx, ty + 35, this.mPaint);
-        canvas.drawText("Acc: " , tx, ty + 50, this.mPaint);
 
 
 
@@ -165,10 +165,52 @@ public class TextOverlay extends Overlay implements Overlay.Snappable {
 //        marker.setBounds(mRect);
 //        return marker;
 //    }
-
+private boolean activateSelectedItems(final MotionEvent event,
+                                      final MapView mapView,
+                                      final ActiveItem task) {
+    final Projection projection = mapView.getProjection();
+    final float x = event.getX();
+    final float y = event.getY();
+    for (int i = 0; i < this.routes.size(); ++i) {
+        final Route item = routes.get(i);
+//        if (markerHitTest(item, projection, x, y)) {
+//            if (task.run(i)) {
+//                this.setFocus(item);
+//                return true;
+//            }
+//        }
+    }
+    return false;
+}
 
     @Override
     public boolean onSnapToItem(int i, int i2, Point point, MapView mapView) {
         return false;
+    }
+
+    @Override
+    public boolean onSingleTapConfirmed(final MotionEvent event, final MapView mapView) {
+        return (activateSelectedItems(event, mapView, new ActiveItem() {
+            @Override
+            public boolean run(final int index) {
+                final TextOverlay that = TextOverlay.this;
+                if (that.mOnItemGestureListener == null) {
+                    return false;
+                }
+                return onSingleTapUpHelper(index, that.routes.get(index), mapView);
+            }
+        }));
+    }
+    protected boolean onSingleTapUpHelper(final int index, final Route item,
+                                          final MapView mapView) {
+        return this.mOnItemGestureListener.onItemSingleTapUp(index, item);
+    }
+
+    public static interface OnItemGestureListener<T> {
+        public boolean onItemSingleTapUp(final int index,final T item);
+        public boolean onItemLongPress(final int index,final T item);
+    }
+    public static interface ActiveItem {
+        public boolean run(final int aIndex);
     }
 }

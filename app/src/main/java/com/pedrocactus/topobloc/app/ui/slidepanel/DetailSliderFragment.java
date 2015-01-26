@@ -32,7 +32,7 @@ import de.greenrobot.event.EventBus;
 /**
  * Created by castex on 20/01/15.
  */
-public class DetailSliderFragment extends Fragment {
+public class DetailSliderFragment extends BaseFragment {
 
 
 
@@ -205,7 +205,6 @@ public class DetailSliderFragment extends Fragment {
         public void onDetach() {
             super.onDetach();
 
-            EventBus.getDefault().unregister(this);
             try {
                 Field field = Fragment.class.getDeclaredField("mChildFragmentManager");
                 field.setAccessible(true);

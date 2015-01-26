@@ -15,6 +15,7 @@ import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.Icon;
 import com.mapbox.mapboxsdk.overlay.Marker;
+import com.mapbox.mapboxsdk.overlay.UserLocationOverlay;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MapboxTileLayer;
 import com.path.android.jobqueue.JobManager;
@@ -22,6 +23,7 @@ import com.pedrocactus.topobloc.app.R;
 import com.pedrocactus.topobloc.app.TopoblocApp;
 import com.pedrocactus.topobloc.app.events.BusProvider;
 import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
+import com.pedrocactus.topobloc.app.events.ShowDetailEvent;
 import com.pedrocactus.topobloc.app.events.SwipeDetailEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
 import com.pedrocactus.topobloc.app.job.NationalSitesJob;
@@ -96,9 +98,10 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         mapView.setMaxZoomLevel(mapView.getTileProvider().getMaximumZoomLevel());
         mapView.setCenter(new LatLng(46.629824,1.845703));
         mapView.setZoom(7);
+        mapView.setDiskCacheEnabled(true);
 
         currentMap = getString(R.string.outdoorsMapId);
-        mapView.setUserLocationEnabled(true);
+
 
 
 		return rootView;
@@ -152,11 +155,32 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
     }
 
+//    public void onEventMainThread(ShowDetailEvent event) {
+//        mMyLocationOverlay.getItem(event.getIndexToShow()).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
+//        mapView.invalidate();
+//
+//    }
+
     private void showFeatures(final List<Place> places){
 
 
         if(places.get(0) instanceof Route) {
-            TextOverlay textOverlay = new TextOverlay(getActivity(),mapView,(List<Route>)(List<?>)places);
+            TextOverlay textOverlay = new TextOverlay(getActivity(),mapView,(List<Route>)(List<?>)places, new TextOverlay.OnItemGestureListener<Route>(){
+                @Override
+                public boolean onItemSingleTapUp(int i,Route route) {
+                    ((MainActivity) getActivity()).showPanelDescription(i);
+                    mMyLocationOverlay.getItem(i).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
+                    mapView.invalidate();
+
+                    return true;
+                }
+
+                @Override
+                public boolean onItemLongPress(int i,Route route) {
+//                    Toast.makeText(getActivity(), "Marker Selected: " + marker.getTitle(), Toast.LENGTH_LONG).show();
+                    return true;
+                }
+            });
             mapView.addOverlay(textOverlay);
         }else {
 
@@ -176,6 +200,9 @@ public class MapboxFragment extends BaseFragment implements MapListener{
                 @Override
                 public boolean onItemSingleTapUp(int i, Marker marker) {
                     ((MainActivity) getActivity()).showPanelDescription(i);
+                    mMyLocationOverlay.getItem(i).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
+                    mapView.invalidate();
+
                     return true;
                 }
 
