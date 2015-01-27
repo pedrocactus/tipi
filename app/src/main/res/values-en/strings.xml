@@ -31,10 +31,12 @@
         <item>Cylindrical</item>
     </string-array>
     <string-array name="sites">
-        <item>Petit Paradis</item>
-        <item>Menez Ham</item>
-        <item>La Rivière</item>
-        <item>Bivouac</item>
+        <item>Topos</item>
+        <item>Map</item>
+        <item>Advanced Search</item>
+        <item>Perso</item>
+        <item>Settings</item>
+        <item>About</item>
     </string-array>
 
     <string name="menez_ham"></string>

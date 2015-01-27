@@ -25,7 +25,6 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.pedrocactus.topobloc.app.events.BusProvider;
 import com.pedrocactus.topobloc.app.events.SwipeDetailEvent;
 import com.pedrocactus.topobloc.app.model.Place;
-import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
 
 import java.lang.reflect.Field;
 import java.util.List;

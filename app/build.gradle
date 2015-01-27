@@ -13,6 +13,9 @@ android {
         main {
             res.srcDirs =
                     [
+                            'src/main/res/layouts/layout-perso',
+                            'src/main/res/layouts/layout-panel',
+                            'src/main/res/layouts/layout-about',
                             'src/main/res/layouts/layout-detailslideup',
                             'src/main/res/layouts/layout-list',
                             'src/main/res/layouts/layout-map',

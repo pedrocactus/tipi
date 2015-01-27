@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="Le Bivouac"
-                android:textColor="@color/grey_text"
+                android:textColor="@color/white"
                 android:textAppearance="?android:attr/textAppearanceLarge"
 
                 />

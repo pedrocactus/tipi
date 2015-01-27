@@ -6,7 +6,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.Toast;
 
-import com.pedrocactus.topobloc.app.ui.MainActivity;
 import com.pedrocactus.topobloc.app.R;
 
 import org.osmdroid.bonuspack.kml.KmlDocument;

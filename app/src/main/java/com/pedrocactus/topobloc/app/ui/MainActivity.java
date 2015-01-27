@@ -18,8 +18,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.pedrocactus.topobloc.app.R;
-import com.pedrocactus.topobloc.app.adapters.CustomDrawerAdapter;
-import com.pedrocactus.topobloc.app.adapters.DrawerItem;
+import com.pedrocactus.topobloc.app.ui.about.AboutFragment;
+import com.pedrocactus.topobloc.app.ui.panel.CustomDrawerAdapter;
+import com.pedrocactus.topobloc.app.ui.panel.DrawerItem;
 import com.nineoldandroids.view.animation.AnimatorProxy;
 import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
 import com.pedrocactus.topobloc.app.events.PhotoTouchEvent;
@@ -27,8 +28,7 @@ import com.pedrocactus.topobloc.app.events.ShowDetailEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.ui.base.BaseActivity;
-import com.pedrocactus.topobloc.app.ui.slidepanel.DetailFragment;
-import com.pedrocactus.topobloc.app.ui.slidepanel.DetailSliderFragment;
+import com.pedrocactus.topobloc.app.ui.slideuppanel.DetailSliderFragment;
 import com.pedrocactus.topobloc.app.ui.utils.Utils;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
@@ -45,6 +45,7 @@ public class MainActivity extends BaseActivity {
     CustomDrawerAdapter adapter;
     //private MapFragment mapFragment;
     private MapboxFragment mapBoxFragment;
+    private AboutFragment aboutFragment;
     private VoieSliderFragment voieFragment;
     private DetailSliderFragment detailSliderFragment;
     private CharSequence mTitle;
@@ -93,19 +94,22 @@ public class MainActivity extends BaseActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         sites = getResources().getStringArray(R.array.sites);
         dataList = new ArrayList<DrawerItem>();
-        dataList.add(new DrawerItem("Sites", R.drawable.sitemap,true));
-        dataList.add(new DrawerItem(sites[0],DrawerItem.NO_IMAGE ,false));
-        dataList.add(new DrawerItem(sites[1], DrawerItem.NO_IMAGE,false));
-        dataList.add(new DrawerItem(sites[2], DrawerItem.NO_IMAGE,false));
-        dataList.add(new DrawerItem(sites[3], DrawerItem.NO_IMAGE,false));
-        dataList.add(new DrawerItem("Filtres", R.drawable.filter,true));
-        dataList.add(new DrawerItem("Niveau", DrawerItem.NO_IMAGE,false));
-        dataList.add(new DrawerItem("Style", DrawerItem.NO_IMAGE,false));
-        dataList.add(new DrawerItem("Options", R.drawable.settings,true));
-        adapter = new CustomDrawerAdapter(this, R.layout.icon_drawer_item,R.layout.title_drawer_item,
+//        dataList.add(new DrawerItem("Sites", R.drawable.sitemap,true));
+        dataList.add(new DrawerItem(sites[0],R.drawable.ic_local_library_white_48dp,false));
+        dataList.add(new DrawerItem(sites[1], R.drawable.ic_map_white_48dp,true));
+        dataList.add(new DrawerItem(sites[2], R.drawable.ic_search_white_48dp,false));
+        dataList.add(new DrawerItem(sites[3], R.drawable.ic_person_white_48dp,true));
+        dataList.add(new DrawerItem(sites[4],R.drawable.ic_settings_applications_white_48dp ,false));
+        dataList.add(new DrawerItem(sites[5],R.drawable.ic_info_white_48dp ,true));
+//        dataList.add(new DrawerItem("Filtres", R.drawable.filter,true));
+//        dataList.add(new DrawerItem("Niveau", DrawerItem.NO_IMAGE,false));
+//        dataList.add(new DrawerItem("Style", DrawerItem.NO_IMAGE,false));
+//        dataList.add(new DrawerItem("Options", R.drawable.settings,true));
+        adapter = new CustomDrawerAdapter(this, R.layout.title_drawer_item_nosep,R.layout.title_drawer_item,
                 dataList);
 
         mDrawerList.setAdapter(adapter);
+        mDrawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new OnItemClickListener() {
 
@@ -116,8 +120,8 @@ public class MainActivity extends BaseActivity {
                // BusProvider.getInstance().post(new ZoomToEvent(sites[arg2-1]));
 
                 mDrawerLayout.closeDrawer(mDrawerList);
-                if(arg2==8)
-                goToVoieFragment(arg1);
+                if(arg2==5)
+                goToAboutFragment(arg1);
 
             }
         });
@@ -230,12 +234,24 @@ public class MainActivity extends BaseActivity {
             if (voieFragment == null) {
                 voieFragment = new VoieSliderFragment();
             }
-             // Replace current fragment by the new one.
-             ft.replace(R.id.content_frame, voieFragment);
+            // Replace current fragment by the new one.
+            ft.replace(R.id.content_frame, voieFragment);
+
+
+        }else if(fragmentTag.equals(AboutFragment.TAG)) {
+
+                // We can also animate the changing of fragment.
+//                ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
+
+                if (aboutFragment == null) {
+                    aboutFragment = new AboutFragment();
+                }
+                // Replace current fragment by the new one.
+                ft.replace(R.id.content_frame, aboutFragment);
 
 
 
-        }
+            }
 
         // Null on the back stack to return on the previous fragment when user
         // press on back button.
@@ -252,6 +268,10 @@ public class MainActivity extends BaseActivity {
 
     public void goToMapFragment(View v) {
         showFragment(mapBoxFragment.TAG);
+    }
+
+    public void goToAboutFragment(View v) {
+        showFragment(aboutFragment.TAG);
     }
 
 

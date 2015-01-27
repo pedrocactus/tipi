@@ -13,13 +13,12 @@ import com.pedrocactus.topobloc.app.job.RoutesJob;
 import com.pedrocactus.topobloc.app.job.SectorsJob;
 import com.pedrocactus.topobloc.app.job.SitesJob;
 import com.pedrocactus.topobloc.app.service.TopoblocAPI;
-import com.pedrocactus.topobloc.app.ui.VoieFragment;
-import com.pedrocactus.topobloc.app.ui.VoieSliderFragment;
-import com.pedrocactus.topobloc.app.ui.slidepanel.DetailFragment;
+import com.pedrocactus.topobloc.app.ui.about.AboutFragment;
+import com.pedrocactus.topobloc.app.ui.slideuppanel.DetailFragment;
 import com.pedrocactus.topobloc.app.ui.MainActivity;
 import com.pedrocactus.topobloc.app.ui.MapFragment;
 import com.pedrocactus.topobloc.app.ui.MapboxFragment;
-import com.pedrocactus.topobloc.app.ui.slidepanel.DetailSliderFragment;
+import com.pedrocactus.topobloc.app.ui.slideuppanel.DetailSliderFragment;
 import com.pedrocactus.topobloc.app.ui.utils.JacksonConverter;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Cache;
@@ -44,6 +43,7 @@ import retrofit.client.OkClient;
                 MainActivity.class,
                 MapboxFragment.class,
                 MapFragment.class,
+                AboutFragment.class,
                 DetailFragment.class,
                 DetailSliderFragment.class,
 //                VoieSliderFragment.class,

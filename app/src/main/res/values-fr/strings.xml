@@ -31,10 +31,12 @@
         <item>Cylindrical</item>
     </string-array>
     <string-array name="sites">
-        <item>Petit Paradis</item>
-        <item>Menez Ham</item>
-        <item>La Rivière</item>
-        <item>Bivouac</item>
+        <item>Topos</item>
+        <item>Carte</item>
+        <item>Recherche Avancée</item>
+        <item>Perso</item>
+        <item>Paramètres</item>
+        <item>A propos</item>
     </string-array>
 
     <string name="menez_ham"></string>
@@ -62,7 +64,15 @@
 
     <string name="detail_description">&lt;u>Description&lt;u> :</string>
     <string name="detail_history">&lt;u>Histoire&lt;u> :</string>
+    <string name="about_license_body">Les donn\u00E9es utilis\u00E9es dans Topo sont actuellement sous license.\r\nToute utilisation ou divulgation du contenu est interdit.</string>
+
+    <string name="about_purpose_body">L\'escalade en voies poss\u00E8de une diff\u00E9rence majeure avec la pratique du bloc: l\'\u00E9quipement.\r\nEn effet, si peu apparent qu\'il soit, l\'\u00E9quipement est un mal n\u00E9cessaire \u00E0 la pratique de l\'escalade qui demande un investissement cons\u00E9quent de la part de b\u00E9n\u00E9voles locaux. L\'entretien et la mise en place des voies ont un coup mat\u00E9riel important et propre \u00E0 l\'escalade en voies, mais l\'entretien et l\'am\u00E9nagement(avec tout ce que cela implique: points d\'acc\u00E8s, nettoyage, protection des habitats animaliers) du site sont deux aspects communs \u00E0 la pratique du bloc. \r\nDans le monde des petits sites de voies, l\'auteur d\'un topo est bien souvent l\'ouvreur, l\'\u00E9quipeur et le protecteur du site. Il est alors tout naturel que les b\u00E9n\u00E9fices du topo lui revienne.\r\n\r\nCependant, un topo n\'est jamais tr\u00E8s facile \u00E0 r\u00E9aliser, et depuis quelques ann\u00E9es de gros \u00E9diteurs fabriquent des topos \u00E0 coups de centaines de grimpeurs et de mat\u00E9riel de pr\u00E9cision. Ces attilas de la Topo ( qui produisent de bons topos d\'ailleurs), ne laissent plus aucune chance \u00E0 notre petit grimpeur local qui respire ces rochers tous les week ends.\r\n\r\nL\'ambition de Topo est de fournir des outils simplifiant grandement la fabricatoin d\'un topo num\u00E9rique. \r\n\r\n</string>
+
+    <string name="version">Version 0.1 beta</string>
 
 
+
+    <string name="about_license_title">&lt;u>LICENSE&lt;u> :</string>
+    <string name="about_purpose_title">&lt;u>PURPOSE&lt;u> :</string>
 
 </resources>
