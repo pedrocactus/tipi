@@ -14,6 +14,7 @@ import com.pedrocactus.topobloc.app.job.SectorsJob;
 import com.pedrocactus.topobloc.app.job.SitesJob;
 import com.pedrocactus.topobloc.app.service.TopoblocAPI;
 import com.pedrocactus.topobloc.app.ui.about.AboutFragment;
+import com.pedrocactus.topobloc.app.ui.list.ListFragment;
 import com.pedrocactus.topobloc.app.ui.slideuppanel.DetailFragment;
 import com.pedrocactus.topobloc.app.ui.MainActivity;
 import com.pedrocactus.topobloc.app.ui.MapFragment;
@@ -46,6 +47,7 @@ import retrofit.client.OkClient;
                 AboutFragment.class,
                 DetailFragment.class,
                 DetailSliderFragment.class,
+                ListFragment.class,
 //                VoieSliderFragment.class,
 //                VoieFragment.class,
                 SectorsJob.class,

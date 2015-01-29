@@ -1,4 +1,4 @@
-package com.pedrocactus.topobloc.app.ui;
+package com.pedrocactus.topobloc.app.ui.list;
 
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;

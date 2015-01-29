@@ -19,6 +19,7 @@ import android.widget.ListView;
 
 import com.pedrocactus.topobloc.app.R;
 import com.pedrocactus.topobloc.app.ui.about.AboutFragment;
+import com.pedrocactus.topobloc.app.ui.list.ListFragment;
 import com.pedrocactus.topobloc.app.ui.panel.CustomDrawerAdapter;
 import com.pedrocactus.topobloc.app.ui.panel.DrawerItem;
 import com.nineoldandroids.view.animation.AnimatorProxy;
@@ -48,6 +49,7 @@ public class MainActivity extends BaseActivity {
     private AboutFragment aboutFragment;
     private VoieSliderFragment voieFragment;
     private DetailSliderFragment detailSliderFragment;
+    private ListFragment listFragment;
     private CharSequence mTitle;
     private boolean isDrawerLocked = false;
     private SlidingUpPanelLayout panelLayout;
@@ -122,6 +124,13 @@ public class MainActivity extends BaseActivity {
                 mDrawerLayout.closeDrawer(mDrawerList);
                 if(arg2==5)
                 goToAboutFragment(arg1);
+
+                if(arg2==1)
+                goToMapFragment(arg1);
+
+                if(arg2==0)
+                goToMapFragment(arg1);
+
 
             }
         });
@@ -251,7 +260,25 @@ public class MainActivity extends BaseActivity {
 
 
 
+            }else if(fragmentTag.equals(ListFragment.TAG)) {
+
+            // We can also animate the changing of fragment.
+//                ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
+
+            if (listFragment == null) {
+                Bundle arguments = new Bundle();
+                arguments.putParcelableArrayList("places", (ArrayList<Place>) places);
+                arguments.putInt("placeIndex",event.getIndex());
+                voieFragment.setArguments(arguments);
+                listFragment = new ListFragment();
             }
+
+            // Replace current fragment by the new one.
+            ft.replace(R.id.content_frame, listFragment);
+
+
+
+        }
 
         // Null on the back stack to return on the previous fragment when user
         // press on back button.
@@ -269,6 +296,11 @@ public class MainActivity extends BaseActivity {
     public void goToMapFragment(View v) {
         showFragment(mapBoxFragment.TAG);
     }
+
+    public void goToListFragment(View v) {
+        showFragment(listFragment.TAG);
+    }
+
 
     public void goToAboutFragment(View v) {
         showFragment(aboutFragment.TAG);
