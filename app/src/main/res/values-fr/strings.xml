@@ -75,4 +75,7 @@
     <string name="about_license_title">&lt;u>LICENSE&lt;u> :</string>
     <string name="about_purpose_title">&lt;u>PURPOSE&lt;u> :</string>
 
+    <string name="save">Enregistrer</string>
+    <string name="cancel">Annuler</string>
+
 </resources>

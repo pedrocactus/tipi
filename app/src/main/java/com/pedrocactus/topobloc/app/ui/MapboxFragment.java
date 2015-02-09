@@ -91,7 +91,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         View rootView = inflater.inflate(R.layout.mapbox, container, false);
         mapView = (MapView) rootView.findViewById(R.id.mapview);
         mapView.setMinZoomLevel(mapView.getTileProvider().getMinimumZoomLevel());
-        mapView.setMaxZoomLevel(mapView.getTileProvider().getMaximumZoomLevel());
+        mapView.setMaxZoomLevel(24);
         mapView.setCenter(new LatLng(46.629824,1.845703));
         mapView.setZoom(7);
         mapView.setDiskCacheEnabled(true);
@@ -146,7 +146,12 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
     public void onEventMainThread(SwipeDetailEvent event) {
         mMyLocationOverlay.getItem(event.getIndexToShow()).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
-        mMyLocationOverlay.getItem(event.getPreviousIndex()).setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
+
+        if(places.get(0) instanceof Route) {
+            mMyLocationOverlay.getItem(event.getPreviousIndex()).setIcon(new Icon(getResources().getDrawable(R.drawable.ic_brightness_1_black_18dp)));
+        }else{
+            mMyLocationOverlay.getItem(event.getPreviousIndex()).setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
+        }
         mapView.invalidate();
 
     }
@@ -160,25 +165,24 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     private void showFeatures(final List<Place> places){
 
 
-        if(places.get(0) instanceof Route) {
-            TextOverlay textOverlay = new TextOverlay(getActivity(),mapView,(List<Route>)(List<?>)places, new TextOverlay.OnItemGestureListener<Route>(){
-                @Override
-                public boolean onItemSingleTapUp(int i,Route route) {
-                    ((MainActivity) getActivity()).showPanelDescription(i);
-                    mMyLocationOverlay.getItem(i).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
-                    mapView.invalidate();
-
-                    return true;
-                }
-
-                @Override
-                public boolean onItemLongPress(int i,Route route) {
-//                    Toast.makeText(getActivity(), "Marker Selected: " + marker.getTitle(), Toast.LENGTH_LONG).show();
-                    return true;
-                }
-            });
-            mapView.addOverlay(textOverlay);
-        }else {
+//        if(places.get(0) instanceof Route) {
+//            TextOverlay textOverlay = new TextOverlay(getActivity(),mapView,(List<Route>)(List<?>)places, new TextOverlay.OnItemGestureListener<Route>(){
+//                @Override
+//                public boolean onItemSingleTapUp(int i,Route route) {
+//                    ((MainActivity) getActivity()).showPanelDescription(i);
+//                    mMyLocationOverlay.getItem(i).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
+//                    mapView.invalidate();
+//
+//                    return true;
+//                }
+//
+//                @Override
+//                public boolean onItemLongPress(int i,Route route) {
+//                    return true;
+//                }
+//            });
+//            mapView.addOverlay(textOverlay);
+//        }else {
 
 
             final ArrayList<Marker> items = new ArrayList<Marker>();
@@ -187,7 +191,11 @@ public class MapboxFragment extends BaseFragment implements MapListener{
             for (int i = 0; i < places.size(); i++) {
                 // Put overlay icon a little way from map centre
                 Marker marker = new Marker("Here", "SampleDescription", new LatLng(places.get(i).getCoordinates()[1], places.get(i).getCoordinates()[0]));
-                marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
+                if(places.get(0) instanceof Route) {
+                    marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_brightness_1_black_18dp)));
+                }else{
+                    marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
+                }
                 markers.add(marker);
 
             }
@@ -210,8 +218,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
             });
             mapView.addItemizedOverlay(this.mMyLocationOverlay);
 
-            // mapView.addItemizedOverlay(overlayTemp);
-        }
+//        }
 
         mapView.invalidate();
 

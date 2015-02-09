@@ -20,6 +20,7 @@ import com.pedrocactus.topobloc.app.ui.MainActivity;
 import com.pedrocactus.topobloc.app.ui.MapFragment;
 import com.pedrocactus.topobloc.app.ui.MapboxFragment;
 import com.pedrocactus.topobloc.app.ui.slideuppanel.DetailSliderFragment;
+import com.pedrocactus.topobloc.app.ui.slideuppanel.view.RatingDialog;
 import com.pedrocactus.topobloc.app.ui.utils.JacksonConverter;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Cache;
@@ -47,6 +48,7 @@ import retrofit.client.OkClient;
                 AboutFragment.class,
                 DetailFragment.class,
                 DetailSliderFragment.class,
+                RatingDialog.class,
                 ListFragment.class,
 //                VoieSliderFragment.class,
 //                VoieFragment.class,

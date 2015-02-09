@@ -138,7 +138,7 @@ public class MainActivity extends BaseActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(this.getResources().getColor(R.color.sand)));
+//        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(this.getResources().getColor(R.color.sand)));
 
 
 
@@ -205,7 +205,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        panelLayout.hidePanel();
+        panelLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
 	}
 
 
@@ -317,7 +317,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void onEventMainThread(PhotoTouchEvent event) {
-        panelLayout.hidePanel();
+        panelLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
 
         final FragmentManager fm = getSupportFragmentManager();
 
@@ -364,7 +364,7 @@ public class MainActivity extends BaseActivity {
 
 
         eventBus.post(new ShowDetailEvent(placeIndex));
-        panelLayout.showPanel();
+        panelLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
 
 
     }
@@ -457,8 +457,7 @@ public void setTitle(CharSequence title) {
     }
 
     public void onEventMainThread(ZoomToEvent event) {
-        panelLayout.collapsePanel();
-        panelLayout.hidePanel();
+        panelLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
     }
 
 
