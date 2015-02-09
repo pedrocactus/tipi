@@ -57,12 +57,12 @@ public class PlaceListAdapter extends BaseAdapter implements Filterable{
 //                .into(movieThumbNailView);
         return convertView;
     }
-    public void updatePlaces(List<Place> movies) {
+    public void updatePlaces(List<Place> places) {
 //this.places = places;
         this.places.clear();
-        this.places.addAll(movies);
+        this.places.addAll(places);
         this.placesTmpSearch.clear();
-        this.placesTmpSearch.addAll(movies);
+        this.placesTmpSearch.addAll(places);
         notifyDataSetChanged();
     }
     public void updatePlace(final int position, final Place movie) {

@@ -129,7 +129,7 @@ public class MainActivity extends BaseActivity {
                 goToMapFragment(arg1);
 
                 if(arg2==0)
-                goToMapFragment(arg1);
+                goToListFragment(arg1);
 
 
             }
@@ -266,11 +266,10 @@ public class MainActivity extends BaseActivity {
 //                ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
 
             if (listFragment == null) {
+                listFragment = new ListFragment();
                 Bundle arguments = new Bundle();
                 arguments.putParcelableArrayList("places", (ArrayList<Place>) places);
-                arguments.putInt("placeIndex",event.getIndex());
-                voieFragment.setArguments(arguments);
-                listFragment = new ListFragment();
+                listFragment.setArguments(arguments);
             }
 
             // Replace current fragment by the new one.
