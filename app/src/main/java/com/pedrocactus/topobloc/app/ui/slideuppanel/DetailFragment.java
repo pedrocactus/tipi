@@ -1,6 +1,7 @@
 package com.pedrocactus.topobloc.app.ui.slideuppanel;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,12 @@ import com.path.android.jobqueue.JobManager;
 import com.pedrocactus.topobloc.app.R;
 import com.pedrocactus.topobloc.app.events.FetchDetailPlaceEvent;
 import com.pedrocactus.topobloc.app.model.Place;
+import com.pedrocactus.topobloc.app.model.Route;
 import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
+import com.pedrocactus.topobloc.app.ui.slideuppanel.view.CustomDetailView;
 import com.pedrocactus.topobloc.app.ui.slideuppanel.view.DetailView;
+import com.pedrocactus.topobloc.app.ui.slideuppanel.view.RatingDialog;
+import com.pedrocactus.topobloc.app.ui.slideuppanel.view.RouteDetailView;
 
 import javax.inject.Inject;
 
@@ -25,7 +30,7 @@ public class DetailFragment extends BaseFragment {
     public static final String PLACE_INDEX = "indexlace";
 
     //CustomView with binding method to movie model
-    private DetailView placeDetailView;
+    private CustomDetailView detailView;
     private Place place;
     private int placeIndex;
 
@@ -41,8 +46,25 @@ public class DetailFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.panel_description_layout, container,false);
         ButterKnife.inject(this, view);
-        placeDetailView = new DetailView(getActivity());
-        return placeDetailView;
+
+        place = getArguments().getParcelable(PLACE_ID);
+        placeIndex = getArguments().getInt(PLACE_INDEX);
+        if(place instanceof Route) {
+
+            detailView = new RouteDetailView(getActivity());
+            ((RouteDetailView) detailView).setupListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showEditDialog();
+                }
+            });
+        }else{
+
+            detailView = new DetailView(getActivity());
+        }
+
+        detailView.bindModel(place, placeIndex);
+        return (View) detailView;
     }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -50,9 +72,9 @@ public class DetailFragment extends BaseFragment {
 //        if(savedInstanceState!=null){
 //            place = savedInstanceState.getParcelable("place");
 //        }else {
-            place = getArguments().getParcelable(PLACE_ID);
-            placeIndex = getArguments().getInt(PLACE_INDEX);
-            placeDetailView.bindModel(place,placeIndex);
+
+
+
 //        }
     }
     @Override
@@ -79,7 +101,7 @@ public class DetailFragment extends BaseFragment {
 //        }
 //    }
     private void updatePlace(){
-        placeDetailView.bindModel(place,placeIndex);
+        detailView.bindModel(place, placeIndex);
 
     }
 //    public void onEventMainThread(SaveCommentEvent event) {
@@ -93,5 +115,10 @@ public class DetailFragment extends BaseFragment {
 //        }
 //        movieDetailView.enableRating(true);
 //    }
+
+    private void showEditDialog() {
+        RatingDialog editNameDialog = RatingDialog.newInstance("yes","flash");
+        editNameDialog.show(((ActionBarActivity)getActivity()).getSupportFragmentManager(), RatingDialog.TAG);
+    }
 
 }

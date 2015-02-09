@@ -66,5 +66,9 @@
     <string name="detail_history">&lt;u>History&lt;u> :</string>
 
 
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+
+
 
 </resources>

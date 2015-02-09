@@ -16,6 +16,7 @@ public class Utils {
         return context.getResources().getIdentifier(name.toLowerCase().replace(" ", "_"),"","");
     }
 
+
     public static float getPixels(int unit, float size) {
         DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
         return TypedValue.applyDimension(unit, size, metrics);

@@ -6,10 +6,10 @@
     android:orientation="horizontal"
     android:padding="6dp">
 
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:id="@+id/place_thumbnail" />
+    <!--<ImageView-->
+        <!--android:layout_width="60dp"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:id="@+id/place_thumbnail" />-->
 
     <TextView
         android:layout_width="match_parent"

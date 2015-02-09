@@ -1,18 +1,22 @@
 package com.pedrocactus.topobloc.app.ui.slideuppanel.view;
 
 import android.content.Context;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.pedrocactus.topobloc.app.R;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
 import com.pedrocactus.topobloc.app.model.NationalSite;
 import com.pedrocactus.topobloc.app.model.Place;
+import com.pedrocactus.topobloc.app.model.Route;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,11 +37,11 @@ public class RouteDetailView extends LinearLayout implements CustomDetailView{
     //@InjectView(R.id.place_imageview)
     ImageView placeImage;
 
-    Button zoomToButton;
+    TextView level;
 
-    ListView placeDescriptionListView;
 
-    private DetailListAdapter adapter;
+    LinearLayout caracLayout;
+
 
     private Context context;
 
@@ -46,54 +50,93 @@ public class RouteDetailView extends LinearLayout implements CustomDetailView{
         super(context);
         this.context = context;
         //View headerView = LayoutInflater.from(context).inflate(R.layout., null, true);
-        LayoutInflater.from(context).inflate(R.layout.panel_description_layout, this, true);
+        LayoutInflater.from(context).inflate(R.layout.panel_description_layout_route, this, true);
         //ButterKnife.inject(this, this);
 
-        placeDescriptionListView = (ListView)findViewById(R.id.listView_detail_info);
         title = (TextView)findViewById(R.id.name);
         placeImage = (ImageView)findViewById(R.id.place_imageview);
-        //placeDescriptionListView.addHeaderView(headerView);
-        adapter = new DetailListAdapter(context);
-        placeDescriptionListView.setAdapter(adapter);
 
-        zoomToButton = (Button)findViewById(R.id.follow);
+        level = (TextView)findViewById(R.id.level);
 
+        caracLayout = (LinearLayout) findViewById(R.id.route_carac_layout);
 
 
 }
     @Override
     public void bindModel(final Place place, final int index){
-        zoomToButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EventBus.getDefault().post(new ZoomToEvent(place.getName(),place.getBoundingbox()));
-            }
-        });
+        Route route = (Route)place;
+        level.setText(route.getLevel());
+        ArrayList<RouteType> routeTypes = new ArrayList<RouteType>();
+        if(route.isDalle()) {
+            routeTypes.add(RouteType.DALLE);
+        }
+
+        if(route.isDevers()) {
+            routeTypes.add(RouteType.DEVERS);
+        }
+        if(route.isDanger()) {
+            routeTypes.add(RouteType.LETHAL);
+        }
+        if(route.isHighball()) {
+            routeTypes.add(RouteType.HIGHBALL);
+        }
+        if(route.isOffshore()) {
+            routeTypes.add(RouteType.OFFSHORE);
+        }
+
+
+        for(int i = 0;i<routeTypes.size();i++) {
+            ImageButton b1 = new ImageButton(context);
+            b1.setId(100 + i);
+            b1.setImageResource(RouteType.DALLE.getRes());
+            // b1.setText(adapt_objmenu.city_name_array[i]);
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+//            if (i > 0) {
+//                lp.addRule(RelativeLayout.RIGHT_OF, b1.getId() - 1);
+//            }
+
+//                lp.addRule(RelativeLayout.CENTER_IN_PARENT, b1.getId());
+
+            b1.setLayoutParams(lp);
+
+            caracLayout.addView(b1);
+        }
+
+
 
         title.setText(place.getName());
+        title.setTextColor(context.getResources().getColor(context.getResources().getIdentifier(route.getCircuit(),"color",context.getPackageName())));
         if(place.images!=null)
         Picasso.with(context)
                 .load(place.images.get(1))
                 .into(placeImage);
 
-        //Setting up the listview with different layotus
-        ArrayList<Map<String, Object>> detailList = new ArrayList<Map<String, Object>>();
-        if(((NationalSite)place).getDescription().length()!=0)
-            detailList.add(getDetailItemInfo(DetailListAdapter.DetailType.DESCRIPTION,getContext().getString(R.string.detail_description),((NationalSite)place).getDescription()));
-        detailList.add(getDetailItemInfo(DetailListAdapter.DetailType.HISTORY,getContext().getString(R.string.detail_history),((NationalSite)place).getHistory()));
-//        if(movie.getActors()!=null&&movie.getActors().size()!=0)
-//            detailList.add(getDetailItemInfo(DetaiListAdapter.DetailType.CAST,getContext().getString(R.string.detail_casting),movie.getActors()));
-//        if(movie.getSimilarMovies()!=null&&movie.getSimilarMovies().size()!=0)
-//            detailList.add(getDetailItemInfo(DetaiListAdapter.DetailType.SIMILAR_MOVIES,getContext().getString(R.string.detail_similar_movies),movie.getSimilarMovies()));
-        adapter.putData(detailList);
+
     }
 
-    private HashMap<String, Object> getDetailItemInfo(DetailListAdapter.DetailType type,String title, Object body) {
-        HashMap<String, Object> item = new HashMap<String, Object>();
-        item.put(DetailListAdapter.TYPE, type);
-        item.put(DetailListAdapter.TITLE, title);
-        item.put(DetailListAdapter.BODY, body);
-        return item;
+
+    public void setupListener(OnClickListener listener){
+        level.setOnClickListener(listener);
     }
 
+    public enum RouteType {
+        DEVERS("description", R.drawable.flex_biceps), DALLE("history", R.drawable.flex_biceps), LETHAL("history",  R.drawable.flex_biceps), HIGHBALL("history",  R.drawable.flex_biceps), OFFSHORE("history", R.drawable.water_element);
+        private final int res;
+        private final String value;
+
+        private RouteType(String value, int res) {
+            this.res = res;
+            this.value = value;
+        }
+
+        public int getRes() {
+            return res;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+
+    }
 }
