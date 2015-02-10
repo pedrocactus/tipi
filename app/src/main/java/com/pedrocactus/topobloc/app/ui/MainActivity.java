@@ -18,6 +18,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.pedrocactus.topobloc.app.R;
+import com.pedrocactus.topobloc.app.ui.MapboxFragment;
+import com.pedrocactus.topobloc.app.ui.VoieSliderFragment;
 import com.pedrocactus.topobloc.app.ui.about.AboutFragment;
 import com.pedrocactus.topobloc.app.ui.list.ListFragment;
 import com.pedrocactus.topobloc.app.ui.panel.CustomDrawerAdapter;
@@ -29,6 +31,7 @@ import com.pedrocactus.topobloc.app.events.ShowDetailEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.ui.base.BaseActivity;
+import com.pedrocactus.topobloc.app.ui.panel.RightPanelListAdapter;
 import com.pedrocactus.topobloc.app.ui.slideuppanel.DetailSliderFragment;
 import com.pedrocactus.topobloc.app.ui.utils.Utils;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
@@ -42,8 +45,10 @@ public class MainActivity extends BaseActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView mDrawerList;
+    private ListView mDrawerListRight;
     List<DrawerItem> dataList;
     CustomDrawerAdapter adapter;
+    RightPanelListAdapter adapterRight;
     //private MapFragment mapFragment;
     private MapboxFragment mapBoxFragment;
     private AboutFragment aboutFragment;
@@ -69,6 +74,7 @@ public class MainActivity extends BaseActivity {
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerListRight = (ListView) findViewById(R.id.right_drawer);
 
         mDrawerToggle = new ActionBarDrawerToggle(
                 this, /* host Activity */
@@ -110,7 +116,10 @@ public class MainActivity extends BaseActivity {
         adapter = new CustomDrawerAdapter(this, R.layout.title_drawer_item_nosep,R.layout.title_drawer_item,
                 dataList);
 
+        adapterRight = new RightPanelListAdapter(this);
+
         mDrawerList.setAdapter(adapter);
+        mDrawerListRight.setAdapter(adapterRight);
         mDrawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new OnItemClickListener() {
@@ -138,7 +147,7 @@ public class MainActivity extends BaseActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-//        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(this.getResources().getColor(R.color.sand)));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(this.getResources().getColor(R.color.sand)));
 
 
 
@@ -211,6 +220,7 @@ public class MainActivity extends BaseActivity {
 
 
     private void showFragment(final String fragmentTag) {
+        panelLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
         if (fragmentTag == null||fragmentTag.equals(""))
             return;
         // Begin a fragment transaction.
@@ -314,6 +324,7 @@ public class MainActivity extends BaseActivity {
         detailSliderFragment.setArguments(arguments);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.panel, detailSliderFragment).commit();
+        adapterRight.updatePlaces(places);
     }
 
     public void onEventMainThread(PhotoTouchEvent event) {
@@ -368,7 +379,6 @@ public class MainActivity extends BaseActivity {
 
 
     }
-
 
 
     private String getCurrentFragmentName() {
@@ -434,7 +444,17 @@ public void setTitle(CharSequence title) {
         }
 
                 return super.onOptionsItemSelected(item);
-       }
+       }                                                                                                                                                                
+
+    @Override
+    public void onBackPressed() {
+        if (panelLayout != null &&
+                (panelLayout.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED || panelLayout.getPanelState() == SlidingUpPanelLayout.PanelState.ANCHORED)) {
+            panelLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     public void setDrawerEnable(boolean enabled){
         mDrawerToggle.setDrawerIndicatorEnabled(enabled);

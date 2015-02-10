@@ -117,7 +117,7 @@ public class DetailFragment extends BaseFragment {
 //    }
 
     private void showEditDialog() {
-        RatingDialog editNameDialog = RatingDialog.newInstance("yes","flash");
+        RatingDialog editNameDialog = RatingDialog.newInstance(getString(R.string.rating_dialog_title),"flash");
         editNameDialog.show(((ActionBarActivity)getActivity()).getSupportFragmentManager(), RatingDialog.TAG);
     }
 

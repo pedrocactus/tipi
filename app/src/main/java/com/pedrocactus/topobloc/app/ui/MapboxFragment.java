@@ -17,6 +17,7 @@ import com.mapbox.mapboxsdk.overlay.Icon;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MapboxTileLayer;
+import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.JobManager;
 import com.pedrocactus.topobloc.app.R;
 import com.pedrocactus.topobloc.app.events.BusProvider;
@@ -33,7 +34,6 @@ import com.pedrocactus.topobloc.app.model.Sector;
 import com.pedrocactus.topobloc.app.model.Route;
 import com.pedrocactus.topobloc.app.model.Site;
 import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
-import com.pedrocactus.topobloc.app.ui.utils.TextOverlay;
 import com.squareup.otto.Subscribe;
 
 import org.osmdroid.DefaultResourceProxyImpl;
@@ -72,6 +72,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     private String currentMap;
 
     private List<Place> places;
+    private List<Job> previousJobs;
 
 
 
@@ -97,7 +98,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         mapView.setDiskCacheEnabled(true);
 
         currentMap = getString(R.string.outdoorsMapId);
-
+        previousJobs
 
 
 		return rootView;
@@ -140,6 +141,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
             fetchRoutes(event.getNamePoint());
         }
         mapView.removeOverlay(mMyLocationOverlay);
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle(oldPlace.getName());
 
 
     }
@@ -205,6 +207,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
                 public boolean onItemSingleTapUp(int i, Marker marker) {
                     ((MainActivity) getActivity()).showPanelDescription(i);
                     mMyLocationOverlay.getItem(i).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
+                    oldPlace.add(places.get(i));
                     mapView.invalidate();
 
                     return true;
@@ -273,6 +276,12 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
     @Override
     public boolean onZoom(ZoomEvent zoomEvent) {
+//        mapView.getBoundingBox().getLatitudeSpan()>oldPlace.getBoundingbox()getBoundingbox();
+
+        if(mapView.getZoomLevel()<zoomEvent.getZoomLevel()){
+
+        }
+
         return false;
     }
 

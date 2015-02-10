@@ -66,6 +66,7 @@
     <string name="detail_history">&lt;u>History&lt;u> :</string>
 
 
+    <string name="rating_dialog_title">Achievement</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
 

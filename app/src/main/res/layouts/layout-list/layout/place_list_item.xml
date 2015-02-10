@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+android:layout_width="match_parent"
+android:layout_height="68dp"
+android:gravity="center_vertical"
+android:orientation="horizontal">
+
+<TextView
+    android:id="@+id/place_title"
+    android:layout_width="0dp"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:padding="6dp">
+    android:layout_weight="2"
+    android:textSize="25sp"
+    android:gravity="center"
+    android:paddingLeft="20dp"/>
 
-    <!--<ImageView-->
-        <!--android:layout_width="60dp"-->
-        <!--android:layout_height="60dp"-->
-        <!--android:id="@+id/place_thumbnail" />-->
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/place_textview" />
-
+<TextView
+    android:id="@+id/level"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:textSize="25sp"
+    android:textColor="@color/yellow"
+    android:shadowColor="@color/yellow"
+    android:shadowDx="0"
+    android:shadowDy="0"
+    android:shadowRadius="200"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"/>
 </LinearLayout>

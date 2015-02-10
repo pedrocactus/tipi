@@ -1,4 +1,4 @@
-package com.pedrocactus.topobloc.app.ui.list;
+package com.pedrocactus.topobloc.app.ui.panel;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,36 +11,42 @@ import android.widget.TextView;
 
 import com.pedrocactus.topobloc.app.R;
 import com.pedrocactus.topobloc.app.model.Place;
+import com.pedrocactus.topobloc.app.model.Route;
 import com.pedrocactus.topobloc.app.ui.utils.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by castex on 29/01/15.
+ * Created by castex on 10/02/15.
  */
-public class PlaceListAdapter extends BaseAdapter implements Filterable{
+public class RightPanelListAdapter extends BaseAdapter implements Filterable {
 
     private List<Place> places;
     private List<Place> placesTmpSearch;
     private final Context context;
-    public PlaceListAdapter(Context context){
+
+    public RightPanelListAdapter(Context context) {
         this.context = context;
         this.places = new ArrayList<Place>();
         this.placesTmpSearch = new ArrayList<Place>();
     }
+
     @Override
     public int getCount() {
         return placesTmpSearch.size();
     }
+
     @Override
     public Place getItem(int position) {
         return placesTmpSearch.get(position);
     }
+
     @Override
     public long getItemId(int position) {
         return position;
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
@@ -48,15 +54,21 @@ public class PlaceListAdapter extends BaseAdapter implements Filterable{
                     .inflate(R.layout.place_list_item, parent, false);
         }
 //        ImageView movieThumbNailView = (ImageView) ViewHolder.get(convertView, R.id.movie_thumbnail);
-        TextView movieTitleView = ViewHolder.get(convertView,R.id.place_title);
+        TextView movieTitleView = ViewHolder.get(convertView, R.id.place_title);
+        TextView levelTextView = ViewHolder.get(convertView, R.id.level);
         Place place = getItem(position);
-        movieTitleView.setText(place.getName());
-//        Picasso.with(context)
-//                .load(movie.getPosters().getThumbnail())
-//                .placeholder(R.drawable.placeholder_movie)
-//                .into(movieThumbNailView);
+        String number = "";
+        if (place instanceof Route) {
+            number = Integer.toString(((Route) place).getNumber()) + ". ";
+
+            levelTextView.setText(((Route) place).getLevel());
+        }
+        movieTitleView.setText(number + place.getName());
+
+
         return convertView;
     }
+
     public void updatePlaces(List<Place> places) {
 //this.places = places;
         this.places.clear();
@@ -65,10 +77,12 @@ public class PlaceListAdapter extends BaseAdapter implements Filterable{
         this.placesTmpSearch.addAll(places);
         notifyDataSetChanged();
     }
+
     public void updatePlace(final int position, final Place movie) {
         this.places.add(position, movie);
         notifyDataSetChanged();
     }
+
     @Override
     public Filter getFilter() {
         Filter filter = new Filter() {
@@ -77,6 +91,7 @@ public class PlaceListAdapter extends BaseAdapter implements Filterable{
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 notifyDataSetChanged();
             }
+
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults results = new FilterResults();
@@ -84,8 +99,7 @@ public class PlaceListAdapter extends BaseAdapter implements Filterable{
 // No filter implemented we return all the list
                     placesTmpSearch.clear();
                     placesTmpSearch.addAll(places);
-                }
-                else {
+                } else {
                     placesTmpSearch.clear();
                     for (Place place : places) {
                         if (place.getName().toUpperCase().startsWith(constraint.toString().toUpperCase()))
@@ -97,5 +111,5 @@ public class PlaceListAdapter extends BaseAdapter implements Filterable{
         };
         return filter;
     }
-
 }
+
