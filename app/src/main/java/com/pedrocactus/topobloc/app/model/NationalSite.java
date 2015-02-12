@@ -13,7 +13,7 @@ import java.util.List;
  */
 //@JsonTypeName("nationalsite")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NationalSite extends Place{
+public class NationalSite extends Area{
 
 
     public List<Site> sites;
@@ -26,8 +26,8 @@ public class NationalSite extends Place{
     }
 
     public NationalSite(List<Site> sites, String name, String description,String history,
-                List<String> images, float[] coordinates, float[] boundingBox) {
-        super(name, coordinates,images,boundingBox,description,history);
+                List<String> images, float[] coordinates, float[] boundingBox,List<String> ancestors) {
+        super(name, coordinates,images,boundingBox,description,history,(List<Place>)(List<?>) sites,ancestors);
         this.sites = sites;
         this.name = name;
         this.images = images;

@@ -283,7 +283,8 @@ public class MainActivity extends BaseActivity {
             }
 
             // Replace current fragment by the new one.
-            ft.replace(R.id.content_frame, listFragment);
+            ft.add(R.id.content_frame, listFragment);
+//            ft.replace(R.id.content_frame, listFragment);
 
 
 

@@ -41,4 +41,17 @@ public interface TopoblocAPI {
     @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
     @GET("/api/public/v1.0/movies/{id}/similar.json")
     MoviesWrapper getSimilarMovies(@Path("id") long movieId);*/
+
+    @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
+    @GET("/getSite")
+    Site getSite(@Query("siteName") String siteName);
+
+
+    @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
+    @GET("/getSector")
+    Sector getSector(@Query("sector") String sectorName);
+
+    @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
+    @GET("/getNationalSite")
+    NationalSite getNationalSite(@Query("nationalSiteName") String nationalSiteName);
 }

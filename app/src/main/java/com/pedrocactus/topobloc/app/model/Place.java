@@ -24,27 +24,18 @@ public abstract class Place  implements Parcelable{
 
     public String name;
     public float[] coordinates;
-    public float[] boundingbox;
     public String description;
     public String history;
     public List<String> images;
 
-    public Place(String name, float[] coordinates,List<String> images, float[] boundingbox,String description,String history) {
+    public Place(String name, float[] coordinates,List<String> images,String description,String history) {
         this.name = name;
         this.coordinates = coordinates;
         this.images = images;
-        this.boundingbox = boundingbox;
         this.history = history;
         this.description = description;
     }
 
-    public float[] getBoundingbox() {
-        return boundingbox;
-    }
-
-    public void setBoundingbox(float[] boundingbox) {
-        this.boundingbox = boundingbox;
-    }
 
     public Place() {
     }
@@ -94,7 +85,6 @@ public abstract class Place  implements Parcelable{
     public void setDescription(String description) {
         this.description = description;
     }
-
 
 
 }

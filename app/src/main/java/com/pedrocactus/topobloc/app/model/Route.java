@@ -35,8 +35,8 @@ public class Route extends Place implements Parcelable{
     public Route(String level, boolean surplomb, boolean devers, boolean dalle,
                  boolean danger, boolean highball, boolean offshore, int number,
                  int rating, String circuit, String name, float[] coordinates,
-                 List<String> images, float[] boundingBox,String description,String history) {
-        super(name,coordinates,images,boundingBox,description,history);
+                 List<String> images, float[] boundingBox,String description,String history,List<String> ancestors) {
+        super(name,coordinates,images,description,history);
         this.level = level;
         this.surplomb = surplomb;
         this.devers = devers;

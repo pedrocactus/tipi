@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by pierrecastex on 25/11/2014.
  */
-public class Site extends Place{
+public class Site extends Area{
 
 
     public List<Sector> sectors;
@@ -23,8 +23,8 @@ public class Site extends Place{
 
 
     public Site(List<Sector> sectors, String name,
-                List<String> images, float[] coordinates, float[] boundingBox,String description,String history) {
-        super(name, coordinates,images,boundingBox,description,history);
+                List<String> images, float[] coordinates, float[] boundingBox,String description,String history,List<String> ancestors) {
+        super(name, coordinates,images,boundingBox,description,history,(List<Place>)(List<?>) sectors,ancestors);
         this.sectors = sectors;
         this.name = name;
         this.description = description;

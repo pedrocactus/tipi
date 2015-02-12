@@ -1,6 +1,7 @@
 package com.pedrocactus.topobloc.app.job;
 
 import com.pedrocactus.topobloc.app.TopoblocApp;
+import com.pedrocactus.topobloc.app.events.FetchAreaEvent;
 import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.model.Site;
@@ -18,23 +19,21 @@ public class SiteJob extends BaseNetworkJob {
     @Inject
     TopoblocAPI boxotopApiClient;
 
-    private String nationalSiteName;
+    private String siteName;
 
-    public SiteJob(String nationalSiteName) {
+    public SiteJob(String siteName) {
         super();
         TopoblocApp.injectMembers(this);
-        this.nationalSiteName = nationalSiteName;
+        this.siteName = siteName;
     }
     @Override
     public void onAdded() {
     }
     @Override
     public void onRun() throws Throwable {
-       List<Site> sites = boxotopApiClient.getSitesFromNational(nationalSiteName);
-
-
-        FetchPlacesEvent event = new FetchPlacesEvent((List<Place>)(List<?>) sites);
-        eventBus.post(event);
+       Site site = boxotopApiClient.getSite(siteName);
+       FetchAreaEvent event = new FetchAreaEvent(site);
+       eventBus.post(event);
     }
     @Override
     protected void onCancel() {

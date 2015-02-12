@@ -95,7 +95,15 @@ public class TopoblocApp extends Application {
     }
 
 
-    public SharedPreferences getPreferences() {return preferences;}
+
+    public void saveStringInPreferences(String object,String tag){
+        SharedPreferences.Editor prefsEditor = preferences.edit();
+        prefsEditor.putString(tag, object);
+        prefsEditor.commit();
+    }
+    public String getStringFromSharedPreferences(String tag ){
+        return preferences.getString(tag, "");
+    }
 
 
     @Override

@@ -1,6 +1,7 @@
 package com.pedrocactus.topobloc.app.job;
 
 import com.pedrocactus.topobloc.app.TopoblocApp;
+import com.pedrocactus.topobloc.app.events.FetchAreaEvent;
 import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.model.Sector;
@@ -15,15 +16,15 @@ import javax.inject.Inject;
  */
 public class SectorJob extends BaseNetworkJob {
     public static final int PRIORITY = 1;
-    public String siteName;
+    public String sectorName;
 
     @Inject
     TopoblocAPI boxotopApiClient;
 
-    public SectorJob(String siteName) {
+    public SectorJob(String sectorName) {
         super();
         TopoblocApp.injectMembers(this);
-        this.siteName = siteName;
+        this.sectorName = sectorName;
     }
 
     @Override
@@ -32,10 +33,9 @@ public class SectorJob extends BaseNetworkJob {
 
     @Override
     public void onRun() throws Throwable {
-       List<Sector> sectors = boxotopApiClient.getSectorsFromSite(siteName);
+       Sector sector = boxotopApiClient.getSector(sectorName);
 
-
-        FetchPlacesEvent event = new FetchPlacesEvent((List<Place>)(List<?>) sectors);
+        FetchAreaEvent event = new FetchAreaEvent(sector);
         eventBus.post(event);
     }
 

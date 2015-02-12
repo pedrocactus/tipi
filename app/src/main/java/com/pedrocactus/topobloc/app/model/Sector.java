@@ -11,7 +11,7 @@ import java.util.List;
  * Created by pierrecastex on 29/07/2014.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Sector extends Place{
+public class Sector extends Area{
 
 
     public void setNumber(int number) {
@@ -47,10 +47,9 @@ public class Sector extends Place{
         }
     };
 
-    public Sector(String name, float[] coordinates, int number, List<Route> routes,List<String> images, float[] boundingBox,String description,String history) {
-        super(name, coordinates,images,boundingBox,description,history);
+    public Sector(String name, float[] coordinates, int number, List<Route> routes,List<String> images, float[] boundingBox,String description,String history,List<String> ancestors) {
+        super(name, coordinates,images,boundingBox,description,history,(List<Place>)(List<?>) routes,ancestors);
         this.number = number;
-        this.routes = routes;
         this.description = description;
     }
 

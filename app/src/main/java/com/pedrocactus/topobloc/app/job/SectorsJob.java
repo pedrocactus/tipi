@@ -19,6 +19,7 @@ import javax.inject.Inject;
 public class SectorsJob extends BaseNetworkJob {
     public static final int PRIORITY = 1;
     public String siteName;
+
     @Inject
     TopoblocAPI boxotopApiClient;
 
@@ -27,9 +28,11 @@ public class SectorsJob extends BaseNetworkJob {
         TopoblocApp.injectMembers(this);
         this.siteName = siteName;
     }
+
     @Override
     public void onAdded() {
     }
+
     @Override
     public void onRun() throws Throwable {
        List<Sector> sectors = boxotopApiClient.getSectorsFromSite(siteName);
@@ -38,6 +41,7 @@ public class SectorsJob extends BaseNetworkJob {
         FetchPlacesEvent event = new FetchPlacesEvent((List<Place>)(List<?>) sectors);
         eventBus.post(event);
     }
+
     @Override
     protected void onCancel() {
     }

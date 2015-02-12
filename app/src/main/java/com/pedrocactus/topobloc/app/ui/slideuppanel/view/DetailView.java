@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.pedrocactus.topobloc.app.R;
 import com.pedrocactus.topobloc.app.events.PhotoTouchEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
+import com.pedrocactus.topobloc.app.model.Area;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.squareup.picasso.Picasso;
 
@@ -66,7 +67,7 @@ public class DetailView extends LinearLayout implements CustomDetailView{
         zoomToButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                EventBus.getDefault().post(new ZoomToEvent(place.getName(),place.getBoundingbox()));
+                EventBus.getDefault().post(new ZoomToEvent(place.getName(),((Area)place).getBoundingbox()));
             }
         });
 

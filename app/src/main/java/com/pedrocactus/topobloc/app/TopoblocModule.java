@@ -8,9 +8,12 @@ import com.path.android.jobqueue.config.Configuration;
 import com.path.android.jobqueue.log.CustomLogger;
 import com.path.android.jobqueue.network.NetworkUtilImpl;
 import com.pedrocactus.topobloc.app.events.NetworkErrorEvent;
+import com.pedrocactus.topobloc.app.job.NationalSiteJob;
 import com.pedrocactus.topobloc.app.job.NationalSitesJob;
 import com.pedrocactus.topobloc.app.job.RoutesJob;
+import com.pedrocactus.topobloc.app.job.SectorJob;
 import com.pedrocactus.topobloc.app.job.SectorsJob;
+import com.pedrocactus.topobloc.app.job.SiteJob;
 import com.pedrocactus.topobloc.app.job.SitesJob;
 import com.pedrocactus.topobloc.app.service.TopoblocAPI;
 import com.pedrocactus.topobloc.app.ui.about.AboutFragment;
@@ -56,6 +59,9 @@ import retrofit.client.OkClient;
                 SitesJob.class,
                 RoutesJob.class,
                 NationalSitesJob.class,
+                SectorJob.class,
+                SiteJob.class,
+                NationalSiteJob.class,
                 TopoblocApp.class,
                 JobManager.class
         }

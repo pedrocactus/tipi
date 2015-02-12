@@ -1,6 +1,7 @@
 package com.pedrocactus.topobloc.app.job;
 
 import com.pedrocactus.topobloc.app.TopoblocApp;
+import com.pedrocactus.topobloc.app.events.FetchAreaEvent;
 import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
 import com.pedrocactus.topobloc.app.model.NationalSite;
 import com.pedrocactus.topobloc.app.model.Place;
@@ -15,20 +16,22 @@ import javax.inject.Inject;
  */
 public class NationalSiteJob extends BaseNetworkJob {
     public static final int PRIORITY = 1;
+    public String nationalSiteName;
     @Inject
     TopoblocAPI boxotopApiClient;
 
-    public NationalSiteJob() {
+    public NationalSiteJob(String nationalSiteName) {
         super();
         TopoblocApp.injectMembers(this);
+        this.nationalSiteName = nationalSiteName;
     }
     @Override
     public void onAdded() {
     }
     @Override
     public void onRun() throws Throwable {
-       List<NationalSite> nationalSites = boxotopApiClient.getNationalSites();
-        FetchPlacesEvent event = new FetchPlacesEvent((List<Place>)(List<?>) nationalSites);
+       NationalSite nationalSite = boxotopApiClient.getNationalSite(nationalSiteName);
+        FetchAreaEvent event = new FetchAreaEvent(nationalSite);
         eventBus.post(event);
     }
     @Override

@@ -20,14 +20,21 @@ import com.mapbox.mapboxsdk.tileprovider.tilesource.MapboxTileLayer;
 import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.JobManager;
 import com.pedrocactus.topobloc.app.R;
+import com.pedrocactus.topobloc.app.TopoblocApp;
 import com.pedrocactus.topobloc.app.events.BusProvider;
+import com.pedrocactus.topobloc.app.events.FetchAreaEvent;
 import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
 import com.pedrocactus.topobloc.app.events.SwipeDetailEvent;
+import com.pedrocactus.topobloc.app.events.ZoomOutEvent;
 import com.pedrocactus.topobloc.app.events.ZoomToEvent;
+import com.pedrocactus.topobloc.app.job.NationalSiteJob;
 import com.pedrocactus.topobloc.app.job.NationalSitesJob;
 import com.pedrocactus.topobloc.app.job.RoutesJob;
+import com.pedrocactus.topobloc.app.job.SectorJob;
 import com.pedrocactus.topobloc.app.job.SectorsJob;
+import com.pedrocactus.topobloc.app.job.SiteJob;
 import com.pedrocactus.topobloc.app.job.SitesJob;
+import com.pedrocactus.topobloc.app.model.Area;
 import com.pedrocactus.topobloc.app.model.NationalSite;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.model.Sector;
@@ -71,8 +78,11 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     private  KmlFeature.Styler pointedStyler;
     private String currentMap;
 
-    private List<Place> places;
-    private List<Job> previousJobs;
+    private ArrayList<Place> places;
+
+    private Area area;
+    private float zLevelLimit;
+    private BoundingBox lastBoundingBox;
 
 
 
@@ -97,12 +107,26 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         mapView.setZoom(7);
         mapView.setDiskCacheEnabled(true);
 
+        lastBoundingBox = mapView.getBoundingBox();
         currentMap = getString(R.string.outdoorsMapId);
-        previousJobs
-
+        if(savedInstanceState!=null){
+            mapView.zoomToBoundingBox((BoundingBox)savedInstanceState.getParcelable("boundingbox"));
+        }
 
 		return rootView;
 	}
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if(savedInstanceState!=null){
+            area = savedInstanceState.getParcelable("area");
+            showFeatures(area.getPlaces());
+        }else {
+
+            fetchNationalSites();
+        }
+    }
 
 
 
@@ -122,26 +146,86 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         jobManager.addJobInBackground(new RoutesJob(sectorName));
     }
 
+
+
+    private void fetchNationalSite(String nationaSiteName){
+        jobManager.addJobInBackground(new NationalSiteJob(nationaSiteName));
+    }
+
+    private void fetchSite(String siteName){
+        jobManager.addJobInBackground(new SiteJob(siteName));
+    }
+
+    private void fetchSector(String sectorName){
+        jobManager.addJobInBackground(new SectorJob(sectorName));
+    }
+
+
     public void onEventMainThread(FetchPlacesEvent event) {
-        places =  event.getPlaces();
+        places =  (ArrayList<Place>)event.getPlaces();
         showFeatures(places);
+    }
+
+    public void onEventMainThread(FetchAreaEvent event) {
+        area  =  event.getArea();
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle(area.getName());
+        showFeatures(area.getPlaces());
     }
 
     public void onEventMainThread(ZoomToEvent event) {
 
+        lastBoundingBox = mapView.getBoundingBox();
+
         LatLng northEast = new LatLng(event.getBoundingBox()[5],event.getBoundingBox()[4]);
         LatLng southWest = new LatLng(event.getBoundingBox()[1],event.getBoundingBox()[0]);
         mapView.zoomToBoundingBox(new BoundingBox(northEast,southWest));
+        zLevelLimit = mapView.getZoomLevel();
 
-        if(places.get(0) instanceof NationalSite){
-            fetchSites(event.getNamePoint());
-        }else if(places.get(0) instanceof Site){
-            fetchSectors(event.getNamePoint());
-        }else if(places.get(0) instanceof Sector){
-            fetchRoutes(event.getNamePoint());
+//        if(places.get(0) instanceof NationalSite){
+//            fetchSites(event.getNamePoint());
+//        }else if(places.get(0) instanceof Site){
+//            fetchSectors(event.getNamePoint());
+//        }else if(places.get(0) instanceof Sector){
+//            fetchRoutes(event.getNamePoint());
+//        }
+        if(area == null){
+            fetchNationalSite(event.getNamePoint());
+        }else if(area instanceof NationalSite){
+            fetchSite(event.getNamePoint());
+        }else if(area instanceof Site){
+            fetchSector(event.getNamePoint());
         }
+
         mapView.removeOverlay(mMyLocationOverlay);
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle(oldPlace.getName());
+
+        if(area!=null)
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle(area.getName());
+
+
+    }
+
+    public void onEventMainThread(ZoomOutEvent event) {
+
+        mapView.zoomToBoundingBox(lastBoundingBox);
+        lastBoundingBox = mapView.getBoundingBox();
+
+        zLevelLimit = mapView.getZoomLevel();
+
+//        if(places.get(0) instanceof NationalSite){
+//            fetchSites(event.getNamePoint());
+//        }else if(places.get(0) instanceof Site){
+//            fetchSectors(event.getNamePoint());
+//        }else if(places.get(0) instanceof Sector){
+//            fetchRoutes(event.getNamePoint());
+//        }
+
+        if(area instanceof Site){
+            fetchNationalSites();
+        }else if(area instanceof Sector){
+            fetchSite(event.getNamePoint());
+        }
+
+        mapView.removeOverlay(mMyLocationOverlay);
 
 
     }
@@ -207,7 +291,6 @@ public class MapboxFragment extends BaseFragment implements MapListener{
                 public boolean onItemSingleTapUp(int i, Marker marker) {
                     ((MainActivity) getActivity()).showPanelDescription(i);
                     mMyLocationOverlay.getItem(i).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
-                    oldPlace.add(places.get(i));
                     mapView.invalidate();
 
                     return true;
@@ -228,18 +311,9 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        if(savedInstanceState!=null){
-            //routes = savedInstanceState.getParcelableArrayList("routes");
-            //showFeatures(sector.getRoutes());
-        }else {
-            fetchNationalSites();
-        }
-    }
-    @Override
     public void onSaveInstanceState(Bundle outState) {
-        //outState.putParcelableArrayList("routes",routes);
+        outState.putParcelable("area",area);
+        outState.putParcelable("boundingbox", mapView.getBoundingBox());
         super.onSaveInstanceState(outState);
     }
 
@@ -259,6 +333,8 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     public void onPause() {
         super.onPause();
         BusProvider.getInstance().unregister(this);
+
+//        TopoblocApp.getInstance().saveStringInPreferences(mapView.getBoundingBox(),"boundingbox");
     }
 
 
@@ -278,8 +354,8 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     public boolean onZoom(ZoomEvent zoomEvent) {
 //        mapView.getBoundingBox().getLatitudeSpan()>oldPlace.getBoundingbox()getBoundingbox();
 
-        if(mapView.getZoomLevel()<zoomEvent.getZoomLevel()){
-
+        if(zLevelLimit<zoomEvent.getZoomLevel()){
+            mapView.zoomToBoundingBox(lastBoundingBox);
         }
 
         return false;
