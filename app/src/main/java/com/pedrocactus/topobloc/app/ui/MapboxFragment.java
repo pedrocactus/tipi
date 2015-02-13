@@ -78,7 +78,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     private  KmlFeature.Styler pointedStyler;
     private String currentMap;
 
-    private ArrayList<Place> places;
+    private List<Place> places;
 
     private Area area;
     private float zLevelLimit;
@@ -168,6 +168,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
     public void onEventMainThread(FetchAreaEvent event) {
         area  =  event.getArea();
+        places = area.getPlaces();
         ((MainActivity) getActivity()).getSupportActionBar().setTitle(area.getName());
         showFeatures(area.getPlaces());
     }
@@ -257,7 +258,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 //                public boolean onItemSingleTapUp(int i,Route route) {
 //                    ((MainActivity) getActivity()).showPanelDescription(i);
 //                    mMyLocationOverlay.getItem(i).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
-//                    mapView.invalidate();
+//                    mapView.invalidate();nt
 //
 //                    return true;
 //                }
@@ -272,7 +273,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
 
             final ArrayList<Marker> items = new ArrayList<Marker>();
-            GeoPoint point3 = new GeoPoint(48.6590, -4.3905);
+            GeoPoint point3 = new GeoPoint(48.6590, -4.3905 );
             ArrayList<Marker> markers = new ArrayList<Marker>();
             for (int i = 0; i < places.size(); i++) {
                 // Put overlay icon a little way from map centre

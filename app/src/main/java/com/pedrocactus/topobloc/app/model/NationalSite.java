@@ -27,7 +27,7 @@ public class NationalSite extends Area{
 
     public NationalSite(List<Site> sites, String name, String description,String history,
                 List<String> images, float[] coordinates, float[] boundingBox,List<String> ancestors) {
-        super(name, coordinates,images,boundingBox,description,history,(List<Place>)(List<?>) sites,ancestors);
+        super(name, coordinates,images,boundingBox,description,history,ancestors);
         this.sites = sites;
         this.name = name;
         this.images = images;
@@ -114,6 +114,12 @@ public class NationalSite extends Area{
     }
 
 
+    public List<Place> getPlaces(){
+        return (List<Place>)(List<?>)sites;
+    }
 
+    public void setPlaces(List<Place> places){
+        sites = (List<Site>)(List<?>)places;
+    }
 
 }

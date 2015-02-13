@@ -10,13 +10,11 @@ public abstract class Area extends Place{
 
     public float[] boundingbox;
     public List<String> ancestors;
-    public List<Place> places;
 
-    public Area(String name, float[] coordinates,List<String> images, float[] boundingbox,String description,String history,List<Place> places,List<String> ancestors) {
+    public Area(String name, float[] coordinates,List<String> images, float[] boundingbox,String description,String history,List<String> ancestors) {
         super(name,coordinates,images,description,history);
         this.boundingbox = boundingbox;
         this.ancestors = ancestors;
-        this.places = places;
     }
 
     public Area(){
@@ -39,11 +37,7 @@ public abstract class Area extends Place{
         this.ancestors = ancestors;
     }
 
-    public List<Place> getPlaces() {
-        return places;
-    }
+    public abstract List<Place> getPlaces();
 
-    public void setPlaces(List<Place> places) {
-        this.places = places;
-    }
+    public abstract void setPlaces(List<Place> places);
 }

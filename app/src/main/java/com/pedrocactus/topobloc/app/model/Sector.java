@@ -48,18 +48,15 @@ public class Sector extends Area{
     };
 
     public Sector(String name, float[] coordinates, int number, List<Route> routes,List<String> images, float[] boundingBox,String description,String history,List<String> ancestors) {
-        super(name, coordinates,images,boundingBox,description,history,(List<Place>)(List<?>) routes,ancestors);
+        super(name, coordinates,images,boundingBox,description,history,ancestors);
         this.number = number;
-        this.description = description;
+        this.routes = routes;
     }
 
     private int number;
     private List<Route> routes;
     private List<String> images;
 
-    public String getDescription() {
-        return description;
-    }
 
 
     public int getNumber() {
@@ -71,4 +68,12 @@ public class Sector extends Area{
     }
 
     private String description;
+
+    public List<Place> getPlaces(){
+        return (List<Place>)(List<?>)routes;
+    }
+
+    public void setPlaces(List<Place> places){
+        routes = (List<Route>)(List<?>)places;
+    }
 }
