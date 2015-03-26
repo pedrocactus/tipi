@@ -49,7 +49,7 @@ public interface TopoblocAPI {
 
     @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
     @GET("/getSector")
-    Sector getSector(@Query("sector") String sectorName);
+    Sector getSector(@Query("sectorName") String sectorName);
 
     @Headers("Cache-Control: public, max-age=640000, s-maxage=640000 , max-stale=2419200")
     @GET("/getNationalSite")

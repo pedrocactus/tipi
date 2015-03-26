@@ -29,11 +29,6 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="25sp"
-        android:textColor="@color/yellow"
-        android:shadowColor="@color/yellow"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="200"
         android:paddingRight="10dp"
         android:paddingLeft="10dp"/>
   </LinearLayout>

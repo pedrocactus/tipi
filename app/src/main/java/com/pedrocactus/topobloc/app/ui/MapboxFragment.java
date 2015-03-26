@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.api.ILatLng;
+import com.mapbox.mapboxsdk.events.RotateEvent;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.Icon;
@@ -45,9 +46,9 @@ import com.squareup.otto.Subscribe;
 
 import org.osmdroid.DefaultResourceProxyImpl;
 import org.osmdroid.bonuspack.kml.KmlFeature;
-import org.osmdroid.events.MapListener;
-import org.osmdroid.events.ScrollEvent;
-import org.osmdroid.events.ZoomEvent;
+import  com.mapbox.mapboxsdk.events.MapListener;
+import  com.mapbox.mapboxsdk.events.ScrollEvent;
+import com.mapbox.mapboxsdk.events.ZoomEvent;
 import org.osmdroid.tileprovider.modules.IArchiveFile;
 import org.osmdroid.util.GeoPoint;
 import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
@@ -106,6 +107,8 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         mapView.setCenter(new LatLng(46.629824,1.845703));
         mapView.setZoom(7);
         mapView.setDiskCacheEnabled(true);
+        mapView.addListener(this);
+        mapView.setUserLocationEnabled(true);
 
         lastBoundingBox = mapView.getBoundingBox();
         currentMap = getString(R.string.outdoorsMapId);
@@ -177,6 +180,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
         lastBoundingBox = mapView.getBoundingBox();
 
+
         LatLng northEast = new LatLng(event.getBoundingBox()[5],event.getBoundingBox()[4]);
         LatLng southWest = new LatLng(event.getBoundingBox()[1],event.getBoundingBox()[0]);
         mapView.zoomToBoundingBox(new BoundingBox(northEast,southWest));
@@ -206,9 +210,9 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     }
 
     public void onEventMainThread(ZoomOutEvent event) {
-
-        mapView.zoomToBoundingBox(lastBoundingBox);
-        lastBoundingBox = mapView.getBoundingBox();
+        LatLng northEast = new LatLng(event.getBoundingBox()[5],event.getBoundingBox()[4]);
+        LatLng southWest = new LatLng(event.getBoundingBox()[1],event.getBoundingBox()[0]);
+        mapView.zoomToBoundingBox(new BoundingBox(northEast,southWest));
 
         zLevelLimit = mapView.getZoomLevel();
 
@@ -220,10 +224,12 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 //            fetchRoutes(event.getNamePoint());
 //        }
 
-        if(area instanceof Site){
+        if(area instanceof NationalSite){
             fetchNationalSites();
         }else if(area instanceof Sector){
             fetchSite(event.getNamePoint());
+        }if(area instanceof Site){
+            fetchNationalSite(event.getNamePoint());
         }
 
         mapView.removeOverlay(mMyLocationOverlay);
@@ -347,19 +353,18 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
 
     @Override
-    public boolean onScroll(ScrollEvent scrollEvent) {
-        return false;
+    public void onScroll(ScrollEvent scrollEvent) {
+
     }
 
     @Override
-    public boolean onZoom(ZoomEvent zoomEvent) {
+    public void onZoom(ZoomEvent zoomEvent) {
 //        mapView.getBoundingBox().getLatitudeSpan()>oldPlace.getBoundingbox()getBoundingbox();
 
-        if(zLevelLimit<zoomEvent.getZoomLevel()){
-            mapView.zoomToBoundingBox(lastBoundingBox);
+        if(zLevelLimit>zoomEvent.getZoomLevel()&&zLevelLimit!=-1){
+            zLevelLimit = -1;
+            eventBus.post(new ZoomOutEvent(area.getAncestors().get(0),area.getParentboundingbox()));
         }
-
-        return false;
     }
 
     private File createFileFromInputStream(InputStream inputStream) {
@@ -413,5 +418,10 @@ mv.setZoom(0);
     }
     public void setMapCenter(ILatLng center) {
         mapView.setCenter(center);
+    }
+
+    @Override
+    public void onRotate(RotateEvent rotateEvent) {
+
     }
 }

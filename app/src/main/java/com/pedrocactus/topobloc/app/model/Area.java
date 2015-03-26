@@ -9,16 +9,26 @@ public abstract class Area extends Place{
 
 
     public float[] boundingbox;
+    public float[] parentboundingbox;
     public List<String> ancestors;
 
-    public Area(String name, float[] coordinates,List<String> images, float[] boundingbox,String description,String history,List<String> ancestors) {
+    public Area(String name, float[] coordinates,List<String> images, float[] boundingbox,String description,String history,List<String> ancestors,float[] parentboundingbox) {
         super(name,coordinates,images,description,history);
         this.boundingbox = boundingbox;
         this.ancestors = ancestors;
+        this.parentboundingbox = parentboundingbox;
     }
 
     public Area(){
 
+    }
+
+    public float[] getParentboundingbox() {
+        return parentboundingbox;
+    }
+
+    public void setParentboundingbox(float[] parentboundingbox) {
+        this.parentboundingbox = parentboundingbox;
     }
 
     public float[] getBoundingbox() {

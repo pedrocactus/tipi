@@ -18,6 +18,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.pedrocactus.topobloc.app.R;
+import com.pedrocactus.topobloc.app.events.FetchAreaEvent;
+import com.pedrocactus.topobloc.app.model.Area;
 import com.pedrocactus.topobloc.app.ui.MapboxFragment;
 import com.pedrocactus.topobloc.app.ui.VoieSliderFragment;
 import com.pedrocactus.topobloc.app.ui.about.AboutFragment;
@@ -63,6 +65,7 @@ public class MainActivity extends BaseActivity {
 
 
     private List<Place> places;
+    private Area area;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -322,6 +325,18 @@ public class MainActivity extends BaseActivity {
         detailSliderFragment = new DetailSliderFragment();
                 Bundle arguments = new Bundle();
         arguments.putParcelableArrayList("places", (ArrayList<Place>) event.getPlaces());
+        detailSliderFragment.setArguments(arguments);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.panel, detailSliderFragment).commit();
+        adapterRight.updatePlaces(places);
+    }
+
+    public void onEventMainThread(FetchAreaEvent event) {
+        area = event.getArea();
+        places = area.getPlaces();
+        detailSliderFragment = new DetailSliderFragment();
+        Bundle arguments = new Bundle();
+        arguments.putParcelableArrayList("places", (ArrayList<Place>) area.getPlaces());
         detailSliderFragment.setArguments(arguments);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.panel, detailSliderFragment).commit();
