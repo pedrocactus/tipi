@@ -127,11 +127,7 @@ public class TopoblocModule {
         OkHttpClient okHttpClient = new OkHttpClient();
         File cacheDir = TopoblocApp.getInstance().getCacheDir();
         Cache cache = null;
-        try {
             cache = new Cache(cacheDir, 10 * 1024 * 1024);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         okHttpClient.setCache(cache);
         builder.setClient(new OkClient(okHttpClient)/*new SignedOkClient(consumer,okHttpClient)*/);
         //Adding Interceptor for cache request only behaviors

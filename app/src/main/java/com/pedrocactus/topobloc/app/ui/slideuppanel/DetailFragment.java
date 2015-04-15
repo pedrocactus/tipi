@@ -49,8 +49,8 @@ public class DetailFragment extends BaseFragment {
 
         place = getArguments().getParcelable(PLACE_ID);
         placeIndex = getArguments().getInt(PLACE_INDEX);
-        if(place instanceof Route) {
 
+        if(place instanceof Route) {
             detailView = new RouteDetailView(getActivity());
             ((RouteDetailView) detailView).setupListener(new View.OnClickListener() {
                 @Override
