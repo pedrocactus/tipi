@@ -238,12 +238,14 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     }
 
     public void onEventMainThread(SwipeDetailEvent event) {
+        int indexToshow = event.getIndexToShow();
         mMyLocationOverlay.getItem(event.getIndexToShow()).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
 
         if(places.get(0) instanceof Route) {
-            mMyLocationOverlay.getItem(event.getPreviousIndex()).setIcon(new Icon(getResources().getDrawable(R.drawable.ic_brightness_1_black_18dp)));
+            mMyLocationOverlay.getItem(indexToshow).setIcon(new Icon(getResources().getDrawable(R.drawable.ic_brightness_1_black_18dp)));
+            mapView.setCenter(new LatLng(places.get(indexToshow).getCoordinates()[1], places.get(indexToshow).getCoordinates()[0]));
         }else{
-            mMyLocationOverlay.getItem(event.getPreviousIndex()).setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
+            mMyLocationOverlay.getItem(indexToshow).setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
         }
         mapView.invalidate();
 
@@ -284,8 +286,12 @@ public class MapboxFragment extends BaseFragment implements MapListener{
             for (int i = 0; i < places.size(); i++) {
                 // Put overlay icon a little way from map centre
                 Marker marker = new Marker("Here", "SampleDescription", new LatLng(places.get(i).getCoordinates()[1], places.get(i).getCoordinates()[0]));
-                if(places.get(0) instanceof Route) {
-                    marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_brightness_1_black_18dp)));
+                if(places.get(0) instanceof Route) {/*
+                    marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_brightness_1_black_18dp)));*/
+                    Route route = (Route) places.get(i);
+                    Icon icon = new Icon(getActivity(), Icon.Size.SMALL, String.valueOf(route.getNumber()), "FF0000");
+                    /*Icon icon = new Icon(getResources().getDrawable(R.drawable.circle));*/
+                    marker.setIcon(icon);
                 }else{
                     marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
                 }
@@ -316,6 +322,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         mapView.invalidate();
 
     }
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {

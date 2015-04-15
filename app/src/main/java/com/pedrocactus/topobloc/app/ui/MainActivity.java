@@ -123,6 +123,14 @@ public class MainActivity extends BaseActivity {
 
         mDrawerList.setAdapter(adapter);
         mDrawerListRight.setAdapter(adapterRight);
+        mDrawerListRight.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                showPanelDescription(position);
+                mDrawerLayout.closeDrawer(mDrawerListRight);
+            }
+        });
         mDrawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new OnItemClickListener() {
@@ -392,7 +400,6 @@ public class MainActivity extends BaseActivity {
 
         eventBus.post(new ShowDetailEvent(placeIndex));
         panelLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-
 
     }
 

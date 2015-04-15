@@ -54,7 +54,7 @@ public class RightPanelListAdapter extends BaseAdapter implements Filterable {
                     .inflate(R.layout.place_list_item, parent, false);
         }
 //        ImageView movieThumbNailView = (ImageView) ViewHolder.get(convertView, R.id.movie_thumbnail);
-        TextView movieTitleView = ViewHolder.get(convertView, R.id.place_title);
+        TextView placeTitleTextView = ViewHolder.get(convertView, R.id.place_title);
         TextView levelTextView = ViewHolder.get(convertView, R.id.level);
         Place place = getItem(position);
         String number = "";
@@ -62,8 +62,9 @@ public class RightPanelListAdapter extends BaseAdapter implements Filterable {
             number = Integer.toString(((Route) place).getNumber()) + ". ";
 
             levelTextView.setText(((Route) place).getLevel());
+            placeTitleTextView.setTextColor(context.getResources().getColor(R.color.red));
         }
-        movieTitleView.setText(number + place.getName());
+        placeTitleTextView.setText(number + place.getName());
 
 
         return convertView;
