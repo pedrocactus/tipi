@@ -36,12 +36,14 @@ import com.pedrocactus.topobloc.app.job.SectorsJob;
 import com.pedrocactus.topobloc.app.job.SiteJob;
 import com.pedrocactus.topobloc.app.job.SitesJob;
 import com.pedrocactus.topobloc.app.model.Area;
+import com.pedrocactus.topobloc.app.model.Circuit;
 import com.pedrocactus.topobloc.app.model.NationalSite;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.model.Sector;
 import com.pedrocactus.topobloc.app.model.Route;
 import com.pedrocactus.topobloc.app.model.Site;
 import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
+import com.pedrocactus.topobloc.app.ui.utils.Utils;
 import com.squareup.otto.Subscribe;
 
 import org.osmdroid.DefaultResourceProxyImpl;
@@ -216,14 +218,6 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
         zLevelLimit = mapView.getZoomLevel();
 
-//        if(places.get(0) instanceof NationalSite){
-//            fetchSites(event.getNamePoint());
-//        }else if(places.get(0) instanceof Site){
-//            fetchSectors(event.getNamePoint());
-//        }else if(places.get(0) instanceof Sector){
-//            fetchRoutes(event.getNamePoint());
-//        }
-
         if(area instanceof NationalSite){
             fetchNationalSites();
         }else if(area instanceof Sector){
@@ -241,6 +235,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         mMyLocationOverlay.getItem(event.getIndexToShow()).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
 
         if(places.get(0) instanceof Route) {
+
             mMyLocationOverlay.getItem(event.getPreviousIndex()).setIcon(new Icon(getResources().getDrawable(R.drawable.ic_brightness_1_black_18dp)));
         }else{
             mMyLocationOverlay.getItem(event.getPreviousIndex()).setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
@@ -249,33 +244,9 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
     }
 
-//    public void onEventMainThread(ShowDetailEvent event) {
-//        mMyLocationOverlay.getItem(event.getIndexToShow()).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
-//        mapView.invalidate();
-//
-//    }
 
     private void showFeatures(final List<Place> places){
 
-
-//        if(places.get(0) instanceof Route) {
-//            TextOverlay textOverlay = new TextOverlay(getActivity(),mapView,(List<Route>)(List<?>)places, new TextOverlay.OnItemGestureListener<Route>(){
-//                @Override
-//                public boolean onItemSingleTapUp(int i,Route route) {
-//                    ((MainActivity) getActivity()).showPanelDescription(i);
-//                    mMyLocationOverlay.getItem(i).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
-//                    mapView.invalidate();nt
-//
-//                    return true;
-//                }
-//
-//                @Override
-//                public boolean onItemLongPress(int i,Route route) {
-//                    return true;
-//                }
-//            });
-//            mapView.addOverlay(textOverlay);
-//        }else {
 
 
             final ArrayList<Marker> items = new ArrayList<Marker>();
@@ -284,8 +255,12 @@ public class MapboxFragment extends BaseFragment implements MapListener{
             for (int i = 0; i < places.size(); i++) {
                 // Put overlay icon a little way from map centre
                 Marker marker = new Marker("Here", "SampleDescription", new LatLng(places.get(i).getCoordinates()[1], places.get(i).getCoordinates()[0]));
-                if(places.get(0) instanceof Route) {
-                    marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_brightness_1_black_18dp)));
+                Place place = places.get(i);
+                if(place instanceof Route) {
+                    String name = "ic brightness 1 "+ ((Route) place).getCircuit()+" 24dp";
+                    marker.setIcon(new Icon(getResources().getDrawable(getActivity().getResources().getIdentifier(name.toLowerCase().replace(" ", "_"),"drawable",getActivity().getPackageName()))));
+
+                    marker.setIcon(new Icon())
                 }else{
                     marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
                 }
@@ -311,7 +286,6 @@ public class MapboxFragment extends BaseFragment implements MapListener{
             });
             mapView.addItemizedOverlay(this.mMyLocationOverlay);
 
-//        }
 
         mapView.invalidate();
 
