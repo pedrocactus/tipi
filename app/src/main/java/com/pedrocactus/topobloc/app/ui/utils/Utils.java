@@ -13,7 +13,8 @@ public class Utils {
 
 
     public static int getResIdFromName(String name, Context context){
-        return context.getResources().getIdentifier(name.toLowerCase().replace(" ", "_"),"","");
+        int test =  context.getResources().getIdentifier(name.toLowerCase().replace(" ", "_"),"","");
+        return test;
     }
 
 
