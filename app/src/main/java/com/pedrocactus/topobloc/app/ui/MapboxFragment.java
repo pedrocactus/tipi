@@ -1,28 +1,40 @@
 package com.pedrocactus.topobloc.app.ui;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.mapbox.mapboxsdk.api.ILatLng;
+import com.mapbox.mapboxsdk.events.MapListener;
 import com.mapbox.mapboxsdk.events.RotateEvent;
+import com.mapbox.mapboxsdk.events.ScrollEvent;
+import com.mapbox.mapboxsdk.events.ZoomEvent;
 import com.mapbox.mapboxsdk.geometry.BoundingBox;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.Icon;
+import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
+import com.mapbox.mapboxsdk.overlay.ItemizedOverlay;
 import com.mapbox.mapboxsdk.overlay.Marker;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.ITileLayer;
 import com.mapbox.mapboxsdk.tileprovider.tilesource.MapboxTileLayer;
-import com.path.android.jobqueue.Job;
+import com.mapbox.mapboxsdk.views.MapView;
 import com.path.android.jobqueue.JobManager;
 import com.pedrocactus.topobloc.app.R;
-import com.pedrocactus.topobloc.app.TopoblocApp;
 import com.pedrocactus.topobloc.app.events.BusProvider;
 import com.pedrocactus.topobloc.app.events.FetchAreaEvent;
 import com.pedrocactus.topobloc.app.events.FetchPlacesEvent;
@@ -37,27 +49,19 @@ import com.pedrocactus.topobloc.app.job.SectorsJob;
 import com.pedrocactus.topobloc.app.job.SiteJob;
 import com.pedrocactus.topobloc.app.job.SitesJob;
 import com.pedrocactus.topobloc.app.model.Area;
-import com.pedrocactus.topobloc.app.model.Circuit;
 import com.pedrocactus.topobloc.app.model.NationalSite;
 import com.pedrocactus.topobloc.app.model.Place;
-import com.pedrocactus.topobloc.app.model.Sector;
 import com.pedrocactus.topobloc.app.model.Route;
+import com.pedrocactus.topobloc.app.model.Sector;
 import com.pedrocactus.topobloc.app.model.Site;
 import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
-import com.pedrocactus.topobloc.app.ui.utils.Utils;
+import com.pedrocactus.topobloc.app.ui.widget.RouteIconWidget;
 import com.squareup.otto.Subscribe;
 
 import org.osmdroid.DefaultResourceProxyImpl;
 import org.osmdroid.bonuspack.kml.KmlFeature;
-import  com.mapbox.mapboxsdk.events.MapListener;
-import  com.mapbox.mapboxsdk.events.ScrollEvent;
-import com.mapbox.mapboxsdk.events.ZoomEvent;
 import org.osmdroid.tileprovider.modules.IArchiveFile;
 import org.osmdroid.util.GeoPoint;
-import com.mapbox.mapboxsdk.overlay.ItemizedIconOverlay;
-import com.mapbox.mapboxsdk.overlay.ItemizedOverlay;
-
-import com.mapbox.mapboxsdk.views.MapView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -83,9 +87,11 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     private String currentMap;
 
     private List<Place> places;
+    private int selectedIndex;
 
     private Area area;
     private float zLevelLimit;
+    private float actualZLevelLimit;
     private BoundingBox lastBoundingBox;
 
 
@@ -127,6 +133,12 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         super.onViewCreated(view, savedInstanceState);
         if(savedInstanceState!=null){
             area = savedInstanceState.getParcelable("area");
+            mapView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                @Override
+                public boolean onPreDraw() {
+                    return false;
+                }
+            });
             showFeatures(area.getPlaces());
         }else {
 
@@ -180,7 +192,7 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     }
 
     public void onEventMainThread(ZoomToEvent event) {
-
+        selectedIndex = -1;
         lastBoundingBox = mapView.getBoundingBox();
 
 
@@ -233,15 +245,41 @@ public class MapboxFragment extends BaseFragment implements MapListener{
     }
 
     public void onEventMainThread(SwipeDetailEvent event) {
-        int indexToshow = event.getIndexToShow();
-        mMyLocationOverlay.getItem(event.getIndexToShow()).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
 
         if(places.get(0) instanceof Route) {
-            mMyLocationOverlay.getItem(indexToshow).setIcon(new Icon(getResources().getDrawable(R.drawable.ic_brightness_1_black_18dp)));
-            mapView.setCenter(new LatLng(places.get(indexToshow).getCoordinates()[1], places.get(indexToshow).getCoordinates()[0]));
+            Icon.Size sizeIcon;
+            int size = 0;
+            if(actualZLevelLimit>20){
+
+                sizeIcon =  Icon.Size.LARGE;
+                size = RouteIconWidget.BIG;
+            }else{
+                sizeIcon =  Icon.Size.SMALL;
+                size =  RouteIconWidget.SMALL;
+            }
+            mMyLocationOverlay.getItem(event.getIndexToShow()).setIcon(new Icon(getActivity(), sizeIcon, String.valueOf(((Route) places.get(event.getIndexToShow())).getNumber()), "FF0000"));
+
+            RouteIconWidget iconWidget = new RouteIconWidget(getActivity(), String.valueOf(((Route)places.get(event.getPreviousIndex())).getNumber()), R.color.red, size);
+            iconWidget.setDrawingCacheEnabled(true);
+
+            iconWidget.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+            iconWidget.layout(0, 0, iconWidget.getMeasuredWidth(), iconWidget.getMeasuredHeight());
+
+            iconWidget.buildDrawingCache(true);
+            mMyLocationOverlay.getItem(event.getPreviousIndex()).setMarker(new BitmapDrawable(getResources(), Bitmap.createBitmap(iconWidget.getDrawingCache())));
+            mMyLocationOverlay.setFocus(mMyLocationOverlay.getItem(event.getIndexToShow()));
+            iconWidget.setDrawingCacheEnabled(false);
+            if(!mapView.getBoundingBox().contains(mMyLocationOverlay.getItem(event.getIndexToShow()).getPoint())){
+                mapView.getController().animateTo(new LatLng(places.get(event.getIndexToShow()).getCoordinates()[1], places.get(event.getIndexToShow()).getCoordinates()[0]));
+            }
         }else{
-            mMyLocationOverlay.getItem(indexToshow).setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
+            mMyLocationOverlay.getItem(event.getIndexToShow()).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
+            mMyLocationOverlay.getItem(event.getPreviousIndex()).setMarker(getResources().getDrawable(R.drawable.ic_terrain_black_48dp));
         }
+
+        selectedIndex = event.getIndexToShow();
+
         mapView.invalidate();
 
     }
@@ -259,27 +297,61 @@ public class MapboxFragment extends BaseFragment implements MapListener{
                 Marker marker = new Marker("Here", "SampleDescription", new LatLng(places.get(i).getCoordinates()[1], places.get(i).getCoordinates()[0]));
                 Place place = places.get(i);
 
-                if(places.get(0) instanceof Route) {/*
-                    marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_brightness_1_black_18dp)));*/
+                if(places.get(0) instanceof Route) {
                     Route route = (Route) places.get(i);
 
                     String name = "ic brightness 1 "+ ((Route) place).getCircuit()+" 24dp";
-                    Drawable draw = getActivity().getResources().getIdentifier(name.toLowerCase().replace(" ", "_"),"drawable",getActivity().getPackageName())
+                    int draw = getActivity().getResources().getIdentifier(name.toLowerCase().replace(" ", "_"),"drawable",getActivity().getPackageName());
                     Icon icon = new Icon(getActivity(), Icon.Size.SMALL, String.valueOf(route.getNumber()), "FF0000");
-                    /*Icon icon = new Icon(getResources().getDrawable(R.drawable.circle));*/
-                    marker.setIcon(icon);
+                    int size =0;
+                    Icon.Size sizeIcon;
+                    if(mapView.getZoomLevel()>20){
+
+                        size = RouteIconWidget.BIG;
+                        sizeIcon = Icon.Size.LARGE;
+                    }else{
+
+                        size = RouteIconWidget.SMALL;
+                        sizeIcon = Icon.Size.SMALL;
+                    }
+                    if((selectedIndex!=-1)&&(selectedIndex==i)){
+                        marker.setIcon(new Icon(getActivity(), sizeIcon, String.valueOf(((Route)places.get(selectedIndex)).getNumber()), "FF0000"));
+                    }else {
+                        RouteIconWidget iconWidget = new RouteIconWidget(getActivity(), String.valueOf(route.getNumber()), R.color.red, size);
+                        iconWidget.setDrawingCacheEnabled(true);
+
+                        iconWidget.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+                        iconWidget.layout(0, 0, iconWidget.getMeasuredWidth(), iconWidget.getMeasuredHeight());
+
+                        iconWidget.buildDrawingCache(true);
+                        marker.setMarker(new BitmapDrawable(getResources(), Bitmap.createBitmap(iconWidget.getDrawingCache())));
+                        iconWidget.setDrawingCacheEnabled(false);
+                    }
                 }else{
-                    marker.setIcon(new Icon(getResources().getDrawable(R.drawable.ic_terrain_black_48dp)));
+                    marker.setMarker(getResources().getDrawable(R.drawable.ic_terrain_black_48dp));
                 }
-                markers.add(marker);
+                    markers.add(marker);
 
             }
 
             mMyLocationOverlay = new ItemizedIconOverlay(getActivity(), markers, new ItemizedIconOverlay.OnItemGestureListener<Marker>() {
                 @Override
                 public boolean onItemSingleTapUp(int i, Marker marker) {
+                    selectedIndex = i;
                     ((MainActivity) getActivity()).showPanelDescription(i);
-                    mMyLocationOverlay.getItem(i).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
+                    if(places.get(i) instanceof Route) {
+                        Icon.Size size;
+                        if (actualZLevelLimit > 20) {
+
+                            size = Icon.Size.LARGE;
+                        } else {
+                            size = Icon.Size.SMALL;
+                        }
+                        mMyLocationOverlay.getItem(i).setIcon(new Icon(getActivity(),size, String.valueOf(((Route) places.get(i)).getNumber()), "FF0000"));
+                    }else {
+                        mMyLocationOverlay.getItem(i).setIcon(new Icon(getResources().getDrawable(R.drawable.defpin)));
+                    }
                     mapView.invalidate();
 
                     return true;
@@ -287,10 +359,12 @@ public class MapboxFragment extends BaseFragment implements MapListener{
 
                 @Override
                 public boolean onItemLongPress(int i, Marker marker) {
-                    Toast.makeText(getActivity(), "Marker Selected: " + marker.getTitle(), Toast.LENGTH_LONG).show();
                     return true;
                 }
             });
+            if(selectedIndex!=-1){
+                mMyLocationOverlay.setFocus(mMyLocationOverlay.getItem(selectedIndex));
+            }
             mapView.addItemizedOverlay(this.mMyLocationOverlay);
 
 
@@ -346,8 +420,16 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         if(zLevelLimit>zoomEvent.getZoomLevel()&&zLevelLimit!=-1){
             zLevelLimit = -1;
             eventBus.post(new ZoomOutEvent(area.getAncestors().get(0),area.getParentboundingbox()));
+        }else if(places.get(0) instanceof Route){
+            float nextZLevel = zoomEvent.getZoomLevel();
+            if ((actualZLevelLimit<=20&&nextZLevel>20)||(nextZLevel<=20&&actualZLevelLimit>20)){
+                mapView.removeOverlay(mMyLocationOverlay);
+                showFeatures(places);
+            }
         }
+        actualZLevelLimit = zoomEvent.getZoomLevel();
     }
+
 
     private File createFileFromInputStream(InputStream inputStream) {
 

@@ -20,6 +20,7 @@ import com.pedrocactus.topobloc.app.events.ShowDetailEvent;
 import com.pedrocactus.topobloc.app.events.SwipeDetailEvent;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
+import com.pedrocactus.topobloc.app.ui.widget.LoopViewPager;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -71,7 +72,7 @@ public class DetailSliderFragment extends BaseFragment {
          * The pager widget, which handles animation and allows swiping horizontally to access previous
          * and next wizard steps.
          */
-        private ViewPager mPager;
+        private LoopViewPager mPager;
 
         /**
          * The pager adapter, which provides the pages to the view pager widget.
@@ -100,8 +101,10 @@ public class DetailSliderFragment extends BaseFragment {
             places = getArguments().getParcelableArrayList("places");
             placeVIsible = getArguments().getInt("placeIndex");
 
-            mPager = (ViewPager) view.findViewById(R.id.voie_slider_viewpager);
-            mPager.setAdapter(new ScreenSlidePagerAdapter(getChildFragmentManager()));
+            mPager = (LoopViewPager) view.findViewById(R.id.voie_slider_viewpager);
+            mPager.setBoundaryCaching(true);
+            ScreenSlidePagerAdapter adapter = new ScreenSlidePagerAdapter(getChildFragmentManager());
+            mPager.setAdapter(adapter);
             //mPagerAdapter = new ScreenSlidePagerAdapter(getChildFragmentManager());
             mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
@@ -114,7 +117,7 @@ public class DetailSliderFragment extends BaseFragment {
 
                 @Override
                 public void onPageSelected(int newIndex) {
-                    EventBus.getDefault().post(new SwipeDetailEvent(newIndex, placeVIsible));
+                    EventBus.getDefault().post(new SwipeDetailEvent(newIndex%places.size(), placeVIsible));
                     placeVIsible =newIndex;
                 }
             });
@@ -138,7 +141,7 @@ public class DetailSliderFragment extends BaseFragment {
             public Fragment getItem(int position) {
                 detailFragment = new DetailFragment();
                 Bundle bundle = new Bundle();
-                bundle.putParcelable("detailPlace", places.get(position));
+                bundle.putParcelable("detailPlace", places.get((position)%places.size()));
                 detailFragment.setArguments(bundle);
 
                 return detailFragment;
@@ -146,7 +149,7 @@ public class DetailSliderFragment extends BaseFragment {
 
             @Override
             public int getCount() {
-                return places.size();
+                    return 6;
             }
 
             @Override
