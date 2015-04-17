@@ -20,6 +20,7 @@ import com.pedrocactus.topobloc.app.events.ShowDetailEvent;
 import com.pedrocactus.topobloc.app.events.SwipeDetailEvent;
 import com.pedrocactus.topobloc.app.model.Place;
 import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
+import com.pedrocactus.topobloc.app.ui.widget.LoopPagerAdapterWrapper;
 import com.pedrocactus.topobloc.app.ui.widget.LoopViewPager;
 
 import java.lang.reflect.Field;
@@ -139,9 +140,10 @@ public class DetailSliderFragment extends BaseFragment {
 
             @Override
             public Fragment getItem(int position) {
+                position = LoopViewPager.toRealPosition(position, getCount());
                 detailFragment = new DetailFragment();
                 Bundle bundle = new Bundle();
-                bundle.putParcelable("detailPlace", places.get((position)%places.size()));
+                bundle.putParcelable("detailPlace", places.get(position));
                 detailFragment.setArguments(bundle);
 
                 return detailFragment;
@@ -149,7 +151,7 @@ public class DetailSliderFragment extends BaseFragment {
 
             @Override
             public int getCount() {
-                    return 6;
+                    return places.size();
             }
 
             @Override
