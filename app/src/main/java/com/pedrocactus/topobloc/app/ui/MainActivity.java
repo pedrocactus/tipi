@@ -1,5 +1,6 @@
 package com.pedrocactus.topobloc.app.ui;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -23,6 +24,7 @@ import com.pedrocactus.topobloc.app.model.Area;
 import com.pedrocactus.topobloc.app.ui.MapboxFragment;
 import com.pedrocactus.topobloc.app.ui.VoieSliderFragment;
 import com.pedrocactus.topobloc.app.ui.about.AboutFragment;
+import com.pedrocactus.topobloc.app.ui.list.ListActivity;
 import com.pedrocactus.topobloc.app.ui.list.ListFragment;
 import com.pedrocactus.topobloc.app.ui.panel.CustomDrawerAdapter;
 import com.pedrocactus.topobloc.app.ui.panel.DrawerItem;
@@ -319,7 +321,9 @@ public class MainActivity extends BaseActivity {
     }
 
     public void goToListFragment(View v) {
-        showFragment(listFragment.TAG);
+        Intent intent = new Intent(this, ListActivity.class);
+        startActivity(intent);/*
+        showFragment(listFragment.TAG);*/
     }
 
 

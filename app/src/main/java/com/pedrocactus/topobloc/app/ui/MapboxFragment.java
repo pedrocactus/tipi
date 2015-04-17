@@ -54,6 +54,7 @@ import com.pedrocactus.topobloc.app.model.Route;
 import com.pedrocactus.topobloc.app.model.Sector;
 import com.pedrocactus.topobloc.app.model.Site;
 import com.pedrocactus.topobloc.app.ui.base.BaseFragment;
+import com.pedrocactus.topobloc.app.ui.utils.Utils;
 import com.pedrocactus.topobloc.app.ui.widget.RouteIconWidget;
 import com.squareup.otto.Subscribe;
 
@@ -195,9 +196,8 @@ public class MapboxFragment extends BaseFragment implements MapListener{
         lastBoundingBox = mapView.getBoundingBox();
 
 
-        LatLng northEast = new LatLng(event.getBoundingBox()[5],event.getBoundingBox()[4]);
-        LatLng southWest = new LatLng(event.getBoundingBox()[1],event.getBoundingBox()[0]);
-        mapView.zoomToBoundingBox(new BoundingBox(northEast,southWest));
+
+        mapView.zoomToBoundingBox(Utils.getBoundingBox(event.getBoundingBox()));
         zLevelLimit = mapView.getZoomLevel();
 
 //        if(places.get(0) instanceof NationalSite){

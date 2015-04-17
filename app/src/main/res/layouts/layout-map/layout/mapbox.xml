@@ -8,7 +8,7 @@
         android:id="@+id/mapview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        mapbox:mapid="pedrocactus.4cff2982"
+        mapbox:mapid="@string/pedroId"
         mapbox:accessToken="pk.eyJ1IjoicGVkcm9jYWN0dXMiLCJhIjoiT2JTb3pIQSJ9.sCgj-RomCVl58xco7-XkKg"
         />
 
